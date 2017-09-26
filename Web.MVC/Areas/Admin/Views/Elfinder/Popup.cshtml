@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Quản lý file";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutFM.cshtml";
+}
+
+@section head
+{
+
+
+    <script type="text/javascript" charset="utf-8">
+        $().ready(function () {
+            var elf = $('#elfinder').elfinder({
+                url: '../connector',
+                language: 'vi',
+
+                docked: false,
+                getFileCallback: function (file) {
+                    window.opener.CKEDITOR.tools.callFunction(funcNum, file.url);
+                    window.close();
+                },
+                resizable: false
+            }).elfinder('instance');
+        });
+    </script>
+}
+<div id="elfinder"></div>
+

@@ -1,0 +1,91 @@
+﻿@model IEnumerable<EnF.Product>
+
+@{
+    ViewBag.Title = " Sản phẩm nổi bật";
+}
+<div style="margin-top: 45px; background: #eee;">
+    <h3>
+       Sản phẩm nổi bật
+    </h3>
+
+
+</div>
+
+
+<div class="panel panel-primary color noneborder">
+    <div class="panel-heading colortheme noneborder">
+        <div class="titletable">@ViewBag.Title </div>
+        <ul class="list-unstyled menu">
+
+            <li>
+                <i class="fa fa-plus-square-o"></i>
+                @Html.ActionLink("Thêm giấy dán tường", "Create", new { ProductGroupID = ViewBag.ProductGroupID })
+
+            </li>
+            <li>
+                <i class="fa fa-plus-square-o"></i>
+                @Html.ActionLink("Thêm kiến trúc", "Create", new { ProductGroupID = ViewBag.ProductGroupID })
+
+            </li>
+
+
+            <li>
+                <a href="#" onclick="ReloadCurrentPage()">
+                    <i class="fa fa-refresh"></i> Nạp lại
+                </a>
+            </li>
+
+
+
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+    <div class="panel-body">
+
+        <table id="tblXepLoai" class="table table-striped display table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        Tên
+                    </th>
+
+                    <th>
+                        Hình ảnh
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+
+                        <td>
+                            <img src="/@item.Image" height="70" />
+                        </td>
+
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }) |
+
+                            <a href="/Admin/ProductDetail/Delete/@item.ProductId" onclick="return ConfirmDel()">Xóa</a>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<script type="text/javascript">
+    function ConfirmDel() {
+        var rs = confirm("Chắc chắn muốn xóa");
+        if (rs == false) {
+            return false;
+        }
+
+    }
+</script>

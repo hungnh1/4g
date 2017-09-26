@@ -1,0 +1,79 @@
+﻿@using Microsoft.AspNet.Identity
+
+
+<div class="col-md-12 col-lg-12" role="main">
+
+    <nav class="navbar navbar-default">
+        <div class="col-lg-1 col-md-1 paddingtop">
+            <a href="~/quanly">
+                <img src="@Url.Content("~/images/logo.png")" width="50" height="50" alt="Image">
+            </a>
+        </div>
+        <div class="col-lg-9 col-md-8 titleadmin">
+            <p><strong></strong></p>
+            <p>TRANG QUẢN LÝ</p>
+        </div>
+        <div class="col-lg-2 col-md-3 titleuser">
+            <p>
+                Xin chào : <strong>@( User.Identity.Name ) @*@User.Identity.GetUserName()*@ </strong>
+            </p>
+
+            @*<img src="@Url.Content("~/Content/font_end/images/avatar5.png")" class="img-circle" width="40" />
+                <i class="fa fa-circle text-success"></i> Online |*@
+            @*<a href="javascript:document.getElementById('logoutForm').submit()">Thoát</a>*@
+             <a href=" /Account/Logout">Thoát</a>|
+            <a href="/Admin/UserRole/ChangePass"> Đổi mật khẩu</a>
+
+
+        </div>
+        @using (Html.BeginForm("Thoat", "User", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right an" }))
+        {
+            @Html.AntiForgeryToken()
+        }
+    </nav>
+
+    <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+        <ul id="myTab" class="nav nav-tabs" role="tablist">
+          
+            <li role="presentation">
+                <a href="/Admin/ProductGroup/Index" id="home-tab" role="tab"
+                   aria-expanded="true">Giấy gián tường</a>
+            </li>
+            <li role="presentation">
+                <a href="/Admin/ArchitectureProGroup/Index" id="home-tab" role="tab"
+                   aria-expanded="true">Kiến trúc</a>
+            </li>
+            <li role="presentation">
+                <a href="/Admin/ProductDetail/ShowProdct" role="tab" id="thongke-tab" aria-controls="thongke">Sản phẩm nổi bật</a>
+            </li>
+
+            <li role="presentation">
+                <a href="/Admin/Banner" id="website-tab" role="tab"
+                   aria-controls="website" aria-expanded="true">Banner</a>
+            </li>
+
+           
+          
+            <li role="presentation">
+                <a href="/Admin/UserRole" aria-controls="thongke">User</a>
+            </li>
+            <li role="presentation">
+                <a href="/Admin/Config/Edit/1" role="tab">Cấu hình</a>
+            </li>
+
+            @*<li role="presentation">
+                <a href="/Admin/Config/Edit/1" role="tab" id="thongke-tab" data-toggle="tab" aria-controls="thongke">Cấu hình</a>
+            </li>*@
+        </ul>
+
+
+    </div>
+</div>
+<div class="clearfix"></div>
+<style type="text/css">
+    .navbar-default {
+        background-color: #2e8bcc;
+        border-color: #2e8bcc;
+    }
+</style>
+

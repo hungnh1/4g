@@ -1,0 +1,55 @@
+﻿@model IEnumerable<EnF.ProductGroup>
+
+@{
+    ViewBag.Title = "Sản phẩm hiện trang chủ";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@*<p>
+        @Html.ActionLink("Thêm mới", "Create")
+    </p>*@
+@using (Html.BeginForm())
+{
+    <div class="panel panel-primary color noneborder">
+
+        <div class="panel-body">
+
+            <table id="tblXepLoai" class="table table-striped display table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                            Nhóm sản phẩm
+                        </th>
+                        <th>Thứ tự</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                              @item.Name
+                            </td>
+                            <td>
+                                <input type="text" name="@item.ProductGroupId" value="@item.ParentId" />
+
+                            </td>
+
+
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+            <div><input type="submit" class="btn-default" value="Xác nhận" /></div>
+        </div>
+    </div>
+}
+<script type="text/javascript">
+  
+
+</script>
+

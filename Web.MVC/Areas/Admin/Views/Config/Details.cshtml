@@ -1,0 +1,41 @@
+﻿@model EnF.Config
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Config</h4>
+	<hr />
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Config</h4>
+            <hr />
+            @Html.ValidationSummary(true)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Keyword, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <textarea name="txtip"></textarea>
+                    @Html.ValidationMessageFor(model => model.Keyword)
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<p>
+  
+</p>

@@ -1,0 +1,256 @@
+﻿@model EnF.Config
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Config</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Keyword)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Keyword)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Domain)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Domain)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HotLine)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HotLine)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Social)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Social)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailSent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailSent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MailPass)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MailPass)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PageTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PageTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GooleMap)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GooleMap)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShowPageId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShowPageId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Youtube)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Youtube)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sky)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sky)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Yahoo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Yahoo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Slogan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Slogan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hotline1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hotline1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hotline2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hotline2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Yahoo1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Yahoo1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Yahoo2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Yahoo2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sky1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sky1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sky2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sky2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MailRetrive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MailRetrive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Facebook)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Facebook)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Google)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Google)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Twiter)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Twiter)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Metadata)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Metadata)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CCmail3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CCmail3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CCmail4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CCmail4)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

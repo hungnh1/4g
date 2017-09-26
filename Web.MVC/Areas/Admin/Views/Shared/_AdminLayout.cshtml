@@ -1,0 +1,100 @@
+﻿@*<!DOCTYPE html>
+
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+    </head>
+    <body>
+        <div>
+            @RenderBody()
+        </div>
+    </body>
+    </html>*@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>@ViewBag.Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="@ViewBag.Title">
+    <meta name="keywords" content="@ViewBag.Title">
+    <meta name="author" content="@ViewBag.Title">
+    @*<link href="~/Areas/Admin/tvtdeveloper/css/bootstrap.min.css" rel="stylesheet" />*@
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/custom.css" rel="stylesheet" />
+    <link href="~/Content/font_end/css/metro-bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />*@
+    <!-- Latest compiled and minified CSS -->
+    @*<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.min.css">*@
+    <!-- include your less or built css files  -->
+    <link href="~/fonts/font-awesome-4.6.3/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/fonts/font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet" />
+
+
+    <link href="~/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+
+    @*@Scripts.Render("~/Scripts/ckfinder/ckfinder.js")
+    @Scripts.Render("~/Scripts/ckeditor/ckeditor.js")*@
+    @Scripts.Render("~/Scripts/libs/jquery.unobtrusive-ajax.min.js")
+</head>
+<body>
+    <div class="container bs-docs-container">
+
+        @Html.Partial("_AdminNavigation")
+
+        <div class="col-md-12" style="min-height:410px">
+            @RenderBody()
+        </div>
+        <div class="clearfix"></div>
+        <footer>
+            <div class="panel panel-default">
+                <div class="panel-body-footer">
+
+                  
+                    @*<br /> Địa chỉ:
+
+                    <br />  Điện thoại:
+
+                    <br />Email:*@
+                </div>
+                <div class="panel-footer">
+                    Copyright © 2016
+                    <a target="_blank" href="#">
+                    </a>  <a target="_blank" href="#">
+                        @*ct*@
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <style type="text/css">
+        .panel-body-footer {
+            background: #205476;
+            color: #fff;
+            min-height: 100px;
+            padding: 15px;
+        }
+    </style>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryajax")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script type="text/javascript" src="~/Areas/Admin/Content/Js/menu.js"></script>
+    <script type="text/javascript" src="http://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+
+    @RenderSection("scripts", required: false)
+    <script type="text/javascript">
+
+        function ReloadCurrentPage() {
+            location.reload();
+        }
+    </script>
+</body>
+</html>

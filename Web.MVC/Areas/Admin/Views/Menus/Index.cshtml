@@ -1,0 +1,186 @@
+﻿@model IEnumerable<EnF.Menu>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+<div ng-app="myApp">
+    <h2>Index</h2>
+
+    <p>
+        @*@Html.ActionLink("Create New", "Create")*@
+       
+    </p>
+
+    <div ng-controller="myCntrl">
+
+        <input type="button" class="btnAdd" value="Add Employee" ng-click="AddEmployeeDiv()" />
+
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Link)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ParentId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Type)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsNewTab)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Pos)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EName)
+                </th>
+                <th></th>
+            </tr>
+
+
+            <tr ng-repeat="mn in menuList">
+                <td>
+                    {{mn.Name}}
+                </td>
+                <td>
+                    {{mn.Link}}
+                </td>
+                <td>
+                    {{mn.Type}}
+                </td>
+                <td>
+                    {{mn.Pos}}
+                </td>
+                <td>
+                    @*<span ng-click="editEmployee(employee)" class="btnAdd">Edit</span>
+                        <span ng-click="deleteEmployee(employee)" class="btnRed">Delete</span>*@
+                </td>
+            </tr>
+
+
+
+        </table>
+
+        <br />
+        <div ng-show="divEmployee">
+
+            <div class="form-horizontal">
+                <h4>Menu</h4>
+                <hr />                 
+                <div class="form-group">
+                    @Html.Label("Name")
+                    <div class="col-md-10">
+                        <input type="text" ng-model="Name" />                   
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.Label("Link")
+                    <div class="col-md-10">
+                        <input type="text" ng-model="Link" />      
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="button" class="btnAdd" value="Save" ng-click="AddUpdateMenu()" />
+                    </div>
+                </div>
+            </div>
+
+        </div>
+</div>
+    </div>
+@*<script src="~/js/Angular/Module.js"></script>
+<script src="~/js/Angular/Service.js"></script>
+<script src="~/js/Angular/Controller.js"></script>*@
+
+
+@*<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>*@
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+<script src="script.js"></script>
+<script type="text/javascript">
+    var app = angular.module("myApp", []);
+ 
+    app.service("angularService", function ($http) {
+
+        //get All Eployee
+        this.getEmployees = function (url) {
+            return $http.get(url);
+        };
+
+        // get Employee By Id
+        this.getEmployee = function (url, employeeID) {
+            var response = $http({
+                method: "post",
+                url: url,
+                params: {
+                    id: JSON.stringify(employeeID)
+                }
+            });
+            return response;
+        };
+
+        this.AddMenu = function (url, data) {
+            var response = $http({
+                method: "post",
+                url: url,
+                data: JSON.stringify(data),
+                dataType: "json"
+            });
+            return response;
+        }
+        
+
+
+    });
+
+    app.controller("myCntrl", function ($scope, angularService) {
+       // $scope.divEmployee = false;
+        GetAllEmployee();
+        //To Get All Records hiển thị dữ liệu ra 
+        function GetAllEmployee() {
+            var getData = angularService.getEmployees('@Url.Action("GetAll", "Menus")');// gọi sử dụng hàm đã viết bên service
+            getData.then(function (emp) {
+                $scope.menuList = emp.data;
+            }, function () {
+                alert('Error in getting records');
+            });
+        }
+        $scope.AddEmployeeDiv = function () {
+            //ClearFields();
+            $scope.Action = "Add";
+            $scope.divEmployee = true;
+        }
+
+        $scope.AddUpdateMenu = function () {
+            debugger;
+            var menuEntries = {
+                Name: $scope.Name,
+                Link: $scope.Link,
+                
+            };
+            var getAction = $scope.Action;
+
+            if (getAction == "Update") {
+            
+            } else {
+                var getData = angularService.AddMenu("@Url.Action("AddMenu", "Menus")", menuEntries);
+                getData.then(function (msg) {
+                    GetAllEmployee();
+                    alert(msg.data);
+                    $scope.divEmployee = false;
+                }, function () {
+                    alert('Error in adding record');
+                });
+            }
+        }
+
+
+    });
+</script>

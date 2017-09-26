@@ -1,0 +1,129 @@
+﻿@model IEnumerable<EnF.ProductGroup>
+
+@{
+    ViewBag.Title = "Nhóm sản phẩm giấy dán tường";
+}
+<div style="margin-top: 45px; background: #eee;">
+    <h3>
+        @*<a href="/Admin/Products/Index?categoryId=@ViewBag.categoryId">@ViewBag.categoryName:</a>*@
+    </h3>
+
+
+</div>
+
+<div class="panel panel-primary color noneborder">
+    <div class="panel-heading colortheme noneborder">
+        <div class="titletable">@ViewBag.Title </div>
+        <ul class="list-unstyled menu">
+
+            <li>
+                <i class="fa fa-plus-square-o"></i>
+                @Html.ActionLink("Thêm mới", "Create", new { categoryId = ViewBag.categoryId })
+
+            </li>
+
+
+
+            <li>
+                <a href="#" onclick="ReloadCurrentPage()">
+                    <i class="fa fa-refresh"></i> Nạp lại
+                </a>
+            </li>
+
+
+
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+    <div class="panel-body">
+
+        <table id="tblXepLoai" class="table table-striped display table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        Tên
+                    </th>
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.Image)
+                        </th>*@
+
+
+                    <th>
+
+                        Hình ảnh
+                    </th>
+                    @*<th width="100">Sản phẩm nổi bật</th>*@
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <a href="/Admin/ProductDetail?ProductGroupId=@item.ProductGroupId">@item.Name</a>
+                            @*@Html.DisplayFor(modelItem => item.Name)*@
+                        </td>
+
+                        <td>
+                            <img src="/@item.Image" height="100" />
+                        </td>
+                        @*<td>
+                            <input type="radio" @(item.IsDefault == true ? "checked" : "") id="@item.ProductGroupId" name="TopGroup" onchange="SetDefault(this)" />
+
+                        </td>*@
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.ProductGroupId }) |
+
+                            <a href="/Admin/ProductGroup/Delete/@item.ProductGroupId" onclick="return ConfirmDel()">Xóa</a>
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    function ConfirmDel() {
+        var rs = confirm("Chắc chắn muốn xóa");
+        if (rs == false) {
+            return false;
+        }
+
+    }
+    function SetDefault(objc) {
+        //data: { khoaid: khoaid, lophpid: lophpid },
+
+        var vl = objc.checked == true ? 1 : 0;
+        //$.ajax({
+        //    type: "GET",
+        //    url: "ProductGroup/SetDefault",
+        //    data: '{productGroupId: "' + objc.id + '",value: "' + vl + '"}',
+        //    dataType: "json",
+        //    success: function (response) {
+        //        //alert(response.d);
+
+        //    },
+        //    failure: function (response) {
+        //        alert("failure");
+        //    },
+        //    error: function (response) {
+        //        alert(response);
+        //    }
+        //});
+        $.ajax({
+            cache: false,
+            type: "GET",
+            url: '@Url.Action("SetDefault", "ProductGroup")',//"/DotThi/_PartialPopUp",
+            data: { productGroupId: objc.id },
+            success: function (response) {
+              
+            }
+
+        });
+    }
+   
+</script>

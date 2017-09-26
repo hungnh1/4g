@@ -1,0 +1,154 @@
+﻿@model EnF.Product
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Product</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MaNghiepVu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaNghiepVu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductGroupID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductGroupID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Des)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Des)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CategoryId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CategoryId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CountView)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CountView)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsShow)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsShow)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CategoryName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DoiTuong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DoiTuong)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NguoiDuocBaoHiem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NguoiDuocBaoHiem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhamVi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhamVi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CacLoaiTru)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CacLoaiTru)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QuyenLoi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuyenLoi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThoiHan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThoiHan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductGroupName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductGroupName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

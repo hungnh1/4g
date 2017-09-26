@@ -1,0 +1,178 @@
+﻿@model EnF.Config
+
+@{
+    ViewBag.Title = "Cấu hình";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Edit", "Config", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.ConfigId)
+
+        <div class="form-group">
+            @Html.Label("Keyword", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Keyword)
+                @Html.ValidationMessageFor(model => model.Keyword)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.PageTitle, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PageTitle)
+                @Html.ValidationMessageFor(model => model.PageTitle)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Description)
+                @Html.ValidationMessageFor(model => model.Description)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.HotLine, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.HotLine)
+                @Html.ValidationMessageFor(model => model.HotLine)
+            </div>
+        </div>
+      
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EmailSent, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EmailSent)
+                @Html.ValidationMessageFor(model => model.EmailSent)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MailPass, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MailPass)
+                @Html.ValidationMessageFor(model => model.MailPass)
+            </div>
+        </div>
+      
+        <div class="form-group">
+            @Html.LabelFor(model => model.Google, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Google)
+                @Html.ValidationMessageFor(model => model.Google)
+            </div>
+        </div>      
+       
+        <div class="form-group">
+            @Html.LabelFor(model => model.Sky, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Sky)
+                @Html.ValidationMessageFor(model => model.Sky)
+            </div>
+        </div>   
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Mail, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Mail)
+                @Html.ValidationMessageFor(model => model.Mail)
+            </div>
+        </div>   
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Address, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Address)
+                @Html.ValidationMessageFor(model => model.Address)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Hotline1, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Hotline1)
+                @Html.ValidationMessageFor(model => model.Hotline1)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Hotline2, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Hotline2)
+                @Html.ValidationMessageFor(model => model.Hotline2)
+            </div>
+        </div>
+
+       
+
+      
+
+       
+        <div class="form-group">
+            @Html.LabelFor(model => model.MailRetrive, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MailRetrive)
+                @Html.ValidationMessageFor(model => model.MailRetrive)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Facebook, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Facebook)
+                @Html.ValidationMessageFor(model => model.Facebook)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.GooleMap, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.GooleMap)
+                @Html.ValidationMessageFor(model => model.GooleMap)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Twiter, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Twiter)
+                @Html.ValidationMessageFor(model => model.Twiter)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Youtube, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Youtube)
+                @Html.ValidationMessageFor(model => model.Youtube)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("LOGO", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <img id="Image" height="200" src="/@(Model.Slogan)" />
+                @Html.Hidden("Slogan", Model.Slogan)
+                <input type="file" id="fileUpload" name="fileUpload" />
+            </div>
+        </div>
+      
+
+       
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Lưu" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

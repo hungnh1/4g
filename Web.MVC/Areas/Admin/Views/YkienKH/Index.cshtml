@@ -1,0 +1,39 @@
+﻿@model IEnumerable<EnF.CustommerOpinion>
+
+@{
+    ViewBag.Title = "Danh sách mail";
+}
+
+<div class="panel panel-primary color noneborder">
+    <div class="panel-heading colortheme noneborder">
+        <div class="titletable">@ViewBag.Title </div>
+
+        <div class="clearfix"></div>
+    </div>
+    <div class="panel-body">
+        <table class="table table-striped display table-bordered">
+            <tr>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

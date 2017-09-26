@@ -1,0 +1,83 @@
+﻿@model EnF.Page
+
+@{
+    ViewBag.Title = "Giới thiệu";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Create", "News", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true)
+       @if (Model.PageId != null)
+       {
+           @Html.HiddenFor(model=>model.PageId)
+       }
+        <div class="form-group">
+            @Html.Label("Tiêu đề", new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Hình ảnh", new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                <img id="Image" height="200" src="/@(Model.Image)" />
+                @Html.Hidden("Image", Model.Image)
+                <input type="file" id="fileUpload" name="fileUpload" />
+                @Html.ValidationMessageFor(model => model.Image)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Tóm tắt", new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.TextAreaFor(model => model.Recap, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Recap)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Nội dung", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.PContent)*@
+                @Html.TextAreaFor(model => model.PContent)
+                @Html.ValidationMessageFor(model => model.PContent)
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Thêm tin" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+@section Scripts {
+    <script type="text/javascript">
+        function BrowseServer() {
+            var finder = new CKFinder();
+            finder.selectActionFunction = SetFileField;
+            finder.popup();
+        }
+        function SetFileField(fileUrl) {
+            document.getElementById('Image').value = fileUrl;
+            document.getElementById('blah').src = fileUrl;
+        }
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            CKEDITOR.replace('PContent');
+        })
+    </script>
+}

@@ -1,0 +1,149 @@
+﻿@model EnF.Product
+
+@{
+    ViewBag.Title = "Thêm mới";
+}
+@*<div style="margin-top: 45px; background: #eee;">
+        <h3>
+            <a href="/Admin/Products/Index?categoryId=@ViewBag.CategoryId">@ViewBag.CategoryName</a> >>
+            <a href="#">@ViewBag.ProductGroupName</a>
+        </h3>
+
+
+    </div>*@
+<h2>@ViewBag.Title</h2>
+@using (Html.BeginForm("Create", "ArchProctDetail", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.Hidden("ProductGroupID", (int)ViewBag.ProductGroupId)
+        <div class="form-group">
+            @Html.Label("Tên", new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        </div>
+        @*<div class="form-group">
+            @Html.Label("Hình đại diện", new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                <input type="file" id="fileUpload" name="fileUpload" />
+                @Html.ValidationMessageFor(model => model.Image)
+            </div>
+
+        </div>*@
+   
+
+    <div class="form-group">
+        @Html.Label("Hình ảnh", new { @class = "control-label col-md-2" })
+        <div class="col-md-5">
+            @*<div>
+
+                </div>*@
+            <div>
+                <input type="file" id="fileUpload1" name="fileUpload1" />
+                <input type="file" id="fileUpload2" name="fileUpload2" />
+                <input type="file" id="fileUpload3" name="fileUpload3" />
+                <input type="file" id="fileUpload4" name="fileUpload4" />
+                <input type="file" id="fileUpload5" name="fileUpload5" />
+                <input type="file" id="fileUpload6" name="fileUpload6" />
+                <input type="file" id="fileUpload7" name="fileUpload7" />
+                @*@Html.ValidationMessageFor(model => model.Image)*@
+            </div>
+
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.Label("Giá", new { @class = "control-label col-md-2" })
+        <div class="col-md-5">
+            @Html.TextBoxFor(model => model.DoiTuong, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Price)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.Label("Ghi chú", new { @class = "control-label col-md-2" })
+        <div class="col-md-5">
+            @Html.TextBoxFor(model => model.PhamVi, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.PhamVi)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.Label("Chi tiết sản phẩm", new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @*@Html.EditorFor(model => model.PContent)*@
+            @Html.TextAreaFor(model => model.Des)
+            @Html.ValidationMessageFor(model => model.Des)
+        </div>
+    </div>
+      
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" onclick="return checkuploadfile()" value="Thêm" class="btn btn-default" />
+        </div>
+    </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", new { ProductGroupID = ViewBag.ProductGroupId })
+</div>
+@section Scripts {
+    @*@Scripts.Render("~/bundles/jqueryval")
+        @Scripts.Render("~/bundles/jqueryajax")*@
+
+
+
+    <script src="~/Scripts/elfinder/jquery.popupwindow.js"></script>
+    <script src="~/Scripts/elfinder/ckeditor/ckeditor.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="@Url.Content("~/Scripts/elfinder/elfinder/css/smoothness-1.8.23/jquery-ui-1.8.23.custom.css")" />
+    <script type="text/javascript" src="@Url.Content("~/Scripts/elfinder/elfinder/js/jquery-ui-1.8.11.min.js")"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="@Url.Content("~/Scripts/elfinder/elfinder/css/elfinder.min.css")" />
+    <script type="text/javascript" src="@Url.Content("~/Scripts/elfinder/elfinder/js/elfinder.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/elfinder/elfinder/js/i18n/elfinder.vi.js")"></script>
+
+
+    <script>
+
+        CKEDITOR.replace('Des', {
+            language: 'vi',
+            filebrowserBrowseUrl: '@Url.Action("Index", "Elfinder")',
+            filebrowserImageBrowseUrl: '@Url.Action("Index", "Elfinder")?type=Images',
+            filebrowserFlashBrowseUrl: '@Url.Action("Index", "Elfinder")?type=Flash',
+            filebrowserUploadUrl: '/connector?command=QuickUpload&type=Files',
+            filebrowserImageUploadUrl: '/connector?command=QuickUpload&type=Images',
+            filebrowserFlashUploadUrl: '/connector?command=QuickUpload&type=Flash',
+            filebrowserWindowWidth: 900,
+            filebrowserWindowHeight: 400
+        });
+        //CKEDITOR.replace('QuyenLoi');
+    </script>
+}
+<script type="text/javascript">
+    @*var linkpdfdf = document.getElementById("linkpdf");
+    linkpdfdf.value = '@(Model.linkpdf)';*@
+    function checkuploadfile() {
+        var linkpdf = document.getElementById("linkpdfid");
+        var linkdoc = document.getElementById("linkdocid");
+        //if (repo.value == '') {
+        //    alert("Chọn file upload");
+        //    return false;
+        //}
+
+        if ((linkdoc.value.indexOf('.doc') == -1 && linkdoc.value != '') ||
+            (linkpdf.value.indexOf('.pdf') == -1 && linkpdf.value != '')) {
+
+            alert("Chọn định dạng pdf, doc");
+            return false;
+        }
+        else {
+
+            return true;
+        }
+        return true;
+    }
+</script>

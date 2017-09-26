@@ -1,0 +1,82 @@
+﻿@model EnF.TeamMember
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm("Edit", "Team", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+       <div class="form-horizontal">
+        <h4>TeamMember</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.age, new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.TextBoxFor(model => model.age, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.age)
+            </div>
+        </div>
+
+           <div class="form-group">
+               @Html.Label("Ngoại ngữ", new { @class = "control-label col-md-2" })
+               <div class="col-md-5">
+                   @Html.TextBoxFor(model => model.Phone, new { @class = "form-control" })
+                   @Html.ValidationMessageFor(model => model.Phone)
+               </div>
+           </div>
+        <div class="form-group">
+            @Html.Label("Hình ảnh", new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.HiddenFor(model => model.Image);
+                <img src="/@Model.Image" height="90" />
+                <input type="file" id="fileUpload" name="fileUpload" />
+                @Html.ValidationMessageFor(model => model.Image)
+            </div>
+        </div>
+           <div class="form-group">
+               @Html.Label("Thông tin thêm", new { @class = "control-label col-md-2" })
+               <div class="col-md-5">
+                   @Html.TextBoxFor(model => model.Des, new { @class = "form-control" })
+                   @Html.ValidationMessageFor(model => model.Des)
+               </div>
+           </div>
+
+        <div class="form-group">
+            @Html.Label("Địa chỉ", new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.TextBoxFor(model => model.Adress, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Adress)
+            </div>
+        </div>
+
+       
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Lưu" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

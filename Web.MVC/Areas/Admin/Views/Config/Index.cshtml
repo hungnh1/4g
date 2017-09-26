@@ -1,0 +1,201 @@
+﻿@model IEnumerable<EnF.Config>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Keyword)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Domain)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HotLine)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Social)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmailSent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MailPass)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PageTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GooleMap)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShowPageId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Youtube)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sky)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Yahoo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Slogan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hotline1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hotline2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Yahoo1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Yahoo2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sky1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sky2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MailRetrive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Facebook)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Google)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Twiter)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Metadata)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CCmail3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CCmail4)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Keyword)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Domain)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HotLine)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Social)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmailSent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MailPass)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PageTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GooleMap)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShowPageId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Youtube)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sky)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Yahoo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Slogan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hotline1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hotline2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Yahoo1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Yahoo2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sky1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sky2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MailRetrive)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Facebook)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Google)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Twiter)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Metadata)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CCmail3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CCmail4)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ConfigId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ConfigId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ConfigId })
+        </td>
+    </tr>
+}
+
+</table>

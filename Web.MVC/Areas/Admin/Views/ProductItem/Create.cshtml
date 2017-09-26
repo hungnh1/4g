@@ -1,0 +1,44 @@
+﻿@model EnF.ProductItem
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm("Create", "ProductItem", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Item sản phẩm</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.Label("Text", new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.TextBoxFor(model => model.text, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.text)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Hình ảnh", new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                <input type="file" id="fileUpload" name="fileUpload" />
+                @Html.ValidationMessageFor(model => model.Image)
+            </div>
+        </div>
+
+        
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Thêm" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

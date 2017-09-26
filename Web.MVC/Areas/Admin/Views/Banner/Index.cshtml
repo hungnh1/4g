@@ -1,0 +1,25 @@
+﻿@model IEnumerable<EnF.ADV>
+
+@{
+    ViewBag.Title = "Quản lý banner - Hình ảnh";
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+@{
+    ViewDataDictionary vdDictionaryT1 = new ViewDataDictionary();
+    vdDictionaryT1.Add("typeAdv", 1);
+    ViewDataDictionary vdDictionaryT2 = new ViewDataDictionary();
+    vdDictionaryT2.Add("typeAdv", 2);
+}
+
+@Html.Partial("_PartialBanner", Model.Where(p => p.Type == 1).ToList(), vdDictionaryT1)
+
+<br />
+
+<hr />
+
+@*<br />
+
+@Html.Partial("_PartialBanner", Model.Where(p => p.Type == 2).ToList(), vdDictionaryT2)*@

@@ -1,0 +1,54 @@
+﻿@model EnF.Comment
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Sửa</h2>
+
+@using (Html.BeginForm("Edit", "Comment", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+      
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            @Html.Label("Tên", new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Hình ảnh", new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.HiddenFor(model => model.Image)
+                <input type="file" id="fileUpload" name="fileUpload" />
+                @Html.ValidationMessageFor(model => model.Image)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Comment", new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.TextAreaFor(model => model.Comment1, new { @class = "form-control" })
+
+                @Html.ValidationMessageFor(model => model.Comment1)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Lưu" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

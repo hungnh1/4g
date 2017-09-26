@@ -1,0 +1,70 @@
+﻿@model baohiem.Models.UserRoleModel
+@using baohiem.Models
+@{
+    ViewBag.Title = "Đổi pass";
+}
+
+<h2>Đổi pass</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+      
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.UserId)
+        @Html.HiddenFor(model => model.UserName)
+        <b style="color: red;">@TempData["validpass"]</b>
+        <div class="form-group">
+
+            @Html.LabelFor(model => model.UserName, new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.Label(Model.UserName, new { @class = "form-control" })
+
+              
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Mật khẩu củ", new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.PasswordFor(m => m.OldPassword, new { @class = "form-control" })
+              
+                @Html.ValidationMessageFor(model => model.OldPassword)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Mật khẩu mới", new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.PasswordFor(m => m.NewPassword, new { @class = "form-control" })
+
+                @Html.ValidationMessageFor(model => model.NewPassword)
+            </div>
+        </div>
+
+
+      
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Lưu" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+@if (TempData["success"] != null)
+{
+    <script type="text/javascript">
+        alert("Đổi pass thành công");
+        location.href = "/Account/Login";
+    </script>
+}

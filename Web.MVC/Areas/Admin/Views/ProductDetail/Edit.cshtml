@@ -1,0 +1,152 @@
+﻿@model EnF.Product
+@using EnF
+@{
+    ViewBag.Title = "Sửa";
+    var listimage = (List<ProductImage>)ViewBag.ProductImage;
+}
+@*<div style="margin-top: 45px; background: #eee;">
+        <h3>
+            <a href="/Admin/Products/Index?categoryId=@Model.CategoryId">@Model.CategoryName</a> >>
+            <a href="#">@Model.ProductGroupName</a>
+        </h3>
+
+
+    </div>*@
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Edit", "ProductDetail", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.ProductId)
+        @Html.HiddenFor(model => model.ProductGroupID)
+        @Html.HiddenFor(model => model.ProductGroupName)
+        @Html.HiddenFor(model => model.ImageList)
+        <div class="form-group">
+            @Html.Label("Tên", new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Hình ảnh", new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @*<img id="Image" height="200" src="/@(Model.Image)" />
+                @Html.HiddenFor(model => model.Image)
+                <input type="file" id="imagefile" name="fileUpload" />
+                @Html.ValidationMessageFor(model => model.Image)*@
+                @Html.HiddenFor(model => model.ImageList)
+                <div style="width:700px">
+                  
+                    @foreach (var li in listimage)
+                    {
+                        <div style="width:100px;padding-bottom:12px">
+                            <input type="file" id="imagefile_@(li.Id)" name="fileUpload_@(li.Id)" />
+                            <img id="Image" height="85" width="90" src="/@(li.Image)" />
+                            <a href="/Admin/ProductDetail/DelImage/@li.Id">Delete</a>
+                        </div>
+                    }
+                </div>
+                <div>
+                   Up thêm: <input type="file" id="imagefile" name="fileUpload" />
+                </div>
+                @*<button type="submit" class="btn-success">Xác nhận </button>*@
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Giá", new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.TextBoxFor(model => model.DoiTuong, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.DoiTuong)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Ghi chú", new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.TextBoxFor(model => model.PhamVi, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.PhamVi)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Chi tiết sản phẩm", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.PContent)*@
+                @Html.TextAreaFor(model => model.Des)
+                @Html.ValidationMessageFor(model => model.Des)
+            </div>
+        </div>
+       
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" onclick="return checkuploadfile()" value="Lưu" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", new { ProductGroupID = Model.ProductGroupID })
+</div>
+@section Scripts {
+    @*@Scripts.Render("~/bundles/jqueryval")
+        @Scripts.Render("~/bundles/jqueryajax")*@
+
+
+
+    <script src="~/Scripts/elfinder/jquery.popupwindow.js"></script>
+    <script src="~/Scripts/elfinder/ckeditor/ckeditor.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="@Url.Content("~/Scripts/elfinder/elfinder/css/smoothness-1.8.23/jquery-ui-1.8.23.custom.css")" />
+    <script type="text/javascript" src="@Url.Content("~/Scripts/elfinder/elfinder/js/jquery-ui-1.8.11.min.js")"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="@Url.Content("~/Scripts/elfinder/elfinder/css/elfinder.min.css")" />
+    <script type="text/javascript" src="@Url.Content("~/Scripts/elfinder/elfinder/js/elfinder.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/elfinder/elfinder/js/i18n/elfinder.vi.js")"></script>
+
+
+    <script>
+
+        CKEDITOR.replace('Des', {
+            language: 'vi',
+            filebrowserBrowseUrl: '@Url.Action("Index", "Elfinder")',
+            filebrowserImageBrowseUrl: '@Url.Action("Index", "Elfinder")?type=Images',
+            filebrowserFlashBrowseUrl: '@Url.Action("Index", "Elfinder")?type=Flash',
+            filebrowserUploadUrl: '/connector?command=QuickUpload&type=Files',
+            filebrowserImageUploadUrl: '/connector?command=QuickUpload&type=Images',
+            filebrowserFlashUploadUrl: '/connector?command=QuickUpload&type=Flash',
+            filebrowserWindowWidth: 900,
+            filebrowserWindowHeight: 400
+        });
+    </script>
+}
+<script type="text/javascript">
+    @*var linkpdfdf = document.getElementById("linkpdf");
+    linkpdfdf.value = '@(Model.linkpdf)';*@
+    function checkuploadfile() {
+        var imagefile = document.getElementById("imagefile");
+
+        //if (repo.value == '') {
+        //    alert("Chọn file upload");
+        //    return false;
+        //}
+
+        if ((imagefile.value.indexOf('.jpg') == -1 &&
+            imagefile.value.indexOf('.png') == -1 &&
+            imagefile.value.indexOf('.gif') == -1
+            ) && imagefile.value != '') {
+
+            alert("Chọn định dạng jpg, png, gif");
+            return false;
+        }
+        else {
+
+            return true;
+        }
+        return true;
+    }
+</script>

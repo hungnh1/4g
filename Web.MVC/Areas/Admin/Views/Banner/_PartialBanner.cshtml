@@ -1,0 +1,53 @@
+﻿@model IEnumerable<EnF.ADV>
+<p>
+    @Html.ActionLink("Thêm mới", "Create", new { type = ViewData["typeAdv"] })
+</p>
+
+<div class="panel panel-primary color noneborder">
+    <div class="panel-heading colortheme noneborder">
+        <div class="titletable">@((int)ViewData["typeAdv"] == 1 ? "Banner trên" : "Hình ảnh") </div>
+
+        <div class="clearfix"></div>
+    </div>
+    <div class="panel-body">
+        <table id="tblXepLoai" class="table table-striped display table-bordered">
+            <tr>
+
+
+                <th>
+                    Hình ảnh
+                </th>
+
+                @*<th>
+                        @Html.DisplayNameFor(model => model.Title)
+                    </th>
+                    <th>
+                        Miêu tả
+                    </th>*@
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <img src="/@item.Image" width="300" />
+
+                    </td>
+
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Des)
+                        </td>*@
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.AdvId })|
+                        @Html.ActionLink("Del", "Delete", new { id = item.AdvId })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

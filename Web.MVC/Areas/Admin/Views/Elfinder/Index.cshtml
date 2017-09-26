@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "Trình quản lý tập tin";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutFM.cshtml";
+}
+
+@section head
+{
+    <link rel="stylesheet" type="text/css" media="screen" href="@Url.Content("~/Scripts/elfinder/elfinder/css/smoothness-1.8.23/jquery-ui-1.8.23.custom.css")" />
+    <script type="text/javascript" src="@Url.Content("~/Scripts/elfinder/elfinder/js/jquery-1.7.1.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/elfinder/elfinder/js/jquery-ui-1.8.11.min.js")"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="@Url.Content("~/Scripts/elfinder/elfinder/css/elfinder.min.css")" />
+    <script type="text/javascript" src="@Url.Content("~/Scripts/elfinder/elfinder/js/elfinder.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/elfinder/elfinder/js/i18n/elfinder.vi.js")"></script>
+
+
+    <!--return image Ckeditor-->
+    <script type="text/javascript">
+        // Helper function to get parameters from the query string.
+        function getUrlParam(paramName) {
+            var reParam = new RegExp('(?:[\?&]|&amp;)' + paramName + '=([^&]+)', 'i');
+            var match = window.location.search.match(reParam);
+
+            return (match && match.length > 1) ? match[1] : '';
+        }
+
+        $().ready(function () {
+            var funcNum = getUrlParam('CKEditorFuncNum');
+
+            var elf = $('#elfinder').elfinder({
+                url: '/connector',
+                //url: '/Files/Index',
+                lang: 'vi',
+                docked: false,
+                getFileCallback: function (file) {
+
+                    window.opener.CKEDITOR.tools.callFunction(funcNum, file.url);
+                    window.close();
+
+                },
+                resizable: false
+            }).elfinder('instance');
+        });
+
+
+
+
+
+    </script>
+}
+
+<div id="elfinder"></div>
+
+
