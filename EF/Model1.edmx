@@ -1,0 +1,589 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BaoHiemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ADVs">
+          <Key>
+            <PropertyRef Name="AdvId" />
+          </Key>
+          <Property Name="AdvId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Image" Type="varchar" MaxLength="500" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" />
+          <Property Name="Link" Type="varchar" MaxLength="500" />
+          <Property Name="Type" Type="int" />
+          <Property Name="Title" Type="nvarchar" MaxLength="20" />
+          <Property Name="Des" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Areas">
+          <Key>
+            <PropertyRef Name="AreaId" />
+          </Key>
+          <Property Name="AreaId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AreaName" Type="nvarchar" MaxLength="500" />
+          <Property Name="ParentId" Type="bigint" />
+          <Property Name="PageId" Type="bigint" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="250" />
+          <Property Name="Des" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Configs">
+          <Key>
+            <PropertyRef Name="ConfigId" />
+          </Key>
+          <Property Name="ConfigId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Keyword" Type="nvarchar" MaxLength="250" />
+          <Property Name="Domain" Type="varchar" MaxLength="500" />
+          <Property Name="HotLine" Type="varchar" MaxLength="500" />
+          <Property Name="Social" Type="varchar" MaxLength="500" />
+          <Property Name="EmailSent" Type="nvarchar" MaxLength="500" />
+          <Property Name="MailPass" Type="nvarchar" MaxLength="500" />
+          <Property Name="PageTitle" Type="nvarchar" MaxLength="500" />
+          <Property Name="GooleMap" Type="varchar" MaxLength="500" />
+          <Property Name="ShowPageId" Type="bigint" />
+          <Property Name="Youtube" Type="varchar" MaxLength="500" />
+          <Property Name="Sky" Type="nvarchar" MaxLength="250" />
+          <Property Name="Yahoo" Type="nvarchar" MaxLength="250" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="250" />
+          <Property Name="Slogan" Type="nvarchar" MaxLength="500" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="Hotline1" Type="nvarchar" MaxLength="500" />
+          <Property Name="Hotline2" Type="nvarchar" MaxLength="500" />
+          <Property Name="Yahoo1" Type="nvarchar" MaxLength="250" />
+          <Property Name="Yahoo2" Type="nvarchar" MaxLength="250" />
+          <Property Name="Sky1" Type="nvarchar" MaxLength="250" />
+          <Property Name="Sky2" Type="nvarchar" MaxLength="250" />
+          <Property Name="MailRetrive" Type="nvarchar" MaxLength="500" />
+          <Property Name="Facebook" Type="nvarchar" MaxLength="500" />
+          <Property Name="Google" Type="nvarchar" MaxLength="500" />
+          <Property Name="Twiter" Type="nvarchar" MaxLength="500" />
+          <Property Name="Metadata" Type="nvarchar" MaxLength="500" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="CCmail3" Type="nvarchar" MaxLength="500" />
+          <Property Name="CCmail4" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Countviews">
+          <Key>
+            <PropertyRef Name="CountViewId" />
+          </Key>
+          <Property Name="CountViewId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Counter" Type="bigint" />
+        </EntityType>
+        <EntityType Name="CustommerOpinion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="opinion" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="ImageLists">
+          <Key>
+            <PropertyRef Name="ImageListId" />
+          </Key>
+          <Property Name="ImageListId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Image" Type="nvarchar" MaxLength="500" />
+          <Property Name="ParentId" Type="bigint" />
+          <Property Name="Title" Type="nvarchar" MaxLength="500" />
+          <Property Name="SoLuong" Type="bigint" />
+        </EntityType>
+        <EntityType Name="Menus">
+          <Key>
+            <PropertyRef Name="MenuId" />
+          </Key>
+          <Property Name="MenuId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="Link" Type="varchar" MaxLength="500" />
+          <Property Name="ParentId" Type="int" />
+          <Property Name="Type" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="IsNewTab" Type="bit" Nullable="false" />
+          <Property Name="Pos" Type="int" />
+          <Property Name="EName" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Pages">
+          <Key>
+            <PropertyRef Name="PageId" />
+          </Key>
+          <Property Name="PageId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" />
+          <Property Name="PContent" Type="nvarchar(max)" />
+          <Property Name="Recap" Type="nvarchar(max)" />
+          <Property Name="Link" Type="varchar" MaxLength="500" />
+          <Property Name="Image" Type="varchar" MaxLength="500" />
+          <Property Name="ParentId" Type="bigint" />
+          <Property Name="Pos" Type="int" />
+        </EntityType>
+        <EntityType Name="ProductGroups">
+          <Key>
+            <PropertyRef Name="ProductGroupId" />
+          </Key>
+          <Property Name="ProductGroupId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" />
+          <Property Name="Image" Type="varchar" MaxLength="500" />
+          <Property Name="ParentId" Type="bigint" />
+          <Property Name="Des" Type="nvarchar(max)" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="IsDefault" Type="bit" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaNghiepVu" Type="nvarchar" MaxLength="250" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" />
+          <Property Name="Price" Type="float" />
+          <Property Name="ProductGroupID" Type="bigint" />
+          <Property Name="Image" Type="varchar" MaxLength="500" />
+          <Property Name="Des" Type="nvarchar(max)" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="CountView" Type="bigint" />
+          <Property Name="IsShow" Type="bit" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="250" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="250" />
+          <Property Name="DoiTuong" Type="nvarchar" MaxLength="250" />
+          <Property Name="NguoiDuocBaoHiem" Type="nvarchar" MaxLength="250" />
+          <Property Name="PhamVi" Type="nvarchar" MaxLength="500" />
+          <Property Name="CacLoaiTru" Type="nvarchar" MaxLength="500" />
+          <Property Name="QuyenLoi" Type="nvarchar" MaxLength="250" />
+          <Property Name="ThoiHan" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="UserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="500" />
+          <Property Name="PassWord" Type="varchar" MaxLength="500" />
+          <Property Name="Birthday" Type="datetime" />
+          <Property Name="Phone" Type="varchar" MaxLength="500" />
+          <Property Name="AreaId" Type="int" />
+          <Property Name="Role" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" />
+          <Property Name="gender" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="BaoHiemModelStoreContainer">
+          <EntitySet Name="ADVs" EntityType="Self.ADVs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Areas" EntityType="Self.Areas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Configs" EntityType="Self.Configs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Countviews" EntityType="Self.Countviews" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustommerOpinion" EntityType="Self.CustommerOpinion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ImageLists" EntityType="Self.ImageLists" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Menus" EntityType="Self.Menus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pages" EntityType="Self.Pages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductGroups" EntityType="Self.ProductGroups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRoles" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BaoHiemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ADV">
+          <Key>
+            <PropertyRef Name="AdvId" />
+          </Key>
+          <Property Name="AdvId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Link" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Des" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Area">
+          <Key>
+            <PropertyRef Name="AreaId" />
+          </Key>
+          <Property Name="AreaId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AreaName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ParentId" Type="Int64" />
+          <Property Name="PageId" Type="Int64" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Des" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Config">
+          <Key>
+            <PropertyRef Name="ConfigId" />
+          </Key>
+          <Property Name="ConfigId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Keyword" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Domain" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="HotLine" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Social" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="EmailSent" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="MailPass" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PageTitle" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="GooleMap" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ShowPageId" Type="Int64" />
+          <Property Name="Youtube" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Sky" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Yahoo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Mail" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Slogan" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Hotline1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Hotline2" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Yahoo1" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Yahoo2" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Sky1" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Sky2" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="MailRetrive" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Facebook" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Google" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Twiter" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Metadata" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CCmail3" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CCmail4" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Countview">
+          <Key>
+            <PropertyRef Name="CountViewId" />
+          </Key>
+          <Property Name="CountViewId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="Counter" Type="Int64" />
+        </EntityType>
+        <EntityType Name="CustommerOpinion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="opinion" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ImageList">
+          <Key>
+            <PropertyRef Name="ImageListId" />
+          </Key>
+          <Property Name="ImageListId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ParentId" Type="Int64" />
+          <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="SoLuong" Type="Int64" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="MenuId" />
+          </Key>
+          <Property Name="MenuId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Link" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ParentId" Type="Int32" />
+          <Property Name="Type" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsNewTab" Type="Boolean" Nullable="false" />
+          <Property Name="Pos" Type="Int32" />
+          <Property Name="EName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Page">
+          <Key>
+            <PropertyRef Name="PageId" />
+          </Key>
+          <Property Name="PageId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Recap" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Link" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ParentId" Type="Int64" />
+          <Property Name="Pos" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ProductGroup">
+          <Key>
+            <PropertyRef Name="ProductGroupId" />
+          </Key>
+          <Property Name="ProductGroupId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ParentId" Type="Int64" />
+          <Property Name="Des" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="IsDefault" Type="Boolean" Nullable="false" />
+          <Property Name="CategoryName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaNghiepVu" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Double" />
+          <Property Name="ProductGroupID" Type="Int64" />
+          <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Des" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="CountView" Type="Int64" />
+          <Property Name="IsShow" Type="Boolean" />
+          <Property Name="CategoryName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ProductName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="DoiTuong" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="NguoiDuocBaoHiem" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="PhamVi" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CacLoaiTru" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="QuyenLoi" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ThoiHan" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PassWord" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Birthday" Type="DateTime" Precision="3" />
+          <Property Name="Phone" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="AreaId" Type="Int32" />
+          <Property Name="Role" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="gender" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="BaoHiemEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ADVs" EntityType="Self.ADV" />
+          <EntitySet Name="Areas" EntityType="Self.Area" />
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="Configs" EntityType="Self.Config" />
+          <EntitySet Name="Countviews" EntityType="Self.Countview" />
+          <EntitySet Name="CustommerOpinions" EntityType="Self.CustommerOpinion" />
+          <EntitySet Name="ImageLists" EntityType="Self.ImageList" />
+          <EntitySet Name="Menus" EntityType="Self.Menu" />
+          <EntitySet Name="Pages" EntityType="Self.Page" />
+          <EntitySet Name="ProductGroups" EntityType="Self.ProductGroup" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BaoHiemModelStoreContainer" CdmEntityContainer="BaoHiemEntities">
+          <EntitySetMapping Name="ADVs">
+            <EntityTypeMapping TypeName="BaoHiemModel.ADV">
+              <MappingFragment StoreEntitySet="ADVs">
+                <ScalarProperty Name="AdvId" ColumnName="AdvId" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Des" ColumnName="Des" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Areas">
+            <EntityTypeMapping TypeName="BaoHiemModel.Area">
+              <MappingFragment StoreEntitySet="Areas">
+                <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+                <ScalarProperty Name="AreaName" ColumnName="AreaName" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="PageId" ColumnName="PageId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="BaoHiemModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="Des" ColumnName="Des" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Configs">
+            <EntityTypeMapping TypeName="BaoHiemModel.Config">
+              <MappingFragment StoreEntitySet="Configs">
+                <ScalarProperty Name="ConfigId" ColumnName="ConfigId" />
+                <ScalarProperty Name="Keyword" ColumnName="Keyword" />
+                <ScalarProperty Name="Domain" ColumnName="Domain" />
+                <ScalarProperty Name="HotLine" ColumnName="HotLine" />
+                <ScalarProperty Name="Social" ColumnName="Social" />
+                <ScalarProperty Name="EmailSent" ColumnName="EmailSent" />
+                <ScalarProperty Name="MailPass" ColumnName="MailPass" />
+                <ScalarProperty Name="PageTitle" ColumnName="PageTitle" />
+                <ScalarProperty Name="GooleMap" ColumnName="GooleMap" />
+                <ScalarProperty Name="ShowPageId" ColumnName="ShowPageId" />
+                <ScalarProperty Name="Youtube" ColumnName="Youtube" />
+                <ScalarProperty Name="Sky" ColumnName="Sky" />
+                <ScalarProperty Name="Yahoo" ColumnName="Yahoo" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Slogan" ColumnName="Slogan" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Hotline1" ColumnName="Hotline1" />
+                <ScalarProperty Name="Hotline2" ColumnName="Hotline2" />
+                <ScalarProperty Name="Yahoo1" ColumnName="Yahoo1" />
+                <ScalarProperty Name="Yahoo2" ColumnName="Yahoo2" />
+                <ScalarProperty Name="Sky1" ColumnName="Sky1" />
+                <ScalarProperty Name="Sky2" ColumnName="Sky2" />
+                <ScalarProperty Name="MailRetrive" ColumnName="MailRetrive" />
+                <ScalarProperty Name="Facebook" ColumnName="Facebook" />
+                <ScalarProperty Name="Google" ColumnName="Google" />
+                <ScalarProperty Name="Twiter" ColumnName="Twiter" />
+                <ScalarProperty Name="Metadata" ColumnName="Metadata" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CCmail3" ColumnName="CCmail3" />
+                <ScalarProperty Name="CCmail4" ColumnName="CCmail4" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countviews">
+            <EntityTypeMapping TypeName="BaoHiemModel.Countview">
+              <MappingFragment StoreEntitySet="Countviews">
+                <ScalarProperty Name="CountViewId" ColumnName="CountViewId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Counter" ColumnName="Counter" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustommerOpinions">
+            <EntityTypeMapping TypeName="BaoHiemModel.CustommerOpinion">
+              <MappingFragment StoreEntitySet="CustommerOpinion">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="opinion" ColumnName="opinion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ImageLists">
+            <EntityTypeMapping TypeName="BaoHiemModel.ImageList">
+              <MappingFragment StoreEntitySet="ImageLists">
+                <ScalarProperty Name="ImageListId" ColumnName="ImageListId" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menus">
+            <EntityTypeMapping TypeName="BaoHiemModel.Menu">
+              <MappingFragment StoreEntitySet="Menus">
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="IsNewTab" ColumnName="IsNewTab" />
+                <ScalarProperty Name="Pos" ColumnName="Pos" />
+                <ScalarProperty Name="EName" ColumnName="EName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pages">
+            <EntityTypeMapping TypeName="BaoHiemModel.Page">
+              <MappingFragment StoreEntitySet="Pages">
+                <ScalarProperty Name="PageId" ColumnName="PageId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PContent" ColumnName="PContent" />
+                <ScalarProperty Name="Recap" ColumnName="Recap" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Pos" ColumnName="Pos" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductGroups">
+            <EntityTypeMapping TypeName="BaoHiemModel.ProductGroup">
+              <MappingFragment StoreEntitySet="ProductGroups">
+                <ScalarProperty Name="ProductGroupId" ColumnName="ProductGroupId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Des" ColumnName="Des" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="BaoHiemModel.Product">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="MaNghiepVu" ColumnName="MaNghiepVu" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ProductGroupID" ColumnName="ProductGroupID" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Des" ColumnName="Des" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="CountView" ColumnName="CountView" />
+                <ScalarProperty Name="IsShow" ColumnName="IsShow" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="DoiTuong" ColumnName="DoiTuong" />
+                <ScalarProperty Name="NguoiDuocBaoHiem" ColumnName="NguoiDuocBaoHiem" />
+                <ScalarProperty Name="PhamVi" ColumnName="PhamVi" />
+                <ScalarProperty Name="CacLoaiTru" ColumnName="CacLoaiTru" />
+                <ScalarProperty Name="QuyenLoi" ColumnName="QuyenLoi" />
+                <ScalarProperty Name="ThoiHan" ColumnName="ThoiHan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoles">
+            <EntityTypeMapping TypeName="BaoHiemModel.UserRole">
+              <MappingFragment StoreEntitySet="UserRoles">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

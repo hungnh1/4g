@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BaoHiemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ADVs">
+    <Key>
+      <PropertyRef Name="AdvId" />
+    </Key>
+    <Property Name="AdvId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Image" Type="varchar" MaxLength="500" />
+    <Property Name="Name" Type="nvarchar" MaxLength="500" />
+    <Property Name="Link" Type="varchar" MaxLength="500" />
+    <Property Name="Type" Type="int" />
+    <Property Name="Title" Type="nvarchar" MaxLength="20" />
+    <Property Name="Des" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Areas">
+    <Key>
+      <PropertyRef Name="AreaId" />
+    </Key>
+    <Property Name="AreaId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AreaName" Type="nvarchar" MaxLength="500" />
+    <Property Name="ParentId" Type="bigint" />
+    <Property Name="PageId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryName" Type="nvarchar" MaxLength="250" />
+    <Property Name="Des" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="Configs">
+    <Key>
+      <PropertyRef Name="ConfigId" />
+    </Key>
+    <Property Name="ConfigId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Keyword" Type="nvarchar" MaxLength="250" />
+    <Property Name="Domain" Type="varchar" MaxLength="500" />
+    <Property Name="HotLine" Type="varchar" MaxLength="500" />
+    <Property Name="Social" Type="varchar" MaxLength="500" />
+    <Property Name="EmailSent" Type="nvarchar" MaxLength="500" />
+    <Property Name="MailPass" Type="nvarchar" MaxLength="500" />
+    <Property Name="PageTitle" Type="nvarchar" MaxLength="500" />
+    <Property Name="GooleMap" Type="varchar" MaxLength="500" />
+    <Property Name="ShowPageId" Type="bigint" />
+    <Property Name="Youtube" Type="varchar" MaxLength="500" />
+    <Property Name="Sky" Type="nvarchar" MaxLength="250" />
+    <Property Name="Yahoo" Type="nvarchar" MaxLength="250" />
+    <Property Name="Mail" Type="nvarchar" MaxLength="250" />
+    <Property Name="Slogan" Type="nvarchar" MaxLength="500" />
+    <Property Name="Address" Type="nvarchar" MaxLength="500" />
+    <Property Name="Hotline1" Type="nvarchar" MaxLength="500" />
+    <Property Name="Hotline2" Type="nvarchar" MaxLength="500" />
+    <Property Name="Yahoo1" Type="nvarchar" MaxLength="250" />
+    <Property Name="Yahoo2" Type="nvarchar" MaxLength="250" />
+    <Property Name="Sky1" Type="nvarchar" MaxLength="250" />
+    <Property Name="Sky2" Type="nvarchar" MaxLength="250" />
+    <Property Name="MailRetrive" Type="nvarchar" MaxLength="500" />
+    <Property Name="Facebook" Type="nvarchar" MaxLength="500" />
+    <Property Name="Google" Type="nvarchar" MaxLength="500" />
+    <Property Name="Twiter" Type="nvarchar" MaxLength="500" />
+    <Property Name="Metadata" Type="nvarchar" MaxLength="500" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+    <Property Name="CCmail3" Type="nvarchar" MaxLength="500" />
+    <Property Name="CCmail4" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="Countviews">
+    <Key>
+      <PropertyRef Name="CountViewId" />
+    </Key>
+    <Property Name="CountViewId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="Counter" Type="bigint" />
+  </EntityType>
+  <EntityType Name="CustommerOpinion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="opinion" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="ImageLists">
+    <Key>
+      <PropertyRef Name="ImageListId" />
+    </Key>
+    <Property Name="ImageListId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Image" Type="nvarchar" MaxLength="500" />
+    <Property Name="ParentId" Type="bigint" />
+    <Property Name="Title" Type="nvarchar" MaxLength="500" />
+    <Property Name="SoLuong" Type="bigint" />
+  </EntityType>
+  <EntityType Name="Menus">
+    <Key>
+      <PropertyRef Name="MenuId" />
+    </Key>
+    <Property Name="MenuId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="250" />
+    <Property Name="Link" Type="varchar" MaxLength="500" />
+    <Property Name="ParentId" Type="int" />
+    <Property Name="Type" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="IsNewTab" Type="bit" Nullable="false" />
+    <Property Name="Pos" Type="int" />
+    <Property Name="EName" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="Pages">
+    <Key>
+      <PropertyRef Name="PageId" />
+    </Key>
+    <Property Name="PageId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="500" />
+    <Property Name="PContent" Type="nvarchar(max)" />
+    <Property Name="Recap" Type="nvarchar(max)" />
+    <Property Name="Link" Type="varchar" MaxLength="500" />
+    <Property Name="Image" Type="varchar" MaxLength="500" />
+    <Property Name="ParentId" Type="bigint" />
+    <Property Name="Pos" Type="int" />
+  </EntityType>
+  <EntityType Name="ProductGroups">
+    <Key>
+      <PropertyRef Name="ProductGroupId" />
+    </Key>
+    <Property Name="ProductGroupId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="500" />
+    <Property Name="Image" Type="varchar" MaxLength="500" />
+    <Property Name="ParentId" Type="bigint" />
+    <Property Name="Des" Type="nvarchar(max)" />
+    <Property Name="CategoryId" Type="int" />
+    <Property Name="IsDefault" Type="bit" Nullable="false" />
+    <Property Name="CategoryName" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ProductId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaNghiepVu" Type="nvarchar" MaxLength="250" />
+    <Property Name="Name" Type="nvarchar" MaxLength="500" />
+    <Property Name="Price" Type="float" />
+    <Property Name="ProductGroupID" Type="bigint" />
+    <Property Name="Image" Type="varchar" MaxLength="500" />
+    <Property Name="Des" Type="nvarchar(max)" />
+    <Property Name="CategoryId" Type="int" />
+    <Property Name="CountView" Type="bigint" />
+    <Property Name="IsShow" Type="bit" />
+    <Property Name="CategoryName" Type="nvarchar" MaxLength="250" />
+    <Property Name="ProductName" Type="nvarchar" MaxLength="250" />
+    <Property Name="DoiTuong" Type="nvarchar" MaxLength="250" />
+    <Property Name="NguoiDuocBaoHiem" Type="nvarchar" MaxLength="250" />
+    <Property Name="PhamVi" Type="nvarchar" MaxLength="500" />
+    <Property Name="CacLoaiTru" Type="nvarchar" MaxLength="500" />
+    <Property Name="QuyenLoi" Type="nvarchar" MaxLength="250" />
+    <Property Name="ThoiHan" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="UserRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="500" />
+    <Property Name="PassWord" Type="varchar" MaxLength="500" />
+    <Property Name="Birthday" Type="datetime" />
+    <Property Name="Phone" Type="varchar" MaxLength="500" />
+    <Property Name="AreaId" Type="int" />
+    <Property Name="Role" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="500" />
+    <Property Name="gender" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="BaoHiemModelStoreContainer">
+    <EntitySet Name="ADVs" EntityType="Self.ADVs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Areas" EntityType="Self.Areas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Configs" EntityType="Self.Configs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Countviews" EntityType="Self.Countviews" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CustommerOpinion" EntityType="Self.CustommerOpinion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ImageLists" EntityType="Self.ImageLists" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Menus" EntityType="Self.Menus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pages" EntityType="Self.Pages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductGroups" EntityType="Self.ProductGroups" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserRoles" EntityType="Self.UserRoles" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

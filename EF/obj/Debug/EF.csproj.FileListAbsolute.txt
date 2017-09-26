@@ -1,0 +1,8 @@
+D:\mypro\WorkingPlace\baohiem\baohiem\EF\bin\Debug\EF.dll.config
+D:\mypro\WorkingPlace\baohiem\baohiem\EF\bin\Debug\EF.dll
+D:\mypro\WorkingPlace\baohiem\baohiem\EF\bin\Debug\EF.pdb
+D:\mypro\WorkingPlace\baohiem\baohiem\EF\bin\Debug\EntityFramework.dll
+D:\mypro\WorkingPlace\baohiem\baohiem\EF\bin\Debug\EntityFramework.xml
+D:\mypro\WorkingPlace\baohiem\baohiem\EF\obj\Debug\EF.csprojResolveAssemblyReference.cache
+D:\mypro\WorkingPlace\baohiem\baohiem\EF\obj\Debug\EF.dll
+D:\mypro\WorkingPlace\baohiem\baohiem\EF\obj\Debug\EF.pdb

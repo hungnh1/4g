@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BaoHiemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ADV">
+    <Key>
+      <PropertyRef Name="AdvId" />
+    </Key>
+    <Property Name="AdvId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Link" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Type" Type="Int32" />
+    <Property Name="Title" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Des" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Area">
+    <Key>
+      <PropertyRef Name="AreaId" />
+    </Key>
+    <Property Name="AreaId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AreaName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ParentId" Type="Int64" />
+    <Property Name="PageId" Type="Int64" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Des" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Config">
+    <Key>
+      <PropertyRef Name="ConfigId" />
+    </Key>
+    <Property Name="ConfigId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Keyword" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Domain" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="HotLine" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Social" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="EmailSent" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="MailPass" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="PageTitle" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="GooleMap" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ShowPageId" Type="Int64" />
+    <Property Name="Youtube" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Sky" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Yahoo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Mail" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Slogan" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Hotline1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Hotline2" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Yahoo1" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Yahoo2" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Sky1" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Sky2" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="MailRetrive" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Facebook" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Google" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Twiter" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Metadata" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CCmail3" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CCmail4" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Countview">
+    <Key>
+      <PropertyRef Name="CountViewId" />
+    </Key>
+    <Property Name="CountViewId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="Counter" Type="Int64" />
+  </EntityType>
+  <EntityType Name="CustommerOpinion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="opinion" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ImageList">
+    <Key>
+      <PropertyRef Name="ImageListId" />
+    </Key>
+    <Property Name="ImageListId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ParentId" Type="Int64" />
+    <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="SoLuong" Type="Int64" />
+  </EntityType>
+  <EntityType Name="Menu">
+    <Key>
+      <PropertyRef Name="MenuId" />
+    </Key>
+    <Property Name="MenuId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Link" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ParentId" Type="Int32" />
+    <Property Name="Type" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IsNewTab" Type="Boolean" Nullable="false" />
+    <Property Name="Pos" Type="Int32" />
+    <Property Name="EName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Page">
+    <Key>
+      <PropertyRef Name="PageId" />
+    </Key>
+    <Property Name="PageId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="PContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Recap" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Link" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ParentId" Type="Int64" />
+    <Property Name="Pos" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ProductGroup">
+    <Key>
+      <PropertyRef Name="ProductGroupId" />
+    </Key>
+    <Property Name="ProductGroupId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ParentId" Type="Int64" />
+    <Property Name="Des" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CategoryId" Type="Int32" />
+    <Property Name="IsDefault" Type="Boolean" Nullable="false" />
+    <Property Name="CategoryName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ProductId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaNghiepVu" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="Double" />
+    <Property Name="ProductGroupID" Type="Int64" />
+    <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Des" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CategoryId" Type="Int32" />
+    <Property Name="CountView" Type="Int64" />
+    <Property Name="IsShow" Type="Boolean" />
+    <Property Name="CategoryName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ProductName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="DoiTuong" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="NguoiDuocBaoHiem" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="PhamVi" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CacLoaiTru" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="QuyenLoi" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ThoiHan" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="UserRole">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="PassWord" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Birthday" Type="DateTime" Precision="3" />
+    <Property Name="Phone" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="AreaId" Type="Int32" />
+    <Property Name="Role" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="gender" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="BaoHiemEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ADVs" EntityType="Self.ADV" />
+    <EntitySet Name="Areas" EntityType="Self.Area" />
+    <EntitySet Name="Categories" EntityType="Self.Category" />
+    <EntitySet Name="Configs" EntityType="Self.Config" />
+    <EntitySet Name="Countviews" EntityType="Self.Countview" />
+    <EntitySet Name="CustommerOpinions" EntityType="Self.CustommerOpinion" />
+    <EntitySet Name="ImageLists" EntityType="Self.ImageList" />
+    <EntitySet Name="Menus" EntityType="Self.Menu" />
+    <EntitySet Name="Pages" EntityType="Self.Page" />
+    <EntitySet Name="ProductGroups" EntityType="Self.ProductGroup" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
+  </EntityContainer>
+</Schema>
