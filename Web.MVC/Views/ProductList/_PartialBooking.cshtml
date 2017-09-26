@@ -1,0 +1,29 @@
+﻿
+<div id="cusbooking" class="row">
+
+
+
+
+    <div class="col-md-12 col-ms-12">
+        @using (Html.BeginForm("booking", "ProductList", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="hidden" name="productId" value="@Request.QueryString["productId"].ToString()" />
+                    <span style="font-size: 12px;font-weight: bold;letter-spacing: 1px;padding-bottom: 12px;
+           color: #00caef; text-transform: uppercase; margin-bottom: 5px; display: block;
+           float: left; width: 100%; padding-top: 15px;">Book tour</span>
+            <input type="text" name="fullname" required style="margin-bottom: 14px; width: 90%;"
+                   placeholder="Họ tên" class="form-control" />
+
+           
+
+            <input type="email" name="email" style="margin-bottom: 14px;
+         width: 90%;" placeholder="Email" class="form-control" />
+
+            <input type="text" required name="phone" placeholder="Điện thoại" style="margin-bottom: 14px; width: 90%;" class="form-control" />
+
+
+            <textarea name="content" placeholder="nội dung" style="margin-bottom: 14px; width: 90%;" class="form-control"></textarea>
+            <input type="submit" value="Gửi đi" class="btn-success" />
+}
+    </div>
+</div>

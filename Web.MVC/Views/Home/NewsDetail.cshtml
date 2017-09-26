@@ -1,0 +1,66 @@
+﻿@model EnF.Page
+@{
+    ViewBag.Title = "NewsDetail";
+    Layout = "~/Views/Shared/_LayoutDefault.cshtml";
+}
+
+<div class="ganeral-banner">
+    <div class="box-img">
+        <img src="/images/tintuc.jpg">
+    </div>
+    <div class="box-text">
+        <a href="/">Trang chủ</a>>>
+        <a href="/Tin/Tin-Bao-Minh">Tin tức</a>
+    </div>
+</div>
+
+
+
+<div id="introcontent" class="intro-home container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-ms-8">
+                <div class="titleproduct">
+                    <span style="border-bottom: 3px solid #00caef;padding-bottom: 10px;display: block;">
+                        Tin Bảo Minh
+                    </span>
+                </div>
+
+                <div class="col-xs-12" style="margin-bottom: 9px;">
+                    <img src="/@Model.Image" style="width: 100%;max-height: 300px;"
+                         onerror="this.src='/images/noimage.gif';" />
+
+                </div>
+                <div class="col-xs-12 titlenew" style="margin-bottom: 10px;">
+                    <h3>@Model.Name</h3>
+
+                </div>
+                @*<div class="Newsauthor">
+                    <div class="date"> <span>1 tháng 08, 2017 </span></div>
+                    <div class="create"> <span>Đăng bởi Admin </span></div>
+                    <div class="comment"> <span>7 bình luận </span></div>
+                </div>*@
+                <div>
+                    <p>
+                        @Html.Raw(Model.PContent)
+                    </p>
+
+                </div>
+
+
+
+
+            </div>
+
+
+
+            <div class="col-md-4 col-ms-4">
+
+                @Html.Action("_PartialCategory", "ProductList")
+
+            </div>
+        </div>
+
+    </div>
+
+</div>

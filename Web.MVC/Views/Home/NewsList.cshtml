@@ -1,0 +1,153 @@
+﻿@model List<EnF.Page>
+@using Web.Repository;
+@{
+    ViewBag.Title = "NewsList";
+    Layout = "~/Views/Shared/_LayoutDefault.cshtml";
+}
+<div class="ganeral-banner">
+    <div class="box-img">
+        <img src="/images/tintuc.jpg">
+    </div>
+    <div class="box-text">
+        <a href="/">Trang chủ</a>>>
+        <a href="#">Tin tức</a>
+    </div>
+</div>
+
+
+
+<div id="introcontent" class="intro-home container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-ms-8">
+                <div class="titleproduct">
+                    <span style="border-bottom: 3px solid #00caef;padding-bottom: 10px;display: block;">
+                        Tin Bảo Minh
+                    </span>
+                </div>
+                @foreach (var n in Model)
+{
+    <div class="listbox">
+        <div class="col-xs-5">
+            <a href="/Tin-tuc/@(Web.Repository.ClearWordRepository.NoVNeseLower(n.Name)+"-"+n.PageId)">
+                <img src="/@n.Image" onerror="this.src='/images/noimage.gif';" />
+
+            </a>
+
+        </div>
+        <div class="col-xs-7">
+            <h4>
+                <a href="/Tin-tuc/@(Web.Repository.ClearWordRepository.NoVNeseLower(n.Name)+"-"+n.PageId)">
+                    @n.Name
+</a>
+</h4>
+@*<div class="Newsauthor">
+        <div class="date"> <span>1 tháng 08, 2017 </span></div>
+        <div class="create"> <span>Đăng bởi Admin </span></div>
+        <div class="comment"> <span>7 bình luận </span></div>
+    </div>*@
+
+
+<p>
+    @n.Recap
+</p>
+</div>
+</div>
+}
+
+
+
+
+<div id="bottomline">
+    <div class="prodt" style="height:3px"></div>
+</div>
+<div id="paging">
+    @{int numberofnews = Model.Count();
+int totalpage = numberofnews / 5;
+if (numberofnews % 5 != 0)
+{
+    totalpage++;
+}
+int currentpage = Convert.ToInt16(Request.QueryString["pageId"]);
+int startpoint = (currentpage - (currentpage % 5)) + 1;
+
+}
+
+<ul>
+    <li class="back">
+        <a href="#" onclick="prepage(@currentpage)">
+            <img src="/Content/images/back.jpg" />
+        </a>
+    </li>
+    @for (var p = 1; p <= totalpage; p++)
+{
+    if (p == currentpage)
+    {
+        <li class="pagenum active">
+
+            <a href="/Home/NewsList?paging=@p">@p</a>
+</li>
+    }
+    else
+    {
+        <li class="pagenum">
+
+            <a>@p</a>
+</li>
+    }
+
+
+}
+
+
+<li class="next">
+    <a href="#" onclick="nextpage(@currentpage)">
+        <img src="/Content/images/new.jpg" />
+    </a>
+</li>
+</ul>
+</div>
+</div>
+
+
+
+<div class="col-md-4 col-ms-4">
+
+    @Html.Action("_PartialCategory", "ProductList")
+
+</div>
+</div>
+
+</div>
+
+</div>
+<script type="text/javascript">
+    function nextpage(currentpage) {
+        currentpage++;
+        //window.location="http://www.location.com/ns.jsp";
+        window.location.href = '/Home/NewsList?paging=' + currentpage;
+    }
+    function prepage(currentpage) {
+        currentpage--;
+        if(currentpage<=0)
+        {
+            return;
+        }
+        //window.location="http://www.location.com/ns.jsp";
+        window.location.href = '/Home/NewsList?paging=' + currentpage;
+    }
+
+</script>
+<style type="text/css">
+    .listbox .col-xs-5 {
+        height: 100%;
+        padding: 0;
+    }
+
+    .listbox img {
+        height: auto;
+        max-width: 100%;
+    }
+    
+    
+</style>

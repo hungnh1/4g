@@ -1,0 +1,57 @@
+﻿@model List<EnF.Product>
+@using EnF;
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_LayoutDefault.cshtml";
+    DayGianTuongEntities db = new DayGianTuongEntities();
+   // ProductGroup pgp = db.ProductGroups.Find(Convert.ToInt16(Request.QueryString["ProductGroupId"]));
+
+
+}
+
+
+        <div class="col-md-3" id="mainContent">
+            @Html.Action("_PartialListGroup", "ProductList")
+        </div>
+        <div class="col-md-9">
+            <div class="showtilte">
+                <div class="txtshowtitle"><h2 style="font-size:17px">@ViewBag.groupname </h2></div>
+
+            </div>
+
+            @foreach (var p in Model)
+            {
+                <div class="divsanpham col-md-4">
+                    <div class="divimgsanpham">
+                        <a href="/San-pham/@(Web.Repository.ClearWordRepository.NoVNeseLower(p.Name)+"-"+p.ProductId.ToString())#mainContent">
+                            <img alt="@p.Name" title="@p.Name" src="/@p.Image" />
+                        </a>
+                    </div>
+                    <div class="divtensanpham">@p.Name</div>
+
+                </div>
+            }
+
+
+        </div>
+
+ 
+
+<style type="text/css">
+    .container, .divsanpham {
+        background-image: url('/images/bgGroupProct.png');
+            border: 1px solid #CCCCCC;
+    }
+    .list-group-item{
+         background-image: url('/images/bgGroupLeft.png');
+    }
+    /*.col-md-3 {
+        padding-left:0;
+    }
+    .col-md-9{
+        padding-right:0px;
+    }*/
+    .bx-wrapper{
+        margin-bottom:10px;
+    }
+</style>

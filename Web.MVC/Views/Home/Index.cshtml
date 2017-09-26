@@ -1,0 +1,145 @@
+﻿@using EnF;
+@using System.Data;
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_LayoutDefault.cshtml";
+
+    //var listProduct = (List<Product>)ViewBag.TopProduct;
+    var productgroup = (List<ProductGroup>)ViewBag.ProductGroup;
+    var Architecproductgroup = (List<ProductGroup>)ViewBag.Architecproductgroup;
+    DataTable listProduct = (DataTable)ViewData["TopProduct"];
+
+
+}
+
+<!-- start slider -->
+<!-- end header -->
+
+<div class="col-md-12 boxsection groupLeft" style="padding: 0;margin: 0;">
+    <div class="col-md-9" style="padding: 0;margin: 0;">
+        @for (int pr = 0; pr < Architecproductgroup.Count(); pr++)
+        {
+
+
+            <div class="boxproduct col-md-4" style="padding: 0;margin-bottom: 2px;">
+                <a style="height: 100%;width:100%;" class="image-card" href="/ProductList/ProductList?ProductGroupId=@Architecproductgroup[pr].ProductGroupId#mainContent">
+                    <img src="/@Architecproductgroup[pr].Image" />
+                </a>
+                <div class="info">
+                    <h1>@Architecproductgroup[pr].Name </h1>
+                    @*<div class="recap">
+                        <p>tesdada tesdada tesdada tesdada tesdada tesdada </p>
+                    </div>*@
+                    <div class="viewdeetail">
+                        <a href="/ProductList/ArchitecProduct?ProductGroupId=@Architecproductgroup[pr].ProductGroupId#mainContent">Xem chi tiết</a>
+                    </div>
+                </div>
+            </div>
+
+
+        }
+
+        @for (int pr = 0; pr < productgroup.Count(); pr++)
+        {
+            if (pr < 3)
+            {
+                <div class="boxproduct col-md-4" style="padding: 0;margin-bottom: 2px;">
+                    <a style="height: 100%;width:100%;" class="image-card" href="Nhom-Giay-Dan/@(Web.Repository.ClearWordRepository.NoVNeseLower(productgroup[pr].Name)+"-"+productgroup[pr].ProductGroupId)#mainConten">
+                        <img src="/@productgroup[pr].Image" />
+                    </a>
+                    <div class="info">
+                        <h1>@productgroup[pr].Name </h1>
+
+                        <div class="viewdeetail">
+                            <a href="Nhom-Giay-Dan/@(Web.Repository.ClearWordRepository.NoVNeseLower(productgroup[pr].Name)+"-"+productgroup[pr].ProductGroupId)#mainConten">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+
+        }
+       
+    </div>
+    @if (productgroup.Count >= 4)
+    {
+        <div class="col-md-3">
+            <div class="boxproduct" style="padding: 0;margin: 0;">
+                <a style="height: 100%;" class="image-card" href="/ProductList/ProductList?ProductGroupId=@productgroup[3].ProductGroupId#mainContent">
+                    <img src="/@productgroup[3].Image" class="Imgright" />
+                </a>
+                <div class="info" style="height: 200%;">
+                    <h1>@productgroup[3].Name </h1>
+
+                    <div class="viewdeetail">
+                        <a href="/ProductList/ProductList?ProductGroupId=@productgroup[3].ProductGroupId#mainContent">Xem chi tiết</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+
+</div>
+
+@*<div class="col-md-12 boxsection" style="padding-bottom: 0px; padding-left: 0;float:left; background: rgba(128, 128, 128, 0.03);">
+
+        @foreach (var sl in listslidemid)
+        {
+            <div class="col-md-3 col-xs-12 fourImg">
+                <section class="boximage">
+                    <img src="/@sl.Image" style="max-width:100%" />
+                </section>
+
+            </div>
+        }
+
+    </div>*@
+<div class="col-md-12 boxsection sectionconment" style="background: url(/images/groudsp.png) no-repeat center center;background-size: cover;">
+    <div class="container">
+        <div class="col-md-12 boxsection sectionconment" style="padding-top:19px;cursor: pointer;">
+            <div class="containSPNB" style="text-align:center">
+                <img src="/images/spnb.png" style="max-width:100%" />
+                @*<div class="txtleft">
+                    <h1 style="font-weight: 800; margin:0px;margin-right: 7px;">
+                        Sản Phẩm
+                    </h1>
+                </div>
+                <div class="txtright">
+                    <h1 style="font-weight: 800; margin:0px;margin-left: 7px;">
+                        Nổi Bật
+                    </h1>
+                </div>*@
+            </div>
+            @foreach (DataRow co in listProduct.Rows)
+            {
+
+                <div onclick="linkto()" class="col-md-3 boxcomment" style="height: 290px; padding-top: 12px;">
+
+                    <a href="@(co["Type"].ToString() == "1" ? "/San-pham/" + (Web.Repository.ClearWordRepository.NoVNeseLower(co["Name"].ToString()) + "-" + co["ProductId"].ToString()) + "#mainContent" :
+                    "/ProductList/ArchiProctDetail?productId=" + co["ProductId"].ToString() + "#mainContent")"
+                    style="color:black">
+                    <img src="/@co["Image"].ToString()" style="border-radius: 98px;width: 200px; height: 197px;" />
+                    <strong style="margin:auto"> @co["Name"].ToString() </strong>
+                    </a>
+                </div>
+            }
+
+
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+@section Scripts {
+
+   
+}
+<style type="text/css">
+
+</style>

@@ -1,0 +1,66 @@
+﻿@model EnF.Page
+    @using EnF;
+    @{
+        ViewBag.Title = "Home Page";
+        Layout = "~/Views/Shared/_LayoutDefault.cshtml";
+
+
+    }
+
+ 
+
+
+    <div id="introcontent" class="intro-home container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-xs-12">
+                    <div class="title">
+                        <span>Giới thiệu về chúng tôi</span>
+                    </div>
+                    <div class="content">
+                        <p>
+                            @Html.Raw(Model.PContent)
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div id="bottomline">
+                <div></div>
+            </div>
+        </div>
+
+    </div>
+<div>
+    <input type="text" value="ádaf" />
+    <input type="text" />
+    <input type="text" />
+    <input type="button" value="ada" />
+    <select>
+        <option></option>
+        <option></option>
+        <option></option>
+    </select>
+
+</div>
+<script type="text/javascript">
+    var inputs = document.getElementsByTagName("input");
+    for(var ip=0; ip<inputs.length; ip++)
+    {
+      
+        if(inputs[ip].value=="")
+        {
+            inputs[ip].focus();
+            break;
+        }
+    }
+</script>
+  
+@*function getFormElelemets(formName){
+  var elements = document.forms[formName].elements;
+  for (i=0; i<elements.length; i++){
+                               some code...
+                               }
+                               }*@

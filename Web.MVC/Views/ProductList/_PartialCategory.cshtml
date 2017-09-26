@@ -1,0 +1,11 @@
+﻿@model List<EnF.Category>
+@{
+    Layout = null;
+}
+<div class="list-group">
+    @foreach (var c in Model)
+{
+    <a href="/ProductList/ProductList?categoryId=@c.Id" class="list-group-item">@c.CategoryName</a>
+}
+
+</div>

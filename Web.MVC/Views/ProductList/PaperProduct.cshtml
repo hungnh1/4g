@@ -1,0 +1,131 @@
+﻿@model EnF.Product
+@using EnF;
+@{
+    Layout = "~/Views/Shared/_LayoutDefault.cshtml";
+    DayGianTuongEntities db = new DayGianTuongEntities();
+}
+
+<div class="container" id="mainContent">
+    <div class="row">
+        <div class="col-md-3">
+            @Html.Action("_PartialListGroup", "ProductList")
+        </div>
+        <div class="col-md-9">
+            <div class="detail-product">
+                <div id="imgPro">
+                    <img src="/@Model.Image" class="imgLarge" />
+
+                    <div id="iconZoom">
+                    </div>
+                </div>
+                <div class="infoProDetail">
+                    <div class="name">
+                        @*@Model.Name*@
+                    </div>
+                    <div class="detail">
+                        <table>
+                            <tr>
+                                <td class="title">
+                                    <h2>@Model.Name</h2>
+                                </td>
+                                <td></td>
+                            </tr>
+
+                            <tr>
+                                <td class="title">
+                                    Giá Sản phẩm:@Model.Price
+                                </td>
+                                <td></td>
+                            </tr>
+
+
+                        </table>
+                    </div>
+                    <div>
+                        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                        <div class="addthis_native_toolbox">
+                        </div>
+                      
+                    </div>
+                </div>
+            </div>
+
+            @*---------*@
+            <div class="showtilte">
+                <div class="txtshowtitle">
+                    <h2 style="font-size:17px">
+                        Sản phẩm cùng loại
+                    </h2>
+                </div>
+            </div>
+
+            @{List<Product> prctList = (List<Product>)ViewBag.Grouplist;
+            foreach (var p in prctList)
+            {
+                    <div class="divsanpham col-md-4">
+                        <div class="divimgsanpham">
+                            <a href="/ProductList/PaperProduct?productId=@p.ProductId#mainContent">
+                                <img alt="@p.Name" title="@p.Name" src="/@p.Image" />
+                            </a>
+                        </div>
+                        <div class="divtensanpham">@p.Name</div>
+
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    <script type="text/javascript">
+        $.noConflict();
+    </script>
+      <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5348c97229f88208"
+    async></script>
+    <script src="~/js/multizoom.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $('.imgLarge').addimagezoom({
+                speed: 1500,
+                descpos: true,
+                imagevertcenter: true,
+                magvertcenter: true,
+                zoomrange: [3, 10],
+                magnifiersize: [300, 300],
+                magnifierpos: 'right',
+                cursorshade: true
+            });
+        });
+    </script>
+
+
+
+}
+<style type="text/css">
+    .container, .divsanpham {
+        background-image: url('/images/bgGroupProct.png');
+        border: 1px solid #CCCCCC;
+    }
+
+    .list-group-item {
+        background-image: url('/images/bgGroupLeft.png');
+    }
+    /*.col-md-3 {
+        padding-left:0;
+    }
+    .col-md-9{
+        padding-right:0px;
+    }*/
+    .bx-wrapper {
+        margin-bottom: 10px;
+    }
+     .bxslider li {
+    display:none;
+} 
+    .bxslider li:first-child {
+    display:block;
+} 
+</style>

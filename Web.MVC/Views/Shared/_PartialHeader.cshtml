@@ -1,0 +1,174 @@
+﻿@using EnF
+@{
+    DayGianTuongEntities db = new DayGianTuongEntities();
+    Config config = db.Configs.First();
+    Layout = null;
+    var about = db.Pages.First();
+    var listslidetop = db.ADVs.Where(p => p.Type == 1).ToList();
+
+    var productgroup = db.ProductGroups.OrderByDescending(p => p.ProductGroupId).Skip(0).Take(3).ToList();
+
+}
+<!-- start header -->
+<header>
+    <nav class="navbar navbar-inverse menureponsive">
+        <div class="container-fluid">
+            <div class="navbar-header">
+
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @*<a class="navbar-brand" href="#">Thọ Huy Nam</a>*@
+                <div style="height:70px;width: 20%;background: white;text-align: center;"><img src="/images/logo.png" style="height:70px"></div>
+               
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/" title="Trang chủ" alt="trang chủ">Trang chủ</a>
+                    </li>
+                    <li>
+                        <a href="/Home/About" title="Giới thiệu" alt="Giới thiệu">Giới thiệu</a>
+                    </li>
+                    <li class="Proctmnu" style="position: relative;">
+                        <a href="/ProductList/ProductList?ProductGroupId=@productgroup.First().ProductGroupId" title="Liên hệ" alt="Liên hệ">Giấy dán tường</a>
+
+                    </li>
+
+                    <li>
+                        <a href="/ProductList/ArchitecProduct" title="Liên hệ" alt="Liên hệ">Kiến trúc</a>
+                    </li>
+                </ul>
+                @*<ul class="nav navbar-nav navbar-right">
+                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    </ul>*@
+            </div>
+        </div>
+    </nav>
+
+    <div class="menutop" style="height: 165px;">
+        <div class="col-md-12" style="height: 100px;">
+            <div style="text-align: center;">
+                <img src="/images/logo.png" style="height:70px">
+                <p style="font-size: 23px;font-family: fantasy;">Tho Huy Nam</p>
+            </div>
+
+            
+        </div>
+
+        <div class="col-md-12 mainMenu" style="padding-right: 1px;height: 65px;">
+   
+            <div class="col-md-12" style="text-align: center;border-top: 1px solid wheat;">
+                <ul class="menuLeft" style="padding-top: 0px;padding-bottom: 17px;">
+                    <li>
+                        <a href="/" title="Trang chủ" alt="trang chủ">Trang chủ</a>
+                    </li>
+
+                    <li>
+                        <a href="/Home/About" title="Giới thiệu" alt="Giới thiệu">Giới thiệu</a>
+                    </li>
+                    <li class="Proctmnu" style="position: relative;">
+                        <a href="@(productgroup.Count>0?"/ProductList/ProductList?ProductGroupId="+productgroup.First().ProductGroupId:"")#mainContent" title="Giấy dán tường" alt="Giấy dán tường">Giấy dán tường</a>
+                   
+                    </li>
+
+                    <li>
+                        <a href="/ProductList/ArchitecProduct#mainContent" title="Kiến trúc" alt="Kiến trúc">Kiến trúc</a>
+                    </li>
+
+                </ul>
+            </div>
+            
+        </div>
+        @*<div class="follow-search col-md-2 col-xs-2" style="padding-top: 1%;">
+
+            <ul class="follow">
+                <li><a href="@config.Facebook"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
+                
+                <li><a href="@config.Google"><i class="fa fa-google-plus-square" aria-hidden="true"></i></a></li>
+                
+            </ul>
+
+        </div>*@
+    </div>
+
+</header>
+
+<style type="text/css">
+    ul.menu li {
+        display: inline;
+        padding: 0 12px;
+    }
+
+    .Proctmnu:hover > div {
+        display: block;
+        background: #FFCC4E;
+    }
+
+    .mdivc2 {
+        position: absolute;
+        background: #FFCC4E;
+        z-index: 999;
+        min-width: 214px;
+        display: none;
+        border: solid #DDD 1px;
+        left: 0px;
+        top: 100%;
+    }
+
+        .mdivc2 ul {
+            padding: 0;
+            margin: 0;
+            /* list-style: none; */
+        }
+
+        .mdivc2 li {
+            list-style: none;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            width: 100%;
+            float: left;
+            text-align: left;
+        }
+
+    .mlic2 {
+        position: relative;
+        padding: 0px;
+    }
+
+    .subcate {
+        display: none;
+        position: absolute;
+        background: #FFF;
+        z-index: 999;
+        min-width: 157px;
+        display: none;
+        border: solid #DDD 1px;
+        left: 99%;
+        top: 0%;
+    }
+
+    .mdivc2 ul {
+        padding: 0;
+        margin: 0;
+        /* list-style: none; */
+    }
+
+    .mdivc2 li {
+        list-style: none;
+        border-bottom: 1px solid #eee;
+        cursor: pointer;
+        width: 100%;
+        float: left;
+        text-align: left;
+    }
+
+    #topproduct li {
+        width: 179px;
+        text-align: center;
+        background: #e2d5a5;
+    }
+</style>

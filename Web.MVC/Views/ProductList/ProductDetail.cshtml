@@ -1,0 +1,291 @@
+﻿@model EnF.Product
+@using EnF;
+@{
+    var productItem = (List<ProductItem>)ViewBag.productItem;
+    Layout = "~/Views/Shared/_LayoutDefault.cshtml";
+    int ci = 0;
+    DayGianTuongEntities db = new DayGianTuongEntities();
+    var listslidetop = (List<Imalist>)ViewBag.Imagelist;
+}
+
+
+
+
+<section class="col-md-12" style="margin-top: 18px;">
+    <div class="col-md-7" style="padding: 0;">
+
+        <div class="product-slider">
+            <div class="boxpro-img">
+                <ul class="probxslider">
+                    @foreach (var sl in listslidetop)
+                    {
+                        <li>
+                            <img src="/@sl.Image" />
+                        </li>
+                    }
+
+                </ul>
+
+            </div>
+
+        </div>
+        <br />
+        <div style="width: 100%; line-height: 63px;">
+            <p>
+                @Html.Raw(Model.Des)
+            </p>
+        </div>
+
+    </div>
+    <div class="col-md-5 boxcalendar">
+        <ul id="detail-info-box">
+            @foreach (var i in productItem)
+            {
+                ci++;
+                if (ci <= 4)
+                {
+                    <li class="car-icon">
+                        <img src="/@i.Image" style="width: 15%" />
+                        <span>@Html.Raw(i.text)</span>
+                    </li>
+
+                }
+            }
+        </ul>
+        <div id="availability">
+
+
+            <button id="aclik" type="button" data-toggle="modal" data-target="#loginModal">
+                <p class="availability">Click here<br><span style="font-size:14px;">to ask for availability</span></p>
+                <p class="cost">@Model.DoiTuong</p>
+                @*<small>* the price is not per person</small>*@
+            </button>
+
+        </div>
+        <div style="TEXT-ALIGN: CENTER;">
+            @*<ul>
+                <li>Giá: @Model.DoiTuong</li>
+                <li>Ghi chú:@Model.PhamVi </li>
+            </ul>*@
+            <a href="https://goo.gl/forms/UfEF5d0gUQosRxDz1" target="_blank">
+                <img src="~/images/booking.jpg" style="height: 107px;margin-top: 33px; cursor:pointer" />
+            </a>
+
+        </div>
+        <div id="detail-more-info">
+            <h4>Itinerary</h4>
+            @{
+                string[] listPlace = !string.IsNullOrEmpty(Model.QuyenLoi) ? Model.QuyenLoi.Split(',') : null;
+            }
+            <ul>
+                @if (listPlace != null)
+                {
+                    for (int st = 0; st < listPlace.Count(); st++)
+                    {
+                        <li>-&nbsp; @listPlace[st]</li>
+                    }
+                }
+
+
+
+            </ul>
+        </div>
+    </div>
+
+    <div id="popupCalendar">
+
+        @*@Html.Action("_PartialCalendar")*@
+        @Html.Partial("_PartialTemplateCalendar");
+    </div>
+    @Html.Partial("_PartialBooking");
+    @if (TempData["suucess"] != null)
+    {
+        <div id="report">
+            Đăng ký thành công
+        </div>
+    }
+
+
+</section>
+<style type="text/css">
+    img {
+        max-width: 100% !important;
+    }
+
+    .list-group {
+        margin-top: 20px;
+    }
+</style>
+
+@section scripts{
+    <script type="text/javascript">
+        //jQuery.noConflict();
+    @*var $ = jQuery.noConflict();*@
+        $(document).ready(function () {
+            $("#popupCalendar").hide();
+
+
+            $("#aclik").click(function (e) {
+                e.preventDefault();
+                $('#popupCalendar').trigger('click');
+
+                $('#tbtblcalendar').html('<img src="/images/loading.gif" />');
+                $.ajax({
+                    cache: false,
+                    type: "GET",
+                    url: '@Url.Action("_PartialCalendar", "ProductList")',//"/DotThi/_PartialPopUp",
+                    data: {},
+                    success: function (response) {
+                        $('#popupCalendar').html(response);
+                        //  divcontent.innerHTML = response;
+
+                    }
+
+                });
+            });
+
+        });
+
+        $("#popupCalendar").fancybox({
+
+            closeClick: false, // prevents closing when clicking INSIDE fancybox
+            openEffect: 'none',
+            closeEffect: 'none',
+
+            helpers: {
+                overlay: {
+                    speedIn: 0,
+                    speedOut: 300,
+                    opacity: 0.8,
+                    css: {
+                        cursor: 'default'
+                    },
+                    closeClick: false
+                }
+            }
+        });
+
+
+
+
+    </script>
+    <script type="text/javascript">
+        setTimeout("hidreport()", 2000);
+        function hidreport() {
+            var repo = document.getElementById("report");
+            //   repo.style.display = "none";
+            repo.style.top = "-390%";
+            //repo.style.display = "none";
+        }
+
+        /////
+        $("#cusbooking").hide();
+        $("#booking").click(function (e) {
+            openFancybox();
+
+
+        });
+        function openFancybox() {
+            setTimeout(function () {
+                $.fancybox('#cusbooking', {
+                    //modal: true, // this prevents fancybox to close unless close unless ".visitwebsitebtn" is clicked
+                    helpers: {
+                        overlay: {
+                            css: {
+                                'background': 'rgba(58, 42, 45, 0.3)'
+                            }
+                        }
+                    },
+                    afterShow: function () {
+                        // enables a way to close fancybox
+                        $(".closefacybo").on("click", function () {
+                            $.fancybox.close();
+                        });
+                    }
+                });
+            }, 500);
+        };
+
+    </script>
+
+
+    @if (!string.IsNullOrEmpty(User.Identity.Name))
+    {
+        <script type="text/javascript">
+            function addevent(iddate, sdate) {
+                //var t = new Date(1990, 2, 13);
+                var pdate = new Date(sdate);
+                $("#popupCalendar").css('cursor', 'progress');
+
+                var idday = '#' + iddate;
+                $(idday).html('<img src="/images/loading.gif" height="50"/>');
+                var mon = pdate.getMonth() + 1;
+                var paramdate = pdate.getFullYear() + '/' + mon + '/' + pdate.getDate();
+                $.ajax({
+                    cache: false,
+                    type: "get",
+                    url: '@Url.Action("SetBusyDate", "productlist")',//"/dotthi/_partialpopup",
+                    data: { date: paramdate },
+                    success: function (response) {
+                        if (response == '1') {
+
+                            $(idday).html(pdate.getDate());
+                            $(idday).css('background', 'red');
+                            //  divcontent.innerhtml = response;
+                        }
+                        else if (response == '0') {
+                            $(idday).html(pdate.getDate());
+                            $(idday).css('background', '#f9f9f9');
+                        }
+                        else {
+                            aleart('fail');
+                        }
+
+
+                    }
+
+                });
+                $('#popupCalendar').css('cursor', 'pointer');
+            }
+        </script>
+    }
+
+
+}
+<style type="text/css">
+    #report {
+        -webkit-transition: width 2s; /* Safari */
+        transition: top 17s;
+        position: absolute;
+        top: -47%;
+        left: 50%;
+        background: #ddd;
+        padding: 13px;
+        border: 1px solid green;
+        font-weight: bold;
+    }
+
+    #detail-more-info h4 {
+        font-weight: bold;
+        font-size: 17px;
+        display: block;
+        padding-left: 28px;
+        line-height: 25px;
+        background: url(https://www.milesandmiles.net/css/img/plus.png) no-repeat left center;
+    }
+
+    #detail-more-info ul {
+        padding-left: 0;
+    }
+
+    #detail-more-info li {
+        list-style: none;
+        margin-bottom: 10px;
+        color: #666;
+        font-size: 16px;
+        font-weight: 500;
+    }
+    h2 {
+        line-height: 63px;
+    }
+</style>

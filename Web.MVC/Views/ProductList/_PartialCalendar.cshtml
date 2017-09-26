@@ -1,0 +1,168 @@
+﻿@model List<EnF.Schedule>
+@using Web.Repository
+@{
+    int startPostion1 = (int)new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).DayOfWeek;
+    if (startPostion1 == 0)
+    {
+        startPostion1 = 8;
+    }
+    var nextMonth = DateTime.Now.AddMonths(1);
+    var startPostion2 = (int)new DateTime(nextMonth.Year, nextMonth.Month, 1).DayOfWeek;
+    var startday1 = 1;
+    var endday1 = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
+    var startday2 = 1;
+    var endday2 = DateTime.DaysInMonth(nextMonth.Year, nextMonth.Month);
+    var isfirstWeek = true;
+
+    var currentyear = DateTime.Now.Year;
+    var currentmonth = DateTime.Now.Month;
+    var nextyear = nextMonth.Year;
+}
+
+
+<table class="tbcalendar">
+    @*<tr><td colspan="14"> 2016</td></tr>*@
+    <tr>
+        <th colspan="7" class="tdmonth" style=" border-right: 1px solid blue;">@String.Format("{0:MM/yyyy}", DateTime.Now)</th>
+        <th colspan="7">@String.Format("{0:MM/yyyy}", nextMonth)</th>
+    </tr>
+    <tr>
+        @for (var t = 2; t <= 8; t++)
+        {
+            if ((int)(ConstantClass.WeekDay)t == 8)
+            {
+                <td class="monthboder"> @((ConstantClass.WeekDay)t)</td>
+            }
+            else
+            {
+                <td> @((ConstantClass.WeekDay)t)</td>
+            }
+
+        }
+        @for (var t = 2; t <= 8; t++)
+        {
+            if ((int)(ConstantClass.WeekDay)t == 8)
+            {
+                <td class="monthboder">@((ConstantClass.WeekDay)t)</td>
+            }
+            else
+            {
+                <td>@((ConstantClass.WeekDay)t)</td>
+            }
+
+
+        }
+    </tr>
+
+    @for (var w = 0; w <= 5; w++)
+    {
+        <tr>
+            @for (var d1 = 1; d1 <= 7; d1++)//m1
+            {
+                if (startday1 <= endday1)
+                {
+                    if (d1 < startPostion1 && isfirstWeek)
+                    {
+
+                        <td></td>
+                    }
+                    else
+                    {
+
+                        var currentDay = new DateTime(DateTime.Now.Year, DateTime.Now.Month, startday1);
+                        var busyday = Model.Where(p => p.Schdate.Date == currentDay).ToList();
+
+                        if (busyday.Count > 0)
+                        {
+                            <td id="@(currentmonth.ToString()+startday1)" onclick="addevent('@(currentmonth.ToString() + startday1)',new Date(@(currentyear),@(currentmonth),@(startday1)))"
+                                @(d1 == 7 ? "class=monthboder" : "") style="background:red" @(d1 == 7 ? "class=monthboder" : "")>
+                                @startday1
+                            </td>
+
+                        }
+                        else
+                        {
+                            <td id="@(currentmonth.ToString()+startday1)" onclick="addevent('@(currentmonth.ToString() + startday1)',new Date(@(currentyear),@(currentmonth),@(startday1)))"
+                                @(d1 == 7 ? "class=monthboder" : "")>
+                                @startday1
+                            </td>
+                        }
+
+                        startday1++;
+                    }
+                }
+                else
+                {
+                    <td></td>
+                }
+
+            }
+            @for (var d2 = 1; d2 <= 7; d2++)//M2
+            {
+                if (startday2 <= endday2)
+                {
+                    if ((d2 < startPostion2 && isfirstWeek) || startPostion2 > endday2)
+                    {
+                        <td></td>
+
+                    }
+                    else
+                    {
+
+                        var currentDay2 = new DateTime(nextMonth.Year, nextMonth.Month, startday2);
+                        var busyday = Model.Where(p => p.Schdate.Date == currentDay2).ToList();
+
+                        if (busyday.Count > 0)
+                        {
+                            <td id="@(nextMonth.Month.ToString() + startday2)" onclick="addevent('@(nextMonth.Month.ToString() + startday2)',new Date(@(nextyear),@(nextMonth.Month),@(startday2)))"
+                                style="background:red">
+                                @startday2
+                            </td>
+
+                        }
+                        else
+                        {
+                            <td id="@(nextMonth.Month.ToString() + startday2)" onclick="addevent('@(nextMonth.Month.ToString() + startday2)','@(nextyear)-@(nextMonth.Month)-@(startday2)')">@startday2</td>
+                        }
+                        startday2++;
+                    }
+                }
+            }
+        </tr>
+            isfirstWeek = false;
+    }
+
+
+
+</table>
+<div>
+    <div style="width: 50px;background: red; height: 41px; float: left;">
+    </div>
+    <div style="float: left;">
+        <strong style="display:block; margin-top:12px;margin-left:9px">:Busy</strong>
+    </div>
+</div>
+<style type="text/css">
+    .tbcalendar td {
+        padding: 10px;
+        border: 0.5px solid #eee;
+        cursor: pointer;
+    }
+
+    .tbcalendar th, .tdmonth {
+        padding: 10px;
+        text-align: center;
+    }
+
+    .monthboder {
+        border-right: 1px solid green !important;
+    }
+
+    .tbcalendar, .popupCalendar {
+        /*cursor: none !important;*/
+    }
+
+    .bx-wrapper .bx-controls-direction a {
+        z-index: 8000;
+    }
+</style>

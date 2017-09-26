@@ -1,0 +1,167 @@
+﻿@*@using EnF
+    @{
+             private static DayGianTuongEntities db = new DayGianTuongEntities();
+           Config config=db.Configs.First();
+    }*@
+@using EnF
+@{
+    Config config = new DayGianTuongEntities().Configs.First();
+    Layout = null;
+    var slide = (List<ADV>)ViewBag.slide;
+    var listslidetop = new DayGianTuongEntities().ADVs.Where(p => p.Type == 1).ToList();
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/css/style.css" rel="stylesheet" />
+    <link href="~/Content/css/style2.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="/Content/fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
+
+    <link rel="stylesheet" href="/Content/fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
+    <!-- Optionally add helpers - button, thumbnail and/or media -->
+    <link rel="stylesheet" href="/Content/fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen" />
+    <link href="~/Content/css/Custom.css" rel="stylesheet" />
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+    <script src="/js/jquery.bxslider.js"></script>
+    <link href="~/Content/css/jquery.bxslider.css" rel="stylesheet" />
+    <script src="/js/jquery.bxslider.min.js"></script>
+
+
+    <title>@config.PageTitle</title>
+    <meta name="keywords" content="@config.Keyword" />
+    <meta name="description" content="@config.Description" />
+    <link rel="icon" type="/image/gif" href="/images/favicon.ico">
+
+    <script type="text/javascript" src="/Content/fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+    <script type="text/javascript" src="/Content/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+    <script type="text/javascript" src="/Content/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+    <script type="text/javascript" src="/Content/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+    @*<script type="text/javascript" src="/fancybox/jquery.easing-1.4.pack.js"></script>*@
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+
+</head>
+<body>
+    @*ng-app="myApp"*@
+
+
+    <div class="container" style="width:100%;">
+        <div class="row">
+            @Html.Partial("_PartialHeader")
+            <div class="home-slider">
+
+                <div class="box-img">
+                    <ul class="bxslider">
+                        @foreach (var sl in listslidetop)
+            {
+                            <li>
+                                <img src="/@sl.Image" />
+                            </li>
+                        }
+
+                    </ul>
+
+                </div>
+
+            </div>
+            <!-- end slider -->
+
+            <div ng-view>
+                @RenderBody()
+            </div>
+
+
+        </div>
+    </div>
+    @Html.Partial("_PartialFooter")
+
+
+
+    @RenderSection("scripts", required: false)
+    <script src="/js/main.js" type="text/javascript"></script>
+    <script src="/js/bootstrap.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        //$(window).load(function () {
+        //    if ($(window).width() < 678) {
+        //        hegt = (cw / 16) * 9;
+        //    }
+
+        //});
+        var cw = $('.home-slider').width();
+        var hegt = (cw / 15) * 5;
+        var isSet = 0;
+
+        if ($(window).width() < 678) {
+            hegt = (cw / 16) * 9;
+        }
+        $('.home-slider').css({ 'height': hegt + 'px' });
+
+        $('.home-slider .box-img img').css({ 'height': (hegt - 3) + 'px' });
+       
+        ////////////
+
+        //var grouprightW = $('.groupLeft').height();
+        //$('.Imgright').css({ 'height': grouprightW + 'px' });
+        function linkto() {
+            location.href = "https://www.tripadvisor.com.vn/Attraction_Review-g298085-d8861361-Reviews-Da_Nang_City_Day_Tour-Da_Nang_Quang_Nam_Province.html"
+        }
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.slide1').bxSlider({
+                auto: true,
+                autoControls: true,
+                slideWidth: 250,
+                minSlides: 3,
+                maxSlides: 4,
+                slideMargin: 7
+            });
+
+
+            $('.CMcontent img').css('max-width', '100%');
+            $('.bxslider').bxSlider({
+                auto: true,
+                autoControls: true
+            });
+
+            //slide product
+            $('.probxslider').bxSlider({
+                auto: true,
+                autoControls: true,
+                pause: 2000
+            });
+
+        });
+
+
+    </script>
+    <script>
+        var app = angular.module("myApp", ["ngRoute"]);
+        app.config(function ($routeProvider) {
+            $routeProvider
+            .when("/ArchitecProduct", {
+                templateUrl: "/ProductList/ArchitecProduct"
+            })
+            //.when("/", {
+            //    templateUrl: "/ProductList/ArchitecProduct"
+            //})
+            //.when("/green", {
+            //    templateUrl: "green.htm"
+            //})
+            //.when("/blue", {
+            //    templateUrl: "blue.htm"
+            //});
+        });
+    </script>
+   
+</body>
+</html>

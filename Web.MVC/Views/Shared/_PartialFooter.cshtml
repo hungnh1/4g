@@ -1,0 +1,236 @@
+﻿@using EnF
+@{
+    DayGianTuongEntities db = new DayGianTuongEntities();
+    Config config = db.Configs.First();
+    Layout = null;
+
+}
+<footer class="ftpc" style="background: black;">
+    
+    <div class="container" style="background: black; border:none;">
+        <div class="row" style="background: black;">
+            <div class="col-lg-3" id="sugestion">
+                <h2>THO HUY NAM </h2>
+                <p style="color: white;">Chuyên tư vấn Thiết Kế Nhà, Khách Sạn, Nhà Hàng, Bar. Cung cấp các dịch vụ xây dụng, cải tạo công trình xây dựng. Cung cấp sĩ và lẻ Giấy Dán Tường. Chúng tôi cam kết mang tới những sản phẩm chất lượng, đẹp mắt với giá thành tốt nhất cho khách hàng. </p>
+                <p style="color: white;">Xin Chân Thành Cảm Ơn!</p>
+            </div>
+            <div class="col-lg-6" id="last-blog">
+                <h2>Liên Hệ Với Chúng Tôi </h2>
+                <ul style="font-size: 18px">
+                    <li><a href="#" title="">CS1: Tầng 1,Kiencuong Apartment and Hotel, Lô 43-44 An Thượng 29</a></li>
+                    <li><a href="#" title="">CS2: Số 151 Nguyễn Hoàng,Thanh Khê, Đà Nẵng</a></li>
+                    <li><a href="#" title="">thohuynam0602@gmail.com</a></li>
+                    <li><a href="#" title=""> Mr.Nam 0972265737 - Mr.Huy 0905942356</a></li>
+                    <li><a href="https://www.facebook.com/nhatthao.vu" title="">Facebook</a></li>
+
+                </ul>
+            </div>
+            <div class="col-lg-3" id="recent-work">
+                <h2>Tìm Kiếm Chúng Tôi</h2>
+                <div class="googlemap">
+
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3834.268286315378!2d108.24200351402156!3d16.051561888891847!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3142177b5a5217fd%3A0xddde7606929e4dd2!2zQW4gVGjGsOG7o25nIDI5LCBN4bu5IEFuLCBOZ8WpIEjDoG5oIFPGoW4sIMSQw6AgTuG6tW5nLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1494914610359" width="350" height="220" frameborder="0" style="border:0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bottom-footer">
+        <div class="container" style="background: #ccc;">
+            <div class="height-light">
+
+            </div>
+            <a href="http://videovtv.com/WebDesign" target="_blank"> Design by H & T Team</a>
+        </div>
+    </div>
+</footer>
+<footer class="ftmobile" style="background:black;">
+    <div class="top-footer" style="height:auto">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-xs-12" id="last-blog">
+                    <h2>Liên Hệ Với Chúng Tôi </h2>
+                    <ul style="font-size: 18px">
+                        <li><a href="#" title="">CS1: Tầng 1,Kiencuong Apartment and Hotel,</a></li>
+                        <li><a href="#" title="">Lô 43-44 An Thượng 29</a></li>
+                        <li><a href="#" title="">CS2: 151 Nguyễn Hoàng,Thanh Khê, Đà Nẵng</a></li>
+                        <li><a href="#" title="">thohuynam0602@gmail.com</a></li>
+                        <li><a href="#" title=""> Mr.Nam 0972265737 - Mr.Huy 0905942356</a></li>
+                        <li><a href="https://www.facebook.com/nhatthao.vu" title="">Facebook</a></li>
+
+                    </ul>
+                </div>
+
+                <div class="col-md-4 col-ms-4">
+                    <div class="title phone-footer">
+
+                    </div>
+                    <div class="phone-content content">
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="bottom-footer">
+        <div class="container">
+            <div class="height-light">
+
+            </div>
+            <a href="http://videovtv.com/WebDesign" target="_blank"> Design by H & T Team</a>
+        </div>
+    </div>
+
+</footer>
+
+<style type="text/css">
+    .top-footer {
+        position: relative;
+    }
+
+    .boxInfo {
+        position: absolute;
+        left: 24%;
+        top: 9px;
+        height: 350px;
+    }
+
+    .infoComany {
+        padding-bottom: 31px;
+    }
+
+        .infoComany span {
+            color: white;
+            font-size: 17px;
+            font-weight: 600;
+        }
+
+    footer {
+        margin-top: 20px;
+        background: url(../img/footer-background.png) repeat-x;
+        padding: 4px 0;
+        /*height: 290px;*/
+    }
+
+        footer h2 {
+            font-size: 23px;
+            color: #f5f5f5;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+            footer h2 .gray {
+                color: #999;
+            }
+
+        footer #sugestion {
+            color: #fff;
+            line-height: 23px;
+        }
+
+        footer #last-blog {
+            padding: 0 35px;
+        }
+
+            footer #last-blog a {
+                color: #fff;
+                line-height: 40px;
+                padding-left: 5px;
+            }
+
+                footer #last-blog a:hover {
+                    text-decoration: underline;
+                }
+
+            footer #last-blog li {
+                height: 36px;
+                border-bottom: 1px dotted #fff;
+                font-size: 14px;
+            }
+
+        footer #recent-work li {
+            margin-bottom: 20px;
+        }
+
+        footer #nav-wrapper {
+            margin-top: 70px;
+            height: 90px;
+            background: #333;
+            border-top: 1px solid #fff;
+            border-bottom: 1px solid #fff;
+        }
+
+    #footer-nav {
+        float: right;
+    }
+
+        #footer-nav li {
+            float: left;
+            line-height: 90px;
+            padding-right: 26px;
+        }
+
+            #footer-nav li a {
+                color: #fff;
+            }
+
+                #footer-nav li a:hover {
+                    text-decoration: underline;
+                }
+
+    #pro:hover #prohover {
+        display: block;
+    }
+
+    #prohover {
+        display: none;
+    }
+
+    #product {
+        border-bottom: 5px solid #fff;
+        background: #444440;
+        padding-top: 40px;
+        float: left;
+        width: 100%;
+    }
+
+    #pro {
+        background: white;
+        height: 290px;
+        margin-left: 6.1%;
+        padding-top: 12px;
+        position: relative;
+        margin-bottom: 20px;
+    }
+
+    #prohover {
+        background: rgba(229, 229, 229, 0.25);
+        position: absolute;
+        z-index: 9999;
+        width: 100%;
+        height: 100%;
+        margin-top: -290px;
+        margin-left: -10px;
+    }
+
+    #text1 {
+        font-size: 40px;
+        margin-left: 44px;
+        color: #b10533;
+    }
+
+    #capsiton {
+        width: 100%;
+        display: block;
+        text-align: center;
+        font-family: sans-serif;
+        color: #FFF;
+        margin-top: 36px;
+        margin-bottom: 47px;
+    }
+    .bottom-footer {
+    background: #ccc;
+    border-top: 1px solid #f8f8f8;
+    height: 36px;
+}
+</style>

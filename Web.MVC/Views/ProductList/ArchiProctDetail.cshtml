@@ -1,0 +1,119 @@
+﻿@model EnF.Product
+@using EnF;
+@{
+    var productList = (List<Product>)ViewBag.Sameproduct;
+    Layout = "~/Views/Shared/_LayoutDefault.cshtml";
+    int ci = 0;
+    DayGianTuongEntities db = new DayGianTuongEntities();
+    var listslidetop = (List<Imalist>)ViewBag.Imagelist;
+}
+
+
+
+
+<section class="col-md-12" style="margin-top: 18px;" id="mainContent">
+    <div class="col-md-8" style="padding: 0;">
+
+        <div class="product-slider">
+            <div class="boxpro-img">
+                <ul class="probxslider">
+                    @foreach (var sl in listslidetop)
+                    {
+                        <li>
+                            <img src="/@sl.Image" />
+                        </li>
+                    }
+
+                </ul>
+
+            </div>
+
+        </div>
+        <br />
+        <div style="width: 100%; line-height: 63px;">
+            <p>
+                @Html.Raw(Model.Des)
+            </p>
+        </div>
+
+    </div>
+    <div class="col-md-4 boxcalendar">
+        <ul id="detail-info-box">
+            @foreach (var i in productList)
+            {
+                <li class="car-icon" style="text-align:left; margin-left: 41px; margin-top:7px; display: block;float:left;">
+                    <img src="/@i.Image" style="width: 45%; max-height:100% ;display: block;float:left; margin-right: 10px;" />
+                    <strong style="text-align: center;">
+                        <a style="color:Background;" href="/ProductList/ArchiProctDetail?productId=@i.ProductId"> @i.Name</a>
+                    </strong>
+                </li>
+            }
+        </ul>
+
+
+
+    </div>
+
+
+
+
+</section>
+<style type="text/css">
+    img {
+        max-width: 100% !important;
+    }
+
+    .list-group {
+        margin-top: 20px;
+    }
+</style>
+
+@section scripts{
+
+
+
+}
+<style type="text/css">
+    #report {
+        -webkit-transition: width 2s; /* Safari */
+        transition: top 17s;
+        position: absolute;
+        top: -47%;
+        left: 50%;
+        background: #ddd;
+        padding: 13px;
+        border: 1px solid green;
+        font-weight: bold;
+    }
+
+    #detail-more-info h4 {
+        font-weight: bold;
+        font-size: 17px;
+        display: block;
+        padding-left: 28px;
+        line-height: 25px;
+        background: url(https://www.milesandmiles.net/css/img/plus.png) no-repeat left center;
+    }
+
+    #detail-more-info ul {
+        padding-left: 0;
+    }
+
+    #detail-more-info li {
+        list-style: none;
+        margin-bottom: 10px;
+        color: #666;
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    h2 {
+        line-height: 63px;
+    }
+
+    .bx-wrapper {
+        position: relative;
+        margin: 0 auto 9px;
+        padding: 0;
+    }
+</style>
