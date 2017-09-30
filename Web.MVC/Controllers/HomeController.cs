@@ -26,6 +26,15 @@ namespace baohiem.Controllers
             ViewData["TopProduct"] = productRepository.RetriveTopProduct();
             return View();
         }
+
+
+        public ActionResult Viewhtml()
+        {
+           
+            return View();
+        }
+
+        
         [HttpPost]
         public ActionResult Index(FormCollection fc)
         {
