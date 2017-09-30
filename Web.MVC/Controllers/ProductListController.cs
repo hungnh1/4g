@@ -11,7 +11,7 @@ namespace baohiem.Controllers
 {
     public class ProductListController : Controller
     {
-        private DayGianTuongEntities db = new DayGianTuongEntities();
+        private Sim4GEntities db = new Sim4GEntities();
         //
         // GET: /Products/
         public ActionResult ProductList(int ProductGroupId)
@@ -103,7 +103,7 @@ namespace baohiem.Controllers
             }
             else
             {
-                ViewBag.groupname = prolist.First().Name;
+               // ViewBag.groupname = prolist.First().Name;
             }
 
             return View(prolist);

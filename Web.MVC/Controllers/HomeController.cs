@@ -9,7 +9,7 @@ namespace baohiem.Controllers
 {
     public class HomeController : Controller
     {
-        private DayGianTuongEntities db = new DayGianTuongEntities();
+        private Sim4GEntities db = new Sim4GEntities();
         public ActionResult Index()
         {
             //  ViewBag.slide = db.ADVs.ToList();

@@ -12,7 +12,7 @@ namespace baohiem.Controllers
 {
     public class NhomSanPhamController : Controller
     {
-        private DayGianTuongEntities db = new DayGianTuongEntities();
+        private Sim4GEntities db = new Sim4GEntities();
 
         // GET: /NhomSanPham/
         public ActionResult Index()
