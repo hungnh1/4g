@@ -1,12 +1,12 @@
 ﻿@using EnF
 @{
-    DayGianTuongEntities db = new DayGianTuongEntities();
+    Sim4GEntities db = new Sim4GEntities();
     Config config = db.Configs.First();
     Layout = null;
-    var about = db.Pages.First();
-    var listslidetop = db.ADVs.Where(p => p.Type == 1).ToList();
+    var listmenu = db.Menus.ToList();
+  //  var listslidetop = db.ADVs.Where(p => p.Type == 1).ToList();
 
-    var productgroup = db.ProductGroups.OrderByDescending(p => p.ProductGroupId).Skip(0).Take(3).ToList();
+    //var productgroup = db.ProductGroups.OrderByDescending(p => p.ProductGroupId).Skip(0).Take(3).ToList();
 
 }
 <!-- start header -->
@@ -20,31 +20,21 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @*<a class="navbar-brand" href="#">Thọ Huy Nam</a>*@
+               
                 <div style="height:70px;width: 20%;background: white;text-align: center;"><img src="/images/logo.png" style="height:70px"></div>
                
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li>
-                        <a href="/" title="Trang chủ" alt="trang chủ">Trang chủ</a>
-                    </li>
-                    <li>
-                        <a href="/Home/About" title="Giới thiệu" alt="Giới thiệu">Giới thiệu</a>
-                    </li>
-                    <li class="Proctmnu" style="position: relative;">
-                        <a href="/ProductList/ProductList?ProductGroupId=@productgroup.First().ProductGroupId" title="Liên hệ" alt="Liên hệ">Giấy dán tường</a>
-
-                    </li>
-
-                    <li>
-                        <a href="/ProductList/ArchitecProduct" title="Liên hệ" alt="Liên hệ">Kiến trúc</a>
-                    </li>
+                    @foreach (var mn in listmenu)
+                    {                       
+                        <li>
+                            <a href="#" title="Trang chủ" alt="trang chủ">@mn.Name</a>
+                        </li>
+                    }                 
+                 
                 </ul>
-                @*<ul class="nav navbar-nav navbar-right">
-                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                    </ul>*@
+             
             </div>
         </div>
     </nav>
@@ -59,40 +49,26 @@
             
         </div>
 
-        <div class="col-md-12 mainMenu" style="padding-right: 1px;height: 65px;">
-   
-            <div class="col-md-12" style="text-align: center;border-top: 1px solid wheat;">
-                <ul class="menuLeft" style="padding-top: 0px;padding-bottom: 17px;">
-                    <li>
-                        <a href="/" title="Trang chủ" alt="trang chủ">Trang chủ</a>
-                    </li>
-
-                    <li>
-                        <a href="/Home/About" title="Giới thiệu" alt="Giới thiệu">Giới thiệu</a>
-                    </li>
-                    <li class="Proctmnu" style="position: relative;">
-                        <a href="@(productgroup.Count>0?"/ProductList/ProductList?ProductGroupId="+productgroup.First().ProductGroupId:"")#mainContent" title="Giấy dán tường" alt="Giấy dán tường">Giấy dán tường</a>
-                   
-                    </li>
-
-                    <li>
-                        <a href="/ProductList/ArchitecProduct#mainContent" title="Kiến trúc" alt="Kiến trúc">Kiến trúc</a>
-                    </li>
-
-                </ul>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <img src="~/images/logo.png" alt="" id="logo" />
+                </div>
+                <div class="col-lg-9" style="padding-top: 12px;padding-right: 7%;">
+                    <nav id="top-nav">
+                        <ul>
+                            @foreach (var mn in listmenu)
+                            {
+                                <li class="active"><a href="#" title="">@mn.Name</a></li>
+                                @*<li><a href="" title="">4G Vietel</a></li>*@
+                            }
+                           
+                        </ul>
+                    </nav>
+                </div>
             </div>
-            
         </div>
-        @*<div class="follow-search col-md-2 col-xs-2" style="padding-top: 1%;">
-
-            <ul class="follow">
-                <li><a href="@config.Facebook"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
-                
-                <li><a href="@config.Google"><i class="fa fa-google-plus-square" aria-hidden="true"></i></a></li>
-                
-            </ul>
-
-        </div>*@
+ 
     </div>
 
 </header>
