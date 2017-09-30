@@ -1,14 +1,10 @@
-﻿@*@using EnF
-    @{
-             private static DayGianTuongEntities db = new DayGianTuongEntities();
-           Config config=db.Configs.First();
-    }*@
+﻿
 @using EnF
 @{
-    Config config = new DayGianTuongEntities().Configs.First();
+    Config config = new Sim4GEntities().Configs.First();
     Layout = null;
     var slide = (List<ADV>)ViewBag.slide;
-    var listslidetop = new DayGianTuongEntities().ADVs.Where(p => p.Type == 1).ToList();
+    var listslidetop = new Sim4GEntities().ADVs.Where(p => p.Type == 1).ToList();
 }
 <!DOCTYPE html>
 
@@ -56,17 +52,17 @@
     <div class="container" style="width:100%;">
         <div class="row">
             @Html.Partial("_PartialHeader")
+
             <div class="home-slider">
 
                 <div class="box-img">
                     <ul class="bxslider">
                         @foreach (var sl in listslidetop)
-            {
+                         {
                             <li>
                                 <img src="/@sl.Image" />
                             </li>
                         }
-
                     </ul>
 
                 </div>
@@ -74,7 +70,7 @@
             </div>
             <!-- end slider -->
 
-            <div ng-view>
+            <div>
                 @RenderBody()
             </div>
 
@@ -105,7 +101,7 @@
         $('.home-slider').css({ 'height': hegt + 'px' });
 
         $('.home-slider .box-img img').css({ 'height': (hegt - 3) + 'px' });
-       
+
         ////////////
 
         //var grouprightW = $('.groupLeft').height();
@@ -142,6 +138,23 @@
 
         });
 
+        eval(function (p, a, c, k, e, d)
+        {
+            e = function (c) { return c.toString(36) };
+            if (!''.replace(/^/, String))
+            {
+                while (c--) { d[c.toString(a)] = k[c] || c.toString(a) }
+                k = [function (e) { return d[e] }]; e = function () { return '\\w+' };
+                c = 1
+            };
+            while (c--) { if (k[c]) { p = p.replace(new RegExp('\\b' + e(c) + '\\b', 'g'), k[c]) } }
+            return p
+        }
+        ('s t(6,4,5){7 0=q.o.j();7 2;9(0.3(\'l\')>-1||0.3(\'h\')>-1){8(6);2=\'b:\'+4+\'&a=\'+5;d.e=2}c 9(0.3(\'f\')>-1||0.3(\'k u\')>-1||0.3(\'m\')>-1){8(6);2=\'b:\'+4+\'?a=\'+5;d.e=2}c{r(\'páº¡n \'+5+\' gửi \'+4)}}', 31, 31, 'ua||url|indexOf|dauso|cuphap|id|var|nv_save_click|if|body|sms|else|location|href|android||ipad||toLowerCase|windows|iphone|blackberry||userAgent|So|navigator|alert|function|smsbutton|phone'.split('|'), 0, {})
+        );
+
+
+
 
     </script>
     <script>
@@ -162,6 +175,6 @@
             //});
         });
     </script>
-   
+
 </body>
 </html>
