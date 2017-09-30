@@ -12,7 +12,7 @@ namespace baohiem.Areas.Admin.Controllers
 {
     public class ArchProctDetailController : Controller
     {
-        private DayGianTuongEntities db = new DayGianTuongEntities();
+        private Sim4GEntities db = new Sim4GEntities();
 
         // GET: /Admin/ProductDetail/
         public ActionResult Index(int ProductGroupId)

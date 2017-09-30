@@ -12,7 +12,7 @@ namespace baohiem.Areas.Admin.Controllers
 {
     public class MenusController : Controller
     {
-        private DayGianTuongEntities db = new DayGianTuongEntities();
+        private Sim4GEntities db = new Sim4GEntities();
 
         // GET: Admin/Menus
         public ActionResult Index()
@@ -21,7 +21,7 @@ namespace baohiem.Areas.Admin.Controllers
         }
         public JsonResult getAll()
         {
-            using (DayGianTuongEntities dataContext = new DayGianTuongEntities())
+            using (Sim4GEntities dataContext = new Sim4GEntities())
             {
                 var employeeList = dataContext.Menus.ToList();
                 return Json(employeeList, JsonRequestBehavior.AllowGet);
@@ -31,7 +31,7 @@ namespace baohiem.Areas.Admin.Controllers
         {
             if (mn != null)
             {
-                using (DayGianTuongEntities dataContext = new DayGianTuongEntities())
+                using (Sim4GEntities dataContext = new Sim4GEntities())
                 {
                     dataContext.Menus.Add(mn);
                     dataContext.SaveChanges();
@@ -69,10 +69,11 @@ namespace baohiem.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MenuId,Name,Link,ParentId,Type,IsNewTab,Pos,EName")] Menu menu)
+        public ActionResult Create([Bind(Include = "Name,Link,ParentId,IsNewTab,Pos")] Menu menu)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid)                  
             {
+                menu.Type = "1";
                 db.Menus.Add(menu);
                 db.SaveChanges();
                 return RedirectToAction("Index");

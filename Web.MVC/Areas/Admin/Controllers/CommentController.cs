@@ -12,7 +12,7 @@ namespace baohiem.Areas.Admin.Controllers
 {
     public class CommentController : Controller
     {
-        private DayGianTuongEntities db = new DayGianTuongEntities();
+        private Sim4GEntities db = new Sim4GEntities();
 
         // GET: /Admin/Comment/
         public ActionResult Index()

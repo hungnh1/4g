@@ -15,7 +15,7 @@ namespace baohiem.Areas.Admin.Controllers
     [Authorize]
     public class UserRoleController : Controller
     {
-        private DayGianTuongEntities db = new DayGianTuongEntities();
+        private Sim4GEntities db = new Sim4GEntities();
 
         // GET: /Admin/UserRole/
         public ActionResult Index()

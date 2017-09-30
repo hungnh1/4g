@@ -13,7 +13,7 @@ namespace baohiem.Areas.Admin.Controllers
     [Authorize]
     public class ProductsController : Controller
     {
-        private DayGianTuongEntities db = new DayGianTuongEntities();
+        private Sim4GEntities db = new Sim4GEntities();
 
         // GET: /Admin/Products/
         public ActionResult Index()

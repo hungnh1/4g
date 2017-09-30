@@ -15,7 +15,7 @@ namespace baohiem.Areas.Admin.Controllers
    //  [baohiem.App_Start.ActionAuthor(NotifyUrl = "~/Account/Login")]
     public class ConfigController : Controller
     {
-        private DayGianTuongEntities db = new DayGianTuongEntities();
+        private Sim4GEntities db = new Sim4GEntities();
         static string strConStr = System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnectionCTm"].ConnectionString;
         /// <summary>
         /// Global SQL server connection
