@@ -5,7 +5,9 @@
     Layout = "~/Views/Shared/_LayoutDefault.cshtml";
 
     //var listProduct = (List<Product>)ViewBag.TopProduct;
-    var productgroup = (List<ProductGroup>)ViewBag.ProductGroup;
+    Sim4GEntities db=new Sim4GEntities();
+    
+    var grouplist = (List<ProductGroup>)ViewBag.GroupList;
     var Architecproductgroup = (List<ProductGroup>)ViewBag.Architecproductgroup;
     DataTable listProduct = (DataTable)ViewData["TopProduct"];
 
@@ -15,121 +17,173 @@
 <!-- start slider -->
 <!-- end header -->
 
-<div class="col-md-12 boxsection groupLeft" style="padding: 0;margin: 0;">
-    <div class="col-md-9" style="padding: 0;margin: 0;">
-        @for (int pr = 0; pr < Architecproductgroup.Count(); pr++)
-        {
-
-
-            <div class="boxproduct col-md-4" style="padding: 0;margin-bottom: 2px;">
-                <a style="height: 100%;width:100%;" class="image-card" href="/ProductList/ProductList?ProductGroupId=@Architecproductgroup[pr].ProductGroupId#mainContent">
-                    <img src="/@Architecproductgroup[pr].Image" />
-                </a>
-                <div class="info">
-                    <h1>@Architecproductgroup[pr].Name </h1>
-                    @*<div class="recap">
-                        <p>tesdada tesdada tesdada tesdada tesdada tesdada </p>
-                    </div>*@
-                    <div class="viewdeetail">
-                        <a href="/ProductList/ArchitecProduct?ProductGroupId=@Architecproductgroup[pr].ProductGroupId#mainContent">Xem chi tiết</a>
+<div class="col-md-12 boxsection productevent" style="background: rgba(76, 76, 76, 0.07);">
+    <div class="container" style="width:auto;">
+        <div class="col-md-12 box-product">
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <span>Các gói cước Viettel </span>
                     </div>
+                    @foreach (Product pro in db.Products.ToList())
+                    {
+                         <div class="panel-tab">
+                        <div class="block_home_right">
+                            <ul>
+                                <li class="clearfix">
+                                    <a class="package-name" href="">@pro.TenGoi</a>
+
+                                    <div class="btn-register"><a href="" onclick="smsbutton(9, '@pro.DauSo', '@pro.CuPhap 0968348348')">Đăng Ký </a></div>
+                                    <span>@pro.GiaCuoc</span>
+
+                                </li>
+                            </ul>
+                           
+                        </div>
+
+                    </div>
+                    }
+                   
                 </div>
+
+
             </div>
 
+            <div class="col-md-8">
+                @foreach (ProductGroup prgp in grouplist)
+                {
+                     <div class="col-lg-12 box">
+                    <div class=" col-lg-12 product">
+                        <div class="panel panel-heading">
+                            <div class="nameproduct">
+                                <span> @prgp.Name</span>
+                            </div>
+                        </div>
+                        <div class="panel-product">
+                            @{
+                    List<Product> listProuct = db.Products.Where(p => p.ProductGroupID == prgp.ProductGroupId).ToList();
+                            }
 
-        }
+                            @foreach(Product pro in listProuct)
+                            {
+                                 <div class="col-md-6 panel-body">
+                                <div class="info-package">
+                                    <p><a href="">@pro.TenGoi</a></p>
+                                    <ul>
+                                        <li>Lưu lượng: <span>@pro.LuuLuong</span></li>
 
-        @for (int pr = 0; pr < productgroup.Count(); pr++)
-        {
-            if (pr < 3)
-            {
-                <div class="boxproduct col-md-4" style="padding: 0;margin-bottom: 2px;">
-                    <a style="height: 100%;width:100%;" class="image-card" href="Nhom-Giay-Dan/@(Web.Repository.ClearWordRepository.NoVNeseLower(productgroup[pr].Name)+"-"+productgroup[pr].ProductGroupId)#mainConten">
-                        <img src="/@productgroup[pr].Image" />
-                    </a>
-                    <div class="info">
-                        <h1>@productgroup[pr].Name </h1>
+                                        <li>Giá cước: <span>@pro.GiaCuoc</span></li>
+                                    </ul>
+                                    <div class="text-center clearfix">
+                                        <div class="sms_syntax">
+                                            Soạn
+                                            <span> @pro.CuPhap 0968348348 </span> gửi
+                                            <span>@pro.DauSo</span>
+                                        </div>
+                                        <div class="button">
+                                            <a class="btn-register" href="" onclick="smsbutton(9, '@pro.DauSo', '@pro.CuPhap 0968348348')">Đăng Ký Ngay</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            }
 
-                        <div class="viewdeetail">
-                            <a href="Nhom-Giay-Dan/@(Web.Repository.ClearWordRepository.NoVNeseLower(productgroup[pr].Name)+"-"+productgroup[pr].ProductGroupId)#mainConten">Xem chi tiết</a>
+                           
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+                }
+
+               
+          
+                   
+
+
+            </div>
+        </div>
+        <div class="col-md-12 box-tienich">
+            <div class="col-md-4">
+
+            </div>
+            <div class="col-md-8">
+                <div class=" col-lg-12 product-utility">
+                    <div class="panel-utility">
+                        <div class="name-utility">
+                            <span> TIỆN ÍCH VIETTEL</span>
                         </div>
                     </div>
+                    <div class="panel-detail">
+                        <div class="col-md-6 detail-utility">
+                            <div class="col-md-12 noidung-tienich">
+                                <div class="page-item item1">
+                                    <h1><a href="">Đăng ký gói cước Mimax4g Viettel trọn gói 90.000đ</a></h1>
+                                    <p>Đăng ký gói cước Mimax Viettel trọn gói 90.000đ</p>
+                                    <a href="" class="btn-detail">Chi tiết</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 detail-utility">
+                            <div class="col-md-12 noidung-tienich">
+                                <div class="page-item item1">
+                                    <h1><a href="">Đăng ký gói cước Mimax4g Viettel trọn gói 90.000đ</a></h1>
+                                    <p>Đăng ký gói cước Mimax Viettel trọn gói 90.000đ</p>
+                                    <a href="" class="btn-detail">Chi tiết</a>
+                                </div>
+                            </div>
+                        </div><div class="col-md-6 detail-utility">
+                            <div class="col-md-12 noidung-tienich">
+                                <div class="page-item item1">
+                                    <h1><a href="">Đăng ký gói cước Mimax4g Viettel trọn gói 90.000đ</a></h1>
+                                    <p>Đăng ký gói cước Mimax Viettel trọn gói 90.000đ</p>
+                                    <a href="" class="btn-detail">Chi tiết</a>
+                                </div>
+                            </div>
+                        </div><div class="col-md-6 detail-utility">
+                            <div class="col-md-12 noidung-tienich">
+                                <div class="page-item item1">
+                                    <h1><a href="">Đăng ký gói cước Mimax4g Viettel trọn gói 90.000đ</a></h1>
+                                    <p>Đăng ký gói cước Mimax Viettel trọn gói 90.000đ</p>
+                                    <a href="" class="btn-detail">Chi tiết</a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
                 </div>
-            }
+            </div>
 
+        </div>
+        <div class="col-md-12 box-khuyenmai">
 
+            <div class="col-md-4">
 
-        }
-       
-    </div>
-    @if (productgroup.Count >= 4)
-    {
-        <div class="col-md-3">
-            <div class="boxproduct" style="padding: 0;margin: 0;">
-                <a style="height: 100%;" class="image-card" href="/ProductList/ProductList?ProductGroupId=@productgroup[3].ProductGroupId#mainContent">
-                    <img src="/@productgroup[3].Image" class="Imgright" />
-                </a>
-                <div class="info" style="height: 200%;">
-                    <h1>@productgroup[3].Name </h1>
-
-                    <div class="viewdeetail">
-                        <a href="/ProductList/ProductList?ProductGroupId=@productgroup[3].ProductGroupId#mainContent">Xem chi tiết</a>
+            </div>
+            <div class="col-md-8">
+                <div class="col-md-12 khuyenmai">
+                    <div class="text-khuyenmai">
+                        <div class="name-khuyenmai">
+                            <span> Khuyến mãi Viettel</span>
+                        </div>
+                    </div>
+                    <div class="col-md-12 nd-khuyenmai">
+                        <ul class="block-khuyenmai ">
+                            <li>
+                                <img src="~/images/khuyenmai1.jpg" alt="" />
+                                <a href="">Khuyến mãi Viettel ngày 8/6 – 12/6/2017 tặng 50% thẻ nạp, tiền nạp </a>
+                            </li>
+                            <li>
+                                <img src="~/images/khuyenmai2.png" alt="" />
+                                <a href="">Chương trình khuyến mãi hòa mạng trả sau Viettel tháng 6/2017 </a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-    }
-
-
-</div>
-
-@*<div class="col-md-12 boxsection" style="padding-bottom: 0px; padding-left: 0;float:left; background: rgba(128, 128, 128, 0.03);">
-
-        @foreach (var sl in listslidemid)
-        {
-            <div class="col-md-3 col-xs-12 fourImg">
-                <section class="boximage">
-                    <img src="/@sl.Image" style="max-width:100%" />
-                </section>
-
-            </div>
-        }
-
-    </div>*@
-<div class="col-md-12 boxsection sectionconment" style="background: url(/images/groudsp.png) no-repeat center center;background-size: cover;">
-    <div class="container">
-        <div class="col-md-12 boxsection sectionconment" style="padding-top:19px;cursor: pointer;">
-            <div class="containSPNB" style="text-align:center">
-                <img src="/images/spnb.png" style="max-width:100%" />
-                @*<div class="txtleft">
-                    <h1 style="font-weight: 800; margin:0px;margin-right: 7px;">
-                        Sản Phẩm
-                    </h1>
-                </div>
-                <div class="txtright">
-                    <h1 style="font-weight: 800; margin:0px;margin-left: 7px;">
-                        Nổi Bật
-                    </h1>
-                </div>*@
-            </div>
-            @foreach (DataRow co in listProduct.Rows)
-            {
-
-                <div onclick="linkto()" class="col-md-3 boxcomment" style="height: 290px; padding-top: 12px;">
-
-                    <a href="@(co["Type"].ToString() == "1" ? "/San-pham/" + (Web.Repository.ClearWordRepository.NoVNeseLower(co["Name"].ToString()) + "-" + co["ProductId"].ToString()) + "#mainContent" :
-                    "/ProductList/ArchiProctDetail?productId=" + co["ProductId"].ToString() + "#mainContent")"
-                    style="color:black">
-                    <img src="/@co["Image"].ToString()" style="border-radius: 98px;width: 200px; height: 197px;" />
-                    <strong style="margin:auto"> @co["Name"].ToString() </strong>
-                    </a>
-                </div>
-            }
-
-
-
-        </div>
-
     </div>
 </div>
 
