@@ -18,7 +18,7 @@ namespace baohiem.Controllers
     [Authorize]
     public class AccountController : Controller
     {
-        private DayGianTuongEntities db = new DayGianTuongEntities();
+        private Sim4GEntities db = new Sim4GEntities();
         public AccountController()
             : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
         {
@@ -45,38 +45,38 @@ namespace baohiem.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(LoginViewModel model, string returnUrl)
+        public async Task<ActionResult>  Login(LoginViewModel model, string returnUrl)
         {
 
             if (ModelState.IsValid)
             {
-                string pass = FormsAuthentication.HashPasswordForStoringInConfigFile(model.Password, "MD5");
-                var isvalid = db.UserRoles.Where(p => p.UserName == model.UserName
-                    && p.PassWord == pass).ToList();
-                if (isvalid.Count > 0 || model.UserName=="nhh")
+                //string pass = FormsAuthentication.HashPasswordForStoringInConfigFile(model.Password, "MD5");
+                //var isvalid = db.UserRoles.Where(p => p.UserName == model.UserName
+                //    && p.PassWord == pass).ToList();
+                //if (isvalid.Count > 0 || model.UserName == "nhh")
+                //{
+                //    FormsAuthentication.SetAuthCookie(model.UserName, true);
+                //    GenericIdentity userIdentity = new GenericIdentity(model.UserName);
+                //    GenericPrincipal userPrincipal = new GenericPrincipal(userIdentity, null);
+                //    HttpContext.User = userPrincipal;
+                //    System.Web.HttpContext.Current.User = userPrincipal;
+                //    if (Request.QueryString["url"] != null)
+                //        Response.Redirect(Request.QueryString["url"].ToString());
+                //    else
+                //    {
+                //        Response.Redirect("/Admin");
+                //    }
+                //}
+                var user = await UserManager.FindAsync(model.UserName, model.Password);
+                if (user != null)
                 {
-                    FormsAuthentication.SetAuthCookie(model.UserName, true);
-                    GenericIdentity userIdentity = new GenericIdentity(model.UserName);
-                    GenericPrincipal userPrincipal = new GenericPrincipal(userIdentity, null);
-                    HttpContext.User = userPrincipal;
-                    // System.Web.HttpContext.Current.User = userPrincipal;
-                    if (Request.QueryString["url"] != null)
-                        Response.Redirect(Request.QueryString["url"].ToString());
-                    else
-                    {
-                        Response.Redirect("/Admin");
-                    }
+                    await SignInAsync(user, model.RememberMe);
+                    return RedirectToLocal(returnUrl);
                 }
-                //var user = await UserManager.FindAsync(model.UserName, model.Password);
-                //if (user != null)
-                //{
-                //    await SignInAsync(user, model.RememberMe);
-                //    return RedirectToLocal(returnUrl);
-                //}
-                //else
-                //{
-                //    ModelState.AddModelError("", "Invalid username or password.");
-                //}
+                else
+                {
+                    ModelState.AddModelError("", "Invalid username or password.");
+                }
             }
 
             // If we got this far, something failed, redisplay form
