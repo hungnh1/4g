@@ -11,7 +11,7 @@ namespace Web.Repository
 
         public static bool CheckAdminRole(string userName)
         {
-            DayGianTuongEntities db = new DayGianTuongEntities();
+            Sim4GEntities db = new Sim4GEntities();
             var user = db.UserRoles.Where(p => p.UserName == userName).First();
             if (user.Role == 1)
             {

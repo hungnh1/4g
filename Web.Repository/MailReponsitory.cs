@@ -16,7 +16,7 @@ namespace Web.Repository
             //SqlDataAdapter adp = new SqlDataAdapter(sql, Cconnect.GetConnection());
             //DataTable dt = new DataTable();
             //adp.Fill(dt);
-            DayGianTuongEntities db = new DayGianTuongEntities();
+            Sim4GEntities db = new Sim4GEntities();
             var config = db.Configs.First();
             string eMail = config.EmailSent;
             string Pass = config.MailPass;
