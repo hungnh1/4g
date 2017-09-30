@@ -11,69 +11,29 @@
 }
 <!-- start header -->
 <header>
-    <nav class="navbar navbar-inverse menureponsive">
-        <div class="container-fluid">
-            <div class="navbar-header">
-
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-               
-                <div style="height:70px;width: 20%;background: white;text-align: center;"><img src="/images/logo.png" style="height:70px"></div>
-               
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <img src="~/images/logo.png" alt="" id="logo" />
             </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav">
-                    @foreach (var mn in listmenu)
-                    {                       
-                        <li>
-                            <a href="#" title="Trang chủ" alt="trang chủ">@mn.Name</a>
-                        </li>
-                    }                 
-                 
-                </ul>
-             
+            <div class="col-lg-9" style="padding-top: 12px;padding-right: 7%;">
+                <nav id="top-nav">
+                    <ul>
+                        @foreach(Menu mn in listmenu)
+                        {
+                             @*<li class="active"><a href="" title="">Home</a></li>*@
+                        <li><a href="#" title="">@mn.Name</a></li>
+                        }
+                       
+                        
+                    </ul>
+                </nav>
             </div>
         </div>
-    </nav>
-
-    <div class="menutop" style="height: 165px;">
-        <div class="col-md-12" style="height: 100px;">
-            <div style="text-align: center;">
-                <img src="/images/logo.png" style="height:70px">
-                <p style="font-size: 23px;font-family: fantasy;">Tho Huy Nam</p>
-            </div>
-
-            
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <img src="~/images/logo.png" alt="" id="logo" />
-                </div>
-                <div class="col-lg-9" style="padding-top: 12px;padding-right: 7%;">
-                    <nav id="top-nav">
-                        <ul>
-                            @foreach (var mn in listmenu)
-                            {
-                                <li class="active"><a href="#" title="">@mn.Name</a></li>
-                                @*<li><a href="" title="">4G Vietel</a></li>*@
-                            }
-                           
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </div>
- 
     </div>
-
 </header>
 
-<style type="text/css">
+@*<style type="text/css">
     ul.menu li {
         display: inline;
         padding: 0 12px;
@@ -147,4 +107,4 @@
         text-align: center;
         background: #e2d5a5;
     }
-</style>
+</style>*@
