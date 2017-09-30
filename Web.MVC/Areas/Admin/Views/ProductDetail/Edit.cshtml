@@ -26,61 +26,68 @@
         @Html.HiddenFor(model => model.ProductGroupID)
         @Html.HiddenFor(model => model.ProductGroupName)
         @Html.HiddenFor(model => model.ImageList)
+    
+
         <div class="form-group">
             @Html.Label("Tên", new { @class = "control-label col-md-2" })
             <div class="col-md-5">
-                @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Name)
+                @Html.TextBoxFor(model => model.TenGoi, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.TenGoi)
             </div>
         </div>
+
+
+
         <div class="form-group">
             @Html.Label("Hình ảnh", new { @class = "control-label col-md-2" })
             <div class="col-md-5">
-                @*<img id="Image" height="200" src="/@(Model.Image)" />
-                @Html.HiddenFor(model => model.Image)
-                <input type="file" id="imagefile" name="fileUpload" />
-                @Html.ValidationMessageFor(model => model.Image)*@
-                @Html.HiddenFor(model => model.ImageList)
-                <div style="width:700px">
-                  
-                    @foreach (var li in listimage)
-                    {
-                        <div style="width:100px;padding-bottom:12px">
-                            <input type="file" id="imagefile_@(li.Id)" name="fileUpload_@(li.Id)" />
-                            <img id="Image" height="85" width="90" src="/@(li.Image)" />
-                            <a href="/Admin/ProductDetail/DelImage/@li.Id">Delete</a>
-                        </div>
-                    }
-                </div>
+                @*<div>
+
+                </div>*@
                 <div>
-                   Up thêm: <input type="file" id="imagefile" name="fileUpload" />
+                    <input type="file" id="fileUpload1" name="fileUpload1" />
+
                 </div>
-                @*<button type="submit" class="btn-success">Xác nhận </button>*@
+
             </div>
         </div>
         <div class="form-group">
-            @Html.Label("Giá", new { @class = "control-label col-md-2" })
+            @Html.Label("Tên gói", new { @class = "control-label col-md-2" })
             <div class="col-md-5">
-                @Html.TextBoxFor(model => model.DoiTuong, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.DoiTuong)
+                @Html.TextBoxFor(model => model.TenGoi, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.TenGoi)
             </div>
         </div>
         <div class="form-group">
-            @Html.Label("Ghi chú", new { @class = "control-label col-md-2" })
+            @Html.Label("Cú pháp", new { @class = "control-label col-md-2" })
             <div class="col-md-5">
-                @Html.TextBoxFor(model => model.PhamVi, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.PhamVi)
+                @Html.TextBoxFor(model => model.CuPhap, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CuPhap)
             </div>
         </div>
         <div class="form-group">
-            @Html.Label("Chi tiết sản phẩm", new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @*@Html.EditorFor(model => model.PContent)*@
-                @Html.TextAreaFor(model => model.Des)
-                @Html.ValidationMessageFor(model => model.Des)
+            @Html.Label("Đầu số", new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.TextBoxFor(model => model.DauSo, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.DauSo)
             </div>
         </div>
-       
+
+        <div class="form-group">
+            @Html.Label("Lưu lượng", new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.TextBoxFor(model => model.LuuLuong, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.LuuLuong)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Giá cước", new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.TextBoxFor(model => model.GiaCuoc, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.GiaCuoc)
+            </div>
+        </div>
 
 
         <div class="form-group">

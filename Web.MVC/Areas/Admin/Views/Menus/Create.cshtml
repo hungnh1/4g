@@ -5,7 +5,7 @@
 @{
     ViewBag.Title = "Create";
     List<SelectListItem> listItems = new List<SelectListItem>();
-    var listMenus = Repository.GetAllMenu();
+    var listMenus = MenuRepository.GetAllMenu();
     listItems.Add(new SelectListItem { Text = "---Chọn menu cha---", Value = "0" });
     if (listMenus.Count>0)
     {
@@ -18,10 +18,11 @@
 
 <h2>Thêm mới menu</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
+
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Menu</h4>
         <hr />
@@ -65,8 +66,10 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Pos, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-5">
-                @Html.TextBoxFor(model => model.Pos, new { @class = "form-control" })
+                <input type="number" class="form-control" />
+              
                 @Html.ValidationMessageFor(model => model.Pos)
+        
             </div>
         </div>
 

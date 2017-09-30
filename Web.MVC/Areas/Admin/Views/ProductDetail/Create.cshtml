@@ -1,7 +1,10 @@
 ﻿@model EnF.Product
 
 @{
-    ViewBag.Title = "Thêm mới";
+
+    var ProductGroupName = ViewBag.ProductGroupName;
+    var ProductGroupID = ViewBag.ProductGroupID;
+    ViewBag.Title = ProductGroupName+": Thêm mới " ;
 }
 @*<div style="margin-top: 45px; background: #eee;">
         <h3>
@@ -24,8 +27,8 @@
         <div class="form-group">
             @Html.Label("Tên", new { @class = "control-label col-md-2" })
             <div class="col-md-5">
-                @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Name)
+                @Html.TextBoxFor(model => model.TenGoi, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.TenGoi)
             </div>
         </div>
         @*<div class="form-group">
@@ -52,28 +55,42 @@
         </div>
     </div>
     <div class="form-group">
-        @Html.Label("Giá", new { @class = "control-label col-md-2" })
+        @Html.Label("Tên gói", new { @class = "control-label col-md-2" })
         <div class="col-md-5">
-            @Html.TextBoxFor(model => model.DoiTuong, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Price)
+            @Html.TextBoxFor(model => model.TenGoi, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.TenGoi)
         </div>
     </div>
     <div class="form-group">
-        @Html.Label("Ghi chú", new { @class = "control-label col-md-2" })
+        @Html.Label("Cú pháp", new { @class = "control-label col-md-2" })
         <div class="col-md-5">
-            @Html.TextBoxFor(model => model.PhamVi, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.PhamVi)
+            @Html.TextBoxFor(model => model.CuPhap, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.CuPhap)
         </div>
     </div>
     <div class="form-group">
-        @Html.Label("Chi tiết sản phẩm", new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @*@Html.EditorFor(model => model.PContent)*@
-            @Html.TextAreaFor(model => model.Des)
-            @Html.ValidationMessageFor(model => model.Des)
+        @Html.Label("Đầu số", new { @class = "control-label col-md-2" })
+        <div class="col-md-5">
+            @Html.TextBoxFor(model => model.DauSo, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.DauSo)
         </div>
     </div>
         
+        <div class="form-group">
+            @Html.Label("Lưu lượng", new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.TextBoxFor(model => model.LuuLuong, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.LuuLuong)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Giá cước", new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.TextBoxFor(model => model.GiaCuoc, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.GiaCuoc)
+            </div>
+        </div>
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">

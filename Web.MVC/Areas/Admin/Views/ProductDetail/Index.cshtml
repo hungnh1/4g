@@ -46,7 +46,13 @@
                     </th>
 
                     <th>
-                       Hình ảnh
+                       Cú pháp
+                    </th>
+                    <th>
+                        Đầu số
+                    </th>
+                    <th>
+                        Lưu lượng
                     </th>
                     <th></th>
                 </tr>
@@ -57,13 +63,20 @@
                     <tr>
 
                         <td>
-                            @Html.DisplayFor(modelItem => item.Name)
+                            @Html.DisplayFor(modelItem => item.TenGoi)
                         </td>
 
                         <td>
-                            <img src="/@item.Image" height="70"/>
+                            @Html.DisplayFor(modelItem => item.CuPhap)
                         </td>
 
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DauSo)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LuuLuong)
+                        </td>
                         <td>
                             @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }) |
 

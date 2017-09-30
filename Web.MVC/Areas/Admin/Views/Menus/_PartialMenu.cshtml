@@ -1,1 +1,56 @@
-﻿
+﻿@model Int32
+@using EnF
+@using Web.Repository
+@{ 
+    Sim4GEntities db = new Sim4GEntities();
+
+    //Menu menu = db.Menus.Find(Model);
+
+    List<Menu> listChildMenu = db.Menus.Where(p => p.ParentId == Model).ToList();
+   
+}
+
+@if (listChildMenu.Count > 0)
+{
+    foreach (var menu in listChildMenu)
+    {
+        int level = MenuRepository.RetrieveChildLevel(menu.MenuId, 0);
+        <tr>
+            <td>
+                @for (int mn = 1; mn <= level; mn++)
+                {
+                    <text> └─►</text>
+                }
+
+                @menu.Name
+            </td>
+
+            <td>
+                @menu.Link
+            </td>
+
+            <td>
+                @*@if (menu.IsNewTab == true)
+                {
+                    <input checked="checked" class="check-box" disabled="disabled" type="checkbox">
+                }
+                else
+                {
+                    <input class="check-box" disabled="disabled" type="checkbox">
+                }*@
+
+                @*@Html.ActionLink("Edit", "Edit", new { id = menu.MenuId }) |*@
+                <a href="#">Edit</a>|
+                <a href="/Admin/Menus/Delete/@menu.MenuId" onclick="return ConfirmDel()">Xóa</a>
+
+            </td>
+
+
+
+        </tr>
+
+        @Html.Partial("_PartialMenu", menu.MenuId)
+    }
+
+
+}
