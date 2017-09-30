@@ -12,16 +12,17 @@ namespace baohiem.Controllers
         private Sim4GEntities db = new Sim4GEntities();
         public ActionResult Index()
         {
-            //  ViewBag.slide = db.ADVs.ToList();
+              ViewBag.slide = db.ADVs.ToList();
             // ViewBag.tabProductlist = db.ProductGroups.Where(p => p.IsDefault == true).OrderBy(o => o.ParentId).Take(4).ToList();
-            ViewBag.ProductGroup = db.ProductGroups.Where(p => p.Type == 1 & p.IsDefault != true).OrderByDescending(p => p.ProductGroupId).Skip(0).Take(4).ToList();
-            ViewBag.Architecproductgroup = db.ProductGroups.Where(p => p.Type == 2 & p.IsDefault != true).OrderByDescending(p => p.ProductGroupId).Skip(0).Take(3).ToList();
+            //ViewBag.ProductGroup = db.ProductGroups.Where(p => p.Type == 1 & p.IsDefault != true).OrderByDescending(p => p.ProductGroupId).Skip(0).Take(4).ToList();
+            //ViewBag.Architecproductgroup = db.ProductGroups.Where(p => p.Type == 2 & p.IsDefault != true).OrderByDescending(p => p.ProductGroupId).Skip(0).Take(3).ToList();
 
             //   ViewBag.TopProduct = (from prt in db.Products
             //                         join pg in db.ProductGroups on prt.ProductGroupID
             //equals pg.ProductGroupId
             //                         where pg.IsDefault == true
             //                         select prt).OrderByDescending(o => o.ProductId).Take(4).ToList();
+              ViewBag.GroupList = db.ProductGroups.Take(4).OrderByDescending(p=>p.ProductGroupId).ToList();
             ProductRepository productRepository = new ProductRepository();
             ViewData["TopProduct"] = productRepository.RetriveTopProduct();
             return View();
