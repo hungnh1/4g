@@ -247,6 +247,7 @@
           <Property Name="CuPhap" Type="nvarchar" MaxLength="250" />
           <Property Name="DauSo" Type="nvarchar" MaxLength="50" />
           <Property Name="LuuLuong" Type="nvarchar" MaxLength="100" />
+          <Property Name="GiaCuoc" Type="nvarchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="Schedule">
           <Key>
@@ -628,6 +629,7 @@
           <Property Name="CuPhap" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="DauSo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="LuuLuong" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GiaCuoc" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Schedule">
           <Key>
@@ -989,6 +991,7 @@
                 <ScalarProperty Name="CuPhap" ColumnName="CuPhap" />
                 <ScalarProperty Name="DauSo" ColumnName="DauSo" />
                 <ScalarProperty Name="LuuLuong" ColumnName="LuuLuong" />
+                <ScalarProperty Name="GiaCuoc" ColumnName="GiaCuoc" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

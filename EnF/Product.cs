@@ -29,5 +29,6 @@ namespace EnF
         public string CuPhap { get; set; }
         public string DauSo { get; set; }
         public string LuuLuong { get; set; }
+        public string GiaCuoc { get; set; }
     }
 }
