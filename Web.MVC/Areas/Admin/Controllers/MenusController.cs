@@ -17,7 +17,7 @@ namespace baohiem.Areas.Admin.Controllers
         // GET: Admin/Menus
         public ActionResult Index()
         {
-            return View(db.Menus.ToList());
+            return View(db.Menus.Where(p=>p.ParentId==0).ToList());
         }
         public JsonResult getAll()
         {
@@ -121,11 +121,9 @@ namespace baohiem.Areas.Admin.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Menu menu = db.Menus.Find(id);
-            if (menu == null)
-            {
-                return HttpNotFound();
-            }
-            return View(menu);
+            db.Menus.Remove(menu);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         // POST: Admin/Menus/Delete/5

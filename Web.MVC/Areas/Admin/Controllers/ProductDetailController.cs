@@ -61,7 +61,9 @@ namespace baohiem.Areas.Admin.Controllers
         // GET: /Admin/ProductDetail/Create
         public ActionResult Create(int ProductGroupId)
         {
-            ViewBag.ProductGroupId = ProductGroupId;
+            ViewBag.ProductGroupName = db.ProductGroups.Find(ProductGroupId).Name;
+            ViewBag.ProductGroupID = ProductGroupId;
+
             return View();
         }
 
