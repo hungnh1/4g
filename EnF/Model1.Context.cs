@@ -13,10 +13,10 @@ namespace EnF
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DayGianTuongEntities : DbContext
+    public partial class Sim4GEntities : DbContext
     {
-        public DayGianTuongEntities()
-            : base("name=DayGianTuongEntities")
+        public Sim4GEntities()
+            : base("name=Sim4GEntities")
         {
         }
     

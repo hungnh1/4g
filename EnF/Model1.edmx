@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="DayGianTuongModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Sim4GModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -233,8 +233,7 @@
             <PropertyRef Name="ProductId" />
           </Key>
           <Property Name="ProductId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="MaNghiepVu" Type="nvarchar" MaxLength="250" />
-          <Property Name="Name" Type="nvarchar" MaxLength="500" />
+          <Property Name="TenGoi" Type="nvarchar" MaxLength="500" />
           <Property Name="Price" Type="float" />
           <Property Name="ProductGroupID" Type="bigint" />
           <Property Name="Image" Type="varchar" MaxLength="500" />
@@ -244,15 +243,10 @@
           <Property Name="IsShow" Type="bit" />
           <Property Name="CategoryName" Type="nvarchar" MaxLength="250" />
           <Property Name="ProductGroupName" Type="nvarchar" MaxLength="250" />
-          <Property Name="DoiTuong" Type="nvarchar" MaxLength="1000" />
-          <Property Name="NguoiDuocBaoHiem" Type="nvarchar" MaxLength="1000" />
-          <Property Name="PhamVi" Type="nvarchar" MaxLength="1000" />
-          <Property Name="CacLoaiTru" Type="nvarchar" MaxLength="1000" />
-          <Property Name="QuyenLoi" Type="nvarchar" MaxLength="1000" />
-          <Property Name="ThoiHan" Type="nvarchar" MaxLength="1000" />
-          <Property Name="linkdoc" Type="nvarchar" MaxLength="250" />
-          <Property Name="linkpdf" Type="nvarchar" MaxLength="250" />
           <Property Name="ImageList" Type="nvarchar" MaxLength="1000" />
+          <Property Name="CuPhap" Type="nvarchar" MaxLength="250" />
+          <Property Name="DauSo" Type="nvarchar" MaxLength="50" />
+          <Property Name="LuuLuong" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Schedule">
           <Key>
@@ -348,7 +342,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DayGianTuongModelStoreContainer">
+        <EntityContainer Name="Sim4GModelStoreContainer">
           <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ADVs" EntityType="Self.ADVs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Areas" EntityType="Self.Areas" Schema="dbo" store:Type="Tables" />
@@ -389,10 +383,11 @@
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="DayGianTuongModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="Sim4GModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="C__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -619,8 +614,7 @@
             <PropertyRef Name="ProductId" />
           </Key>
           <Property Name="ProductId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MaNghiepVu" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="TenGoi" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="Double" />
           <Property Name="ProductGroupID" Type="Int64" />
           <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
@@ -630,15 +624,10 @@
           <Property Name="IsShow" Type="Boolean" />
           <Property Name="CategoryName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="ProductGroupName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="DoiTuong" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="NguoiDuocBaoHiem" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="PhamVi" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="CacLoaiTru" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="QuyenLoi" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="ThoiHan" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="linkdoc" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="linkpdf" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="ImageList" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="CuPhap" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="DauSo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LuuLuong" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Schedule">
           <Key>
@@ -710,7 +699,7 @@
           <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
           <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="DayGianTuongEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Sim4GEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
           <EntitySet Name="ADVs" EntityType="Self.ADV" />
           <EntitySet Name="Areas" EntityType="Self.Area" />
@@ -751,9 +740,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DayGianTuongModelStoreContainer" CdmEntityContainer="DayGianTuongEntities">
+        <EntityContainerMapping StorageEntityContainer="Sim4GModelStoreContainer" CdmEntityContainer="Sim4GEntities">
           <EntitySetMapping Name="C__MigrationHistory">
-            <EntityTypeMapping TypeName="DayGianTuongModel.C__MigrationHistory">
+            <EntityTypeMapping TypeName="Sim4GModel.C__MigrationHistory">
               <MappingFragment StoreEntitySet="__MigrationHistory">
                 <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
                 <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
@@ -763,7 +752,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ADVs">
-            <EntityTypeMapping TypeName="DayGianTuongModel.ADV">
+            <EntityTypeMapping TypeName="Sim4GModel.ADV">
               <MappingFragment StoreEntitySet="ADVs">
                 <ScalarProperty Name="AdvId" ColumnName="AdvId" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
@@ -776,7 +765,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Areas">
-            <EntityTypeMapping TypeName="DayGianTuongModel.Area">
+            <EntityTypeMapping TypeName="Sim4GModel.Area">
               <MappingFragment StoreEntitySet="Areas">
                 <ScalarProperty Name="AreaId" ColumnName="AreaId" />
                 <ScalarProperty Name="AreaName" ColumnName="AreaName" />
@@ -786,7 +775,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetRoles">
-            <EntityTypeMapping TypeName="DayGianTuongModel.AspNetRole">
+            <EntityTypeMapping TypeName="Sim4GModel.AspNetRole">
               <MappingFragment StoreEntitySet="AspNetRoles">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -794,7 +783,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUserClaims">
-            <EntityTypeMapping TypeName="DayGianTuongModel.AspNetUserClaim">
+            <EntityTypeMapping TypeName="Sim4GModel.AspNetUserClaim">
               <MappingFragment StoreEntitySet="AspNetUserClaims">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
@@ -804,7 +793,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUserLogins">
-            <EntityTypeMapping TypeName="DayGianTuongModel.AspNetUserLogin">
+            <EntityTypeMapping TypeName="Sim4GModel.AspNetUserLogin">
               <MappingFragment StoreEntitySet="AspNetUserLogins">
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
@@ -813,7 +802,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUsers">
-            <EntityTypeMapping TypeName="DayGianTuongModel.AspNetUser">
+            <EntityTypeMapping TypeName="Sim4GModel.AspNetUser">
               <MappingFragment StoreEntitySet="AspNetUsers">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
@@ -824,7 +813,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Categories">
-            <EntityTypeMapping TypeName="DayGianTuongModel.Category">
+            <EntityTypeMapping TypeName="Sim4GModel.Category">
               <MappingFragment StoreEntitySet="Category">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
@@ -833,7 +822,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Comments">
-            <EntityTypeMapping TypeName="DayGianTuongModel.Comment">
+            <EntityTypeMapping TypeName="Sim4GModel.Comment">
               <MappingFragment StoreEntitySet="Comment">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -852,7 +841,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Configs">
-            <EntityTypeMapping TypeName="DayGianTuongModel.Config">
+            <EntityTypeMapping TypeName="Sim4GModel.Config">
               <MappingFragment StoreEntitySet="Configs">
                 <ScalarProperty Name="ConfigId" ColumnName="ConfigId" />
                 <ScalarProperty Name="Keyword" ColumnName="Keyword" />
@@ -888,7 +877,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Countviews">
-            <EntityTypeMapping TypeName="DayGianTuongModel.Countview">
+            <EntityTypeMapping TypeName="Sim4GModel.Countview">
               <MappingFragment StoreEntitySet="Countviews">
                 <ScalarProperty Name="CountViewId" ColumnName="CountViewId" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
@@ -897,7 +886,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CustommerOpinions">
-            <EntityTypeMapping TypeName="DayGianTuongModel.CustommerOpinion">
+            <EntityTypeMapping TypeName="Sim4GModel.CustommerOpinion">
               <MappingFragment StoreEntitySet="CustommerOpinion">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -909,7 +898,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ImageLists">
-            <EntityTypeMapping TypeName="DayGianTuongModel.ImageList">
+            <EntityTypeMapping TypeName="Sim4GModel.ImageList">
               <MappingFragment StoreEntitySet="ImageLists">
                 <ScalarProperty Name="ImageListId" ColumnName="ImageListId" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
@@ -920,7 +909,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Menus">
-            <EntityTypeMapping TypeName="DayGianTuongModel.Menu">
+            <EntityTypeMapping TypeName="Sim4GModel.Menu">
               <MappingFragment StoreEntitySet="Menus">
                 <ScalarProperty Name="MenuId" ColumnName="MenuId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -934,7 +923,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Pages">
-            <EntityTypeMapping TypeName="DayGianTuongModel.Page">
+            <EntityTypeMapping TypeName="Sim4GModel.Page">
               <MappingFragment StoreEntitySet="Pages">
                 <ScalarProperty Name="PageId" ColumnName="PageId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -948,9 +937,8 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProductGroups">
-            <EntityTypeMapping TypeName="DayGianTuongModel.ProductGroup">
+            <EntityTypeMapping TypeName="Sim4GModel.ProductGroup">
               <MappingFragment StoreEntitySet="ProductGroups">
-                <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="ProductGroupId" ColumnName="ProductGroupId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
@@ -959,11 +947,12 @@
                 <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
                 <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
                 <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProductImages">
-            <EntityTypeMapping TypeName="DayGianTuongModel.ProductImage">
+            <EntityTypeMapping TypeName="Sim4GModel.ProductImage">
               <MappingFragment StoreEntitySet="ProductImage">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
@@ -973,7 +962,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProductItems">
-            <EntityTypeMapping TypeName="DayGianTuongModel.ProductItem">
+            <EntityTypeMapping TypeName="Sim4GModel.ProductItem">
               <MappingFragment StoreEntitySet="ProductItem">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
@@ -983,11 +972,10 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Products">
-            <EntityTypeMapping TypeName="DayGianTuongModel.Product">
+            <EntityTypeMapping TypeName="Sim4GModel.Product">
               <MappingFragment StoreEntitySet="Products">
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="MaNghiepVu" ColumnName="MaNghiepVu" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TenGoi" ColumnName="TenGoi" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="ProductGroupID" ColumnName="ProductGroupID" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
@@ -997,20 +985,15 @@
                 <ScalarProperty Name="IsShow" ColumnName="IsShow" />
                 <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
                 <ScalarProperty Name="ProductGroupName" ColumnName="ProductGroupName" />
-                <ScalarProperty Name="DoiTuong" ColumnName="DoiTuong" />
-                <ScalarProperty Name="NguoiDuocBaoHiem" ColumnName="NguoiDuocBaoHiem" />
-                <ScalarProperty Name="PhamVi" ColumnName="PhamVi" />
-                <ScalarProperty Name="CacLoaiTru" ColumnName="CacLoaiTru" />
-                <ScalarProperty Name="QuyenLoi" ColumnName="QuyenLoi" />
-                <ScalarProperty Name="ThoiHan" ColumnName="ThoiHan" />
-                <ScalarProperty Name="linkdoc" ColumnName="linkdoc" />
-                <ScalarProperty Name="linkpdf" ColumnName="linkpdf" />
                 <ScalarProperty Name="ImageList" ColumnName="ImageList" />
+                <ScalarProperty Name="CuPhap" ColumnName="CuPhap" />
+                <ScalarProperty Name="DauSo" ColumnName="DauSo" />
+                <ScalarProperty Name="LuuLuong" ColumnName="LuuLuong" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Schedules">
-            <EntityTypeMapping TypeName="DayGianTuongModel.Schedule">
+            <EntityTypeMapping TypeName="Sim4GModel.Schedule">
               <MappingFragment StoreEntitySet="Schedule">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Schdate" ColumnName="Schdate" />
@@ -1022,7 +1005,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TeamMembers">
-            <EntityTypeMapping TypeName="DayGianTuongModel.TeamMember">
+            <EntityTypeMapping TypeName="Sim4GModel.TeamMember">
               <MappingFragment StoreEntitySet="TeamMember">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1036,7 +1019,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserRoles">
-            <EntityTypeMapping TypeName="DayGianTuongModel.UserRole">
+            <EntityTypeMapping TypeName="Sim4GModel.UserRole">
               <MappingFragment StoreEntitySet="UserRoles">
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
@@ -1050,7 +1033,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="AspNetUserRoles" TypeName="DayGianTuongModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="Sim4GModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
             <EndProperty Name="AspNetRoles">
               <ScalarProperty Name="Id" ColumnName="RoleId" />
             </EndProperty>

@@ -15,8 +15,7 @@ namespace EnF
     public partial class Product
     {
         public long ProductId { get; set; }
-        public string MaNghiepVu { get; set; }
-        public string Name { get; set; }
+        public string TenGoi { get; set; }
         public Nullable<double> Price { get; set; }
         public Nullable<long> ProductGroupID { get; set; }
         public string Image { get; set; }
@@ -26,14 +25,9 @@ namespace EnF
         public Nullable<bool> IsShow { get; set; }
         public string CategoryName { get; set; }
         public string ProductGroupName { get; set; }
-        public string DoiTuong { get; set; }
-        public string NguoiDuocBaoHiem { get; set; }
-        public string PhamVi { get; set; }
-        public string CacLoaiTru { get; set; }
-        public string QuyenLoi { get; set; }
-        public string ThoiHan { get; set; }
-        public string linkdoc { get; set; }
-        public string linkpdf { get; set; }
         public string ImageList { get; set; }
+        public string CuPhap { get; set; }
+        public string DauSo { get; set; }
+        public string LuuLuong { get; set; }
     }
 }
