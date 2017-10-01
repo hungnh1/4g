@@ -65,10 +65,14 @@ namespace baohiem.Controllers
             return View(db.Pages.OrderBy(p => p.PageId).Skip(paging.Value).Take(5).ToList().OrderByDescending(t => t.PageId).ToList());
         }
 
-        public ActionResult NewsDetail(int pageId)
+        public ActionResult NewsDetail(int? pageId)
         {
-
-            return View(db.Pages.Where(p => p.PageId == pageId).First());
+           var pge = db.Pages.Where(p => p.PageId == pageId).ToList();
+            if (pge.Count == 0|| pageId==null)
+            {
+                return View(db.Pages.ToList().First());
+            }
+            return View(pge.First());
         }
 
         public ActionResult Contact()
