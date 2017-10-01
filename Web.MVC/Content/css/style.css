@@ -1019,7 +1019,7 @@ footer {
     float: left;
     margin: 7px 6px 0 0;
 }
-/*DayGianTuong*/
+/*Sim4GModel*/
 .bx-pager-item a {
     display: none !important;
 }
@@ -1473,8 +1473,15 @@ footer {
 }
 
 @media (max-width:700px) {
+    #menuPC{
+        display:none;
+    }
     .menutop {
         display: none;
+    }
+
+    .logo{
+        width:100%;
     }
 
     .bottom-nav {
