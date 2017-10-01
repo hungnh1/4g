@@ -20,6 +20,15 @@ namespace Web.Repository
                 return query.ToList();
             return new List<Menu>();
         }
+        public static List<Menu> GetSubMenu(Int32 id)
+        {
+
+            var query = db.Menus.Where(p=>p.ParentId==id).ToList();
+
+            if (query.Count() > 0)
+                return query.ToList();
+            return new List<Menu>();
+        }
         public static List<Menu> RetrieveParentMenuForCreate(int id)
         {                     //// 
             List<Menu> childMenu = RetrieveChildMenu(id, new List<Menu>());
@@ -65,6 +74,20 @@ namespace Web.Repository
             }
 
             return level;
+        }
+
+        public static bool IsNumber(string level)
+        {
+            try
+            {
+                int num= Convert.ToInt16(level);
+            }
+            catch(Exception ex)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 
