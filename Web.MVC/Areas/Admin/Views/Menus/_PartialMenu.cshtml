@@ -26,7 +26,19 @@
             </td>
 
             <td>
-                @menu.Link
+                @{ 
+                   EnF.Page pag = null;
+                    var isnum = MenuRepository.IsNumber(menu.Link);
+                    if (isnum)
+                    {
+                        pag = db.Pages.Find(Convert.ToInt64(menu.Link)) ;
+                    }
+                } 
+                @(pag != null ? pag.Name : menu.Link)
+            </td>
+
+            <td>
+                @menu.IsNewTab
             </td>
 
             <td>

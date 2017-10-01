@@ -1,8 +1,11 @@
 ﻿@model IEnumerable<EnF.Menu>
+@using Web.Repository;
+@using EnF;
 
 @{
     ViewBag.Title = "Index";
-   
+
+    Sim4GEntities db = new Sim4GEntities();
 }
  
     <h2>Danh sách menu</h2>
@@ -49,10 +52,9 @@
                             Link
                         </th>
 
-                        @*<th>
-
-                            NewTab
-                        </th>*@
+                        <th>
+                            Mở tab mới
+                        </th>
                         
                         <th></th>
                     </tr>
@@ -67,9 +69,20 @@
                             </td>
 
                             <td>
-                               @item.Link
+                                @{
+                                    EnF.Page pag = null;
+                                    var isnum = MenuRepository.IsNumber(item.Link);
+                                    if (isnum)
+                                    {
+                                        pag = db.Pages.Find(Convert.ToInt64(item.Link));
+                                    }
+                                }
+                                @(pag != null ? pag.Name : item.Link)
+                            
+                              </td>
+                            <td>
+                                @item.IsNewTab
                             </td>
-              
                             <td>
                                 @*@Html.ActionLink("Edit", "Edit", new { id = item.MenuId }) |*@
                                 <a href="#">Edit</a>|

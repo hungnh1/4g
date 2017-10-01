@@ -1,17 +1,30 @@
 ﻿@using Web.Repository
+@using EnF
 
 @model EnF.Menu
 
 @{
+    Sim4GEntities db = new Sim4GEntities();
     ViewBag.Title = "Create";
     List<SelectListItem> listItems = new List<SelectListItem>();
     var listMenus = MenuRepository.GetAllMenu();
     listItems.Add(new SelectListItem { Text = "---Chọn menu cha---", Value = "0" });
-    if (listMenus.Count>0)
+    if (listMenus.Count > 0)
     {
         for (int i = 0; i < listMenus.Count; i++)
         {
             listItems.Add(new SelectListItem { Text = listMenus[i].Name, Value = listMenus[i].MenuId.ToString() });
+        }
+    }
+    ///
+    List<SelectListItem> listNewsItem = new List<SelectListItem>();
+    var listNews = db.Pages.ToList();
+    listNewsItem.Add(new SelectListItem { Text = "---Chọn trang link tới---", Value = "#" });
+    if (listNews.Count > 0)
+    {
+        for (int i = 0; i < listNews.Count; i++)
+        {
+            listNewsItem.Add(new SelectListItem { Text = listNews[i].Name, Value = listNews[i].PageId.ToString() });
         }
     }
 }
@@ -27,7 +40,7 @@
         <h4>Menu</h4>
         <hr />
         @Html.ValidationSummary(true)
-    
+
 
         <div class="form-group">
             @Html.Label("Tên", new { @class = "control-label col-md-2" })
@@ -40,10 +53,19 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.Link, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-5">
-              @Html.TextBoxFor(model => model.Link, new { @class = "form-control" })
+
+            <div class="col-md-3 choice">
+                <input type="radio" name="cbchoice" checked style="display: inline;" />
+                @Html.DropDownList("Link", listNewsItem, new { @class = "form-control", @style = "width: 90%; display: inline;" })
                 @Html.ValidationMessageFor(model => model.Link)
             </div>
+
+            <div class="col-md-3 inputlink">
+                <input type="radio" name="cbchoice" value="inputtext" style="display: inline;" />
+                @Html.TextBoxFor(model => model.Link, new { @disabled = "true", @class = "form-control", @style = "width: 90%; display: inline;" })
+                @Html.ValidationMessageFor(model => model.Link)
+            </div>
+
         </div>
 
         <div class="form-group">
@@ -56,7 +78,7 @@
 
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IsNewTab, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Mở tab mới", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.IsNewTab)
                 @Html.ValidationMessageFor(model => model.IsNewTab)
@@ -67,13 +89,13 @@
             @Html.LabelFor(model => model.Pos, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-5">
                 <input type="number" class="form-control" />
-              
+
                 @Html.ValidationMessageFor(model => model.Pos)
-        
+
             </div>
         </div>
 
- 
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Thêm" class="btn btn-default" />
@@ -85,3 +107,29 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+<style type="text/css">
+    .choice, .inputlink {
+        float: left;
+    }
+</style>
+
+
+@section Scripts {
+
+<script type="text/javascript">
+    $('.choice input[type=radio]').change(function () {
+        $('.inputlink input[type=text]').attr("disabled", "true");
+        $('.choice select').removeAttr("disabled", "false");
+    }
+        )
+    /////
+    $('.inputlink input[type=radio]').change(function () {
+        $('.choice select').attr("disabled", "true");
+        $('.inputlink input[type=text]').removeAttr("disabled");
+    }
+
+       )
+</script>
+
+}

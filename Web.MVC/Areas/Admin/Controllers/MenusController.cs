@@ -69,10 +69,11 @@ namespace baohiem.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Name,Link,ParentId,IsNewTab,Pos")] Menu menu)
+        public ActionResult Create([Bind(Include = "Name,Link,ParentId,IsNewTab,Pos")] Menu menu, FormCollection fc)
         {
             if (ModelState.IsValid)                  
             {
+                //var tt = fc["cbchoice"];
                 menu.Type = "1";
                 db.Menus.Add(menu);
                 db.SaveChanges();
