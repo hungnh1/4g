@@ -17,10 +17,10 @@
 <!-- start slider -->
 <!-- end header -->
 
-<div class="col-md-12 boxsection productevent" style="background: rgba(76, 76, 76, 0.07);">
+<div class="col-md-12 boxsection productevent" style="background: rgba(76, 76, 76, 0.07); padding-top: 6%;">
     <div class="container" style="width:auto;">
         <div class="col-md-12 box-product">
-            <div class="col-md-4">
+            <div class="col-md-4 tab-mobi">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <span>Các gói cước Viettel </span>
@@ -49,56 +49,61 @@
 
             </div>
 
-            <div class="col-md-8">
+            <div class="col-md-8 promobi">
                 @foreach (ProductGroup prgp in grouplist)
                 {
-                     <div class="col-lg-12 box">
-                    <div class=" col-lg-12 product">
-                        <div class="panel panel-heading">
-                            <div class="nameproduct">
-                                <span> @prgp.Name</span>
+                    <div class="col-lg-12 box">
+                        <div class=" col-lg-12 product">
+                            <div class="panel panel-heading">
+                                <div class="nameproduct">
+                                    <span> @prgp.Name</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="panel-product">
-                            @{
+                            <div class="panel-product">
+                                @{
                     List<Product> listProuct = db.Products.Where(p => p.ProductGroupID == prgp.ProductGroupId).ToList();
-                            }
+                                }
 
-                            @foreach(Product pro in listProuct)
-                            {
-                                 <div class="col-md-6 panel-body">
-                                <div class="info-package">
-                                    <p><a href="">@pro.TenGoi</a></p>
-                                    <ul>
-                                        <li>Lưu lượng: <span>@pro.LuuLuong</span></li>
+                                @foreach (Product pro in listProuct)
+                                {
+                                    <div class="col-md-6 panel-body">
+                                        <div class="info-package">
+                                            <p><a href="">@pro.TenGoi</a></p>
+                                            <ul>
+                                                <li>Lưu lượng: <span>@pro.LuuLuong</span></li>
 
-                                        <li>Giá cước: <span>@pro.GiaCuoc</span></li>
-                                    </ul>
-                                    <div class="text-center clearfix">
-                                        <div class="sms_syntax">
-                                            Soạn
-                                            <span> @pro.CuPhap 0968348348 </span> gửi
-                                            <span>@pro.DauSo</span>
+                                                <li>Giá cước: <span>@pro.GiaCuoc</span></li>
+                                            </ul>
+                                            <div class="text-center clearfix">
+                                                <div class="sms_syntax">
+                                                    Soạn
+                                                    <span> @pro.CuPhap 0968348348 </span> gửi
+                                                    <span>@pro.DauSo</span>
+                                                </div>
+                                                <div class="button">
+                                                    <a class="btn-register" href="" onclick="smsbutton(9, '@pro.DauSo', '@pro.CuPhap 0968348348')">Đăng Ký Ngay</a>
+                                                </div>
+                                            </div>
                                         </div>
+
                                         <div class="button">
                                             <a class="btn-register" href="javascript:void(0);" onclick="smsbutton(9, '@pro.DauSo', '@pro.CuPhap 0968348348')">Đăng Ký Ngay</a>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            }
 
-                           
-                            
+                                    </div>
+                                }
+
+
+
+                            </div>
+
                         </div>
-                        
                     </div>
-                </div>
                 }
 
-               
-          
-                   
+
+
+
 
 
             </div>
@@ -107,32 +112,15 @@
             <div class="col-md-4">
 
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8 tienich-mobi">
                 <div class=" col-lg-12 product-utility">
                     <div class="panel-utility">
                         <div class="name-utility">
                             <span> TIỆN ÍCH VIETTEL</span>
                         </div>
                     </div>
-                    <div class="panel-detail">
+                    <div class="panel-detail">                        
                         <div class="col-md-6 detail-utility">
-                            <div class="col-md-12 noidung-tienich">
-                                <div class="page-item item1">
-                                    <h1><a href="">Đăng ký gói cước Mimax4g Viettel trọn gói 90.000đ</a></h1>
-                                    <p>Đăng ký gói cước Mimax Viettel trọn gói 90.000đ</p>
-                                    <a href="" class="btn-detail">Chi tiết</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 detail-utility">
-                            <div class="col-md-12 noidung-tienich">
-                                <div class="page-item item1">
-                                    <h1><a href="">Đăng ký gói cước Mimax4g Viettel trọn gói 90.000đ</a></h1>
-                                    <p>Đăng ký gói cước Mimax Viettel trọn gói 90.000đ</p>
-                                    <a href="" class="btn-detail">Chi tiết</a>
-                                </div>
-                            </div>
-                        </div><div class="col-md-6 detail-utility">
                             <div class="col-md-12 noidung-tienich">
                                 <div class="page-item item1">
                                     <h1><a href="">Đăng ký gói cước Mimax4g Viettel trọn gói 90.000đ</a></h1>
@@ -162,7 +150,7 @@
             <div class="col-md-4">
 
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8 khuyenmai-mobi">
                 <div class="col-md-12 khuyenmai">
                     <div class="text-khuyenmai">
                         <div class="name-khuyenmai">
