@@ -23,5 +23,6 @@ namespace EnF
         public bool IsDefault { get; set; }
         public string CategoryName { get; set; }
         public Nullable<int> Type { get; set; }
+        public Nullable<int> Pos { get; set; }
     }
 }
