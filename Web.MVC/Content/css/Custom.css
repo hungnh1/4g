@@ -1,8 +1,9 @@
 ﻿.home-slider {
     position: relative;
+    padding-top: 5%;
 }
 
-header {    
+header {
     width: 100%;
 }
 
@@ -19,23 +20,39 @@ header {
     height: 100%;
     top: 1px;
 }
-.detail-utility .page-item  h1{
+
+.detail-utility .page-item h1 {
     font-size: 22px;
+    padding: 0;
+margin: 2%;
+background: #e4dbdb;
 }
-.detail-utility .page-item  h1 a{
-    font-weight: 700;
-}
-.detail-utility .page-item  p {
+
+    .detail-utility .page-item h1 a {
+        font-weight: 700;
+        color: #008d8a;
+    }
+
+.detail-utility .page-item p {
     font-size: 17px;
-font-family: inherit;
+    font-family: inherit;
+        margin: 3%;
+    height: 37px;
 }
-.detail-utility .page-item  .btn-detail {
-        background: #008d8a;
+}
+
+.detail-utility .page-item .btn-detail {
+    background: #008d8a;
     padding: 2px 6px;
     font-size: 19px;
+    background: #008d8a;
+padding: 2px 6px;
+font-size: 19px;
 }
-.noidung-tienich{
+
+.noidung-tienich {
     padding: 0;
+    padding-top: 2%;
 }
 
 
@@ -196,11 +213,13 @@ font-family: inherit;
     height: -webkit-calc(100% + 100%); /* Chrome, Safari */
     height: calc(100% + 100%) !important; /* IE9+ and future browsers */
 }
+
 @import url("bootstrap.min.css");
 
 .home-slider .bx-wrapper {
     width: 100% !important;
 }
+
 ul {
     padding: 0;
     list-style-type: none;
@@ -214,7 +233,10 @@ a:hover, a:active {
 header {
     height: 70px;
     background: #eae4e4;
+    position: fixed;
+z-index: 9999;
 }
+
 #logo {
     width: 320px;
 }
@@ -230,18 +252,18 @@ header {
     }
 
         #top-nav li a {
-              text-transform: uppercase;
-color: #ef7125;
-display: block;
-height: 32px;
-line-height: 32px;
-padding: 0px 14px;
-border-radius: 10px;
--webkit-transition: background 0.4s ease-out;
-font-family: initial;
-font-size: 17px;
-}
-        
+            text-transform: uppercase;
+            color: #ef7125;
+            display: block;
+            height: 32px;
+            line-height: 32px;
+            padding: 0px 14px;
+            border-radius: 10px;
+            -webkit-transition: background 0.4s ease-out;
+            font-family: initial;
+            font-size: 17px;
+        }
+
 
             #top-nav li.active a, #top-nav li a:hover {
                 background: #009490;
@@ -260,35 +282,44 @@ font-size: 17px;
     color: #fff;
     height: 40px;
 }
+
 .panel-heading span {
-    font-size:20px;
+    font-size: 20px;
     color: white;
 }
-.panel-utility{
+
+.panel-utility {
     border-radius: 7px 8px 0px 0px;
-height: 40px;
-padding: 0;
-background-color: #008d8a;
+    height: 40px;
+    padding: 0;
+    background-color: #008d8a;
 }
+
 .product-utility {
     padding: 0;
-   border: 1px solid #008d8a;
-padding: 0;
-border-radius: 8px 8px 3px 3px;
-background: white;
+    border: 1px solid #008d8a;
+    padding: 0;
+    border-radius: 8px 8px 3px 3px;
+    background: white;
 }
+
 .name-utility span {
     font-size: 20px;
-color: white;
+    color: white;
 }
+
 .detail-utility .page-item {
-    background: #51b88d;
+        border: 1px solid #008d8a;
+    height: 147px;
 }
-.name-utility  {
+}
+
+.name-utility {
     padding-top: 4px;
-padding-left: 1%;
+    padding-left: 1%;
 }
-.panel-detail{
+
+.panel-detail {
     padding-top: 0;
 }
 
@@ -297,7 +328,8 @@ padding-left: 1%;
     padding-top: 0%;
     padding-bottom: 2%;
 }
-.title-xt  a{
+
+.title-xt a {
     color: #008d8a;
     float: right;
     font-size: 19px;
@@ -311,10 +343,16 @@ padding-left: 1%;
 
 .sms_syntax {
     background: #F9F400;
-    border-radius: 10px;
-    width: 85%;
-    margin-left: 7%;
+border-radius: 10px;
+width: 88%;
+margin-left: 7%;
+font-size: 18px;
 }
+.sms_syntax span {
+    color: red;
+font-weight: 600;
+}
+
 
 .button {
     background: #008d8a;
@@ -324,53 +362,61 @@ padding-left: 1%;
     margin-top: 3%;
     margin-left: 24%;
 }
+
 .khuyenmai {
     border: 1px solid #008d8a;
-padding: 0;
-border-radius: 8px 8px 3px 3px;
-background: white;
+    padding: 0;
+    border-radius: 8px 8px 3px 3px;
+    background: white;
 }
-.text-khuyenmai{
+
+.text-khuyenmai {
     border-radius: 7px 8px 0px 0px;
-height: 40px;
-padding: 0;
-background: #008d8a;
-
+    height: 40px;
+    padding: 0;
+    background: #008d8a;
 }
 
-.name-khuyenmai{
+.name-khuyenmai {
     padding-top: 4px;
-padding-left: 1%;
+    padding-left: 1%;
 }
-.box-khuyenmai{
-    padding-top:1%;
+
+.box-khuyenmai {
+    padding-top: 1%;
 }
-.name-khuyenmai span{
-        font-size: 20px;
+
+.name-khuyenmai span {
+    font-size: 20px;
     color: white;
 }
+
 .block-khuyenmai {
     margin: 0;
-padding: 7px;
+    padding: 7px;
 }
-.block-khuyenmai li {
-    height: 85px;
-border-bottom: 1px solid #dedede;
-margin-bottom: 15px;
-}
-.block-khuyenmai li img {
-    height: 80px;
-width: 80px;
-border-radius: 6px;
-float: left;
-margin-right: 15px;
-}
-.block-khuyenmai li a {
-    width: 80%;
-color: black;
-font-size: 20px;
-margin-right: 15px;
-}
+
+    .block-khuyenmai li {
+        height: 85px;
+        border-bottom: 1px solid #dedede;
+        margin-bottom: 15px;
+    }
+
+        .block-khuyenmai li img {
+            height: 80px;
+            width: 80px;
+            border-radius: 6px;
+            float: left;
+            margin-right: 15px;
+        }
+
+        .block-khuyenmai li a {
+            width: 80%;
+            color: black;
+            font-size: 20px;
+            margin-right: 15px;
+        }
+
 .btn-register {
     color: #f2eded;
 }
@@ -381,13 +427,17 @@ margin-right: 15px;
     padding: 5px 0;
     margin: 0;
 }
+.block_home_right ul li span {
+    font-size: 18px;
+}
 
     .block_home_right ul li a.package-name {
         float: left;
-width: auto;
-color: #0077dd;
-font-size: 18px;
-padding: 5px;
+        width: 30%;
+        color: #0077dd;
+        font-size: 17px;
+        padding: 5px;
+        
     }
 
     .block_home_right ul li .btn-register {
@@ -397,32 +447,35 @@ padding: 5px;
     }
 
         .block_home_right ul li .btn-register a {
-            border: 3px solid #db8700;
-color: #db0006;
-border-radius: 3px;
-padding: 4px 12px;
-font-size: 16px;
-font-weight: 600;
-margin-left: 5px;
-display: inline-block;
+            border: 1px solid #db8700;
+            color: #db0006cc;
+            border-radius: 3px;
+            padding: 4px 12px;
+            font-size: 16px;
+            font-weight: 600;
+            margin-left: 5px;
+            display: inline-block;
         }
-        .panel-heading{
 
-            border-radius: 7px 8px 0px 0px;
-height: 40px;
+.panel-heading {
+    border-radius: 7px 8px 0px 0px;
+    height: 40px;
     padding: 0;
 }
-  .panel-defaul   .panel-heading span {
-      color: white;
-  }    
-  .nameproduct{
-      padding-top:4px;
-      padding-left: 1%;
-  }
-  .package-name .btn-register a:hover{
-      color:#008d8a;
-      display:block;
-  }
+
+.panel-defaul .panel-heading span {
+    color: white;
+}
+
+.nameproduct {
+    padding-top: 4px;
+    padding-left: 1%;
+}
+
+.package-name .btn-register a:hover {
+    color: #008d8a;
+    display: block;
+}
 
 .info-package {
     padding-bottom: 4px;
@@ -461,12 +514,11 @@ height: 40px;
 
 .info-package ul li {
     font-size: 19px;
-    background:#e4dbdb;
+    background: #e4dbdb;
     padding: 5px 0;
     margin: 0;
     text-align: center;
     font-weight: bold;
-
 }
 
 .panel-heading {
@@ -477,16 +529,20 @@ height: 40px;
     border-color: #ddd;
     position: absolute;
 }*/
-.box{
+.box {
     padding: 0;
     padding-bottom: 0px;
-padding-bottom: 2%;
+    padding-bottom: 2%;
 }
-.product{
+
+.product {
     border: 1px solid #008d8a;
-padding: 0;
-border-radius: 8px 8px 3px 3px;
-background: white;
+    padding: 0;
+    border-radius: 8px 8px 3px 3px;
+    background: white;
+}
+.block_home_right ul li .btn-register a{
+    color: #db0006cc;
 }
 
 
@@ -560,31 +616,128 @@ footer {
 .footer {
     padding-right: 2%;
 }
- .heading-footer{
+
+.heading-footer {
     font-size: 16px;
-text-transform: uppercase;
-border-bottom: 1px solid #00918e;
-padding-bottom: 3px;
-margin-bottom: 25px;
-color: #fff;
-padding-top: 20px;
+    text-transform: uppercase;
+    border-bottom: 1px solid #00918e;
+    padding-bottom: 3px;
+    margin-bottom: 25px;
+    color: #fff;
+    padding-top: 20px;
 }
-.heading-footer span{
-    padding: 5px 15px;
-background: #00918e;
-font-size: 14px;
-border: solid 1px rgba(0,0,0,0.0);
-}
-.footer p  {
+
+    .heading-footer span {
+        padding: 5px 15px;
+        background: #00918e;
+        font-size: 14px;
+        border: solid 1px rgba(0,0,0,0.0);
+    }
+
+.footer p {
     font-size: 19px;
-font-family: initial;
+    font-family: initial;
 }
+
 .footer a {
     font-size: 19px;
-font-family: initial;
-float: left;
-color: black;
+    font-family: initial;
+    float: left;
+    color: black;
 }
 
 
 
+
+
+
+
+/*Giao Diện Di Động*/
+@media (max-width:480px) {
+    .support {
+        display: none;
+    }
+    .container {
+        height: 70px;
+    }
+    .bx-wrapper {
+        height: 280px !important;
+    }
+    
+    .top-nav {
+        display: none;
+    }
+    .panel panel-default {
+        display: none;
+    }
+    .boxsection  {
+        padding:0;
+    }
+    .boxsection .container {
+        padding:0;
+    }
+    .box-product {
+        padding:0;
+    }
+    .promobi{
+        padding-left: 1%;
+    }
+    .panel-body{
+        padding: 0px 7px 7px 7px;
+    }
+    .box-tienich .tienich-mobi {
+        padding: 0px 3% 0px 1%;
+    }
+    .box-tienich{
+        padding: 0;
+    }
+    .box-khuyenmai {
+        padding: 0;
+margin-top: 2%;
+    }
+   .box-khuyenmai .khuyenmai-mobi{
+       padding: 0px 3% 0px 1%;
+   }
+
+   .footer{
+       padding:0;
+   }
+   #foot{
+       height: 100% !important;
+   }
+   .home-slider {
+       padding: 5px;
+       height: 440px;
+       margin-top: 14%;
+   }
+   .nd-khuyenmai {
+       padding: 0;    
+padding-top: 2%;
+   }
+   .block-khuyenmai {
+       padding:0;
+   }
+   .block-khuyenmai a {
+           font-size: 16px;
+}
+   .tab-mobi {
+       display: none !important;
+   }
+   
+}
+@media (max-width:320px) {
+    .sms_syntax{
+        font-size: 15px;
+    }
+    .footer p{
+        font-size: 16px;
+    }
+     #foot{
+       height: 100% !important;
+   }
+     .home-slider {
+       padding: 5px;
+       height: 300px;
+       margin-top: 21%;
+   }
+}
