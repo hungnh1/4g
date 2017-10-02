@@ -20,9 +20,7 @@ namespace baohiem.Areas.Admin.Controllers
         // GET: /Admin/ProductGroup/
         public ActionResult Index()
         {
-          
-           
-            return View(db.ProductGroups.Where(p=>p.Type==1& p.IsDefault!=true).ToList());
+            return View(db.ProductGroups.OrderBy(p => p.Pos).ToList());
         }
 
         // GET: /Admin/ProductGroup/Details/5
@@ -59,20 +57,20 @@ namespace baohiem.Areas.Admin.Controllers
                 productgroup.Type =1;
                 db.ProductGroups.Add(productgroup);
                 db.SaveChanges();
-                if (Request.Files[0].ContentLength != 0)
-                {
-                    if (Request.Files[0].FileName.Contains(".jpg") || Request.Files[0].FileName.Contains(".png")
-                    || Request.Files[0].FileName.Contains(".gif"))
-                    {
-                        string pathToSaveimage = Server.MapPath("/Storedata/Productlist/" + productgroup.ProductGroupId);//Phần vị trí lưu File .
-                        CreateFolder(pathToSaveimage);
-                        string filename = Path.GetFileName(Request.Files[0].FileName);
-                        Request.Files[0].SaveAs(Path.Combine(pathToSaveimage, filename));
+                //if (Request.Files[0].ContentLength != 0)
+                //{
+                //    if (Request.Files[0].FileName.Contains(".jpg") || Request.Files[0].FileName.Contains(".png")
+                //    || Request.Files[0].FileName.Contains(".gif"))
+                //    {
+                //        string pathToSaveimage = Server.MapPath("/Storedata/Productlist/" + productgroup.ProductGroupId);//Phần vị trí lưu File .
+                //        CreateFolder(pathToSaveimage);
+                //        string filename = Path.GetFileName(Request.Files[0].FileName);
+                //        Request.Files[0].SaveAs(Path.Combine(pathToSaveimage, filename));
 
-                        productgroup.Image = "Storedata/Productlist/" + productgroup.ProductGroupId + "/" + filename;
-                        db.SaveChanges();
-                    }
-                }
+                //        productgroup.Image = "Storedata/Productlist/" + productgroup.ProductGroupId + "/" + filename;
+                //        db.SaveChanges();
+                //    }
+                //}
                 return RedirectToAction("Index");
             }
 
@@ -99,25 +97,25 @@ namespace baohiem.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductGroupId,Name,Image,ParentId,Des,CategoryId,IsDefault,CategoryName")] ProductGroup productgroup)
+        public ActionResult Edit(ProductGroup productgroup)
         {
             if (ModelState.IsValid)
             {
                 productgroup.Type = 1;
-                if (Request.Files[0].ContentLength != 0)
-                {
-                    if (Request.Files[0].FileName.Contains(".jpg") || Request.Files[0].FileName.Contains(".png")
-                    || Request.Files[0].FileName.Contains(".gif"))
-                    {
-                        string pathToSaveimage = Server.MapPath("/Storedata/Productlist/" + productgroup.ProductGroupId);//Phần vị trí lưu File .
-                        CreateFolder(pathToSaveimage);
-                        string filename = Path.GetFileName(Request.Files[0].FileName);
-                        Request.Files[0].SaveAs(Path.Combine(pathToSaveimage, filename));
+                //if (Request.Files[0].ContentLength != 0)
+                //{
+                //    if (Request.Files[0].FileName.Contains(".jpg") || Request.Files[0].FileName.Contains(".png")
+                //    || Request.Files[0].FileName.Contains(".gif"))
+                //    {
+                //        string pathToSaveimage = Server.MapPath("/Storedata/Productlist/" + productgroup.ProductGroupId);//Phần vị trí lưu File .
+                //        CreateFolder(pathToSaveimage);
+                //        string filename = Path.GetFileName(Request.Files[0].FileName);
+                //        Request.Files[0].SaveAs(Path.Combine(pathToSaveimage, filename));
 
-                        productgroup.Image = "Storedata/Productlist/" + productgroup.ProductGroupId + "/" + filename;
-                        db.SaveChanges();
-                    }
-                }
+                //        productgroup.Image = "Storedata/Productlist/" + productgroup.ProductGroupId + "/" + filename;
+                //        db.SaveChanges();
+                //    }
+                //}
                 db.Entry(productgroup).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index", new { categoryId = productgroup.CategoryId });

@@ -103,10 +103,11 @@ namespace baohiem.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MenuId,Name,Link,ParentId,Type,IsNewTab,Pos,EName")] Menu menu)
+        public ActionResult Edit([Bind(Include = "Name,Link,ParentId,IsNewTab,Pos")] Menu menu)
         {
             if (ModelState.IsValid)
             {
+                menu.Type = "1";
                 db.Entry(menu).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

@@ -48,7 +48,7 @@
 
                     <th>
 
-                        Hình ảnh
+                       Thứ tự
                     </th>
                     @*<th width="100">Sản phẩm nổi bật</th>*@
                     <th></th>
@@ -64,7 +64,7 @@
                         </td>
 
                         <td>
-                            <img src="/@item.Image" height="100" />
+                           @item.Pos
                         </td>
                         @*<td>
                             <input type="radio" @(item.IsDefault == true ? "checked" : "") id="@item.ProductGroupId" name="TopGroup" onchange="SetDefault(this)" />

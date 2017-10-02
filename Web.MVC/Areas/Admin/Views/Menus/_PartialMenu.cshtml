@@ -51,8 +51,8 @@
                     <input class="check-box" disabled="disabled" type="checkbox">
                 }*@
 
-                @*@Html.ActionLink("Edit", "Edit", new { id = menu.MenuId }) |*@
-                <a href="#">Edit</a>|
+                @Html.ActionLink("Edit", "Edit", new { id = menu.MenuId }) |
+                @*<a href="#">Edit</a>|*@
                 <a href="/Admin/Menus/Delete/@menu.MenuId" onclick="return ConfirmDel()">Xóa</a>
 
             </td>

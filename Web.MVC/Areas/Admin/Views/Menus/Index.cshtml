@@ -84,8 +84,8 @@
                                 @item.IsNewTab
                             </td>
                             <td>
-                                @*@Html.ActionLink("Edit", "Edit", new { id = item.MenuId }) |*@
-                                <a href="#">Edit</a>|
+                                @Html.ActionLink("Edit", "Edit", new { id = item.MenuId }) |
+                                @*<a href="#">Edit</a>|*@
                                 <a href="/Admin/Menus/Delete/@item.MenuId" onclick="return ConfirmDel()">Xóa</a>
 
                             </td>
