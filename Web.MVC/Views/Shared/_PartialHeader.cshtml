@@ -35,7 +35,7 @@
     var isnumPa = MenuRepository.IsNumber(mn.Link);
     <li class="Proctmnu" style="position:relative;">
 
-        <a href="@(isnumPa ? "/Home/NewsDetail?pageId="+mn.Link : mn.Link)" title="">@mn.Name</a>
+        <a href="@(isnumPa ? "/Home/NewsDetail?pageId="+mn.Link : mn.Link)" target="@(mn.IsNewTab?"_blank":"")" title="">@mn.Name</a>
 
         <div class="mdivc2" style="min-width: 225px; position: absolute">
             <ul id="topproduct">
@@ -46,14 +46,11 @@
                         @{
 
                             var isnum = MenuRepository.IsNumber(sub.Link);
-                            //if (isnum)
-                            //{
-                            //    pag = db.Pages.Find(Convert.ToInt64(sub.Link));
-                            //}
+                      
                         }
 
 
-                        <a class="amenutop" href="@(isnum ? "/Home/NewsDetail?pageId="+sub.Link : sub.Link)" title="">@sub.Name</a>
+                        <a class="amenutop" target="@(sub.IsNewTab?"_blank":"")" href="@(isnum ? "/Home/NewsDetail?pageId="+sub.Link : sub.Link)" title="">@sub.Name</a>
 
                     </li>
                             }
@@ -87,7 +84,7 @@
                             var isnumPa = MenuRepository.IsNumber(mn.Link);
                        
                         <li class="Proctmnu" style="position: relative;">
-                            <a href="@(isnumPa ? "/Home/NewsDetail?pageId="+mn.Link : mn.Link)" title="">@mn.Name</a>
+                            <a href="@(isnumPa ? "/Home/NewsDetail?pageId="+mn.Link : mn.Link)" target="@(mn.IsNewTab?"_blank":"")"  title="">@mn.Name</a>
                             <div class="mdivc2" style="min-width: 225px; position: absolute">
                                 <ul id="topproduct">
                                  
@@ -104,7 +101,7 @@
                                             }
                                            
 
-                                            <a class="amenutop" href="@(isnum ? "/Home/NewsDetail?pageId="+sub.Link : sub.Link)" title="">@sub.Name</a>
+                                            <a class="amenutop" target="@(sub.IsNewTab?"_blank":"")"  href="@(isnum ? "/Home/NewsDetail?pageId="+sub.Link : sub.Link)" title="">@sub.Name</a>
 
                                         </li>
                                     }

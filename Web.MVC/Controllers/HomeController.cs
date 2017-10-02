@@ -13,8 +13,7 @@ namespace baohiem.Controllers
         public ActionResult Index()
         {
 
-
-              ViewBag.GroupList = db.ProductGroups.Take(4).OrderByDescending(p=>p.ProductGroupId).ToList();
+              ViewBag.GroupList = db.ProductGroups.Take(4).OrderBy(p=>p.Pos).ToList();
 
             return View();
         }
