@@ -1,63 +1,106 @@
 ﻿@model EnF.Page
+ @using EnF
+@using System.Data;
 @{
     ViewBag.Title = "NewsDetail";
     Layout = "~/Views/Shared/_LayoutDefault.cshtml";
+
+    Sim4GEntities db = new Sim4GEntities();
+    var listPro = (List<Product>)ViewData["ListProduct"];
+    var listPage = (List<Page>)ViewData["ListPages"];
+    DataTable listPages = (DataTable)ViewData["ListPages"];
+     
 }
-
-<div class="ganeral-banner">
-    <div class="box-img">
-        <img src="/images/tintuc.jpg">
-    </div>
-    <div class="box-text">
-        <a href="/">Trang chủ</a>>>
-        <a href="/Tin/Tin-Bao-Minh">Tin tức</a>
-    </div>
-</div>
-
-
 
 <div id="introcontent" class="intro-home container-fluid">
     <div class="container">
         <div class="row">
-            <div class="col-md-8 col-ms-8">
-                <div class="titleproduct">
-                    <span style="border-bottom: 3px solid #00caef;padding-bottom: 10px;display: block;">
-                        Tin  
-                    </span>
+            <div class="cold-md-12 ProDetail" >
+                <div class="col-md-4 tab-mobi">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <span>Các gói cước Viettel </span>
+                        </div>
+                        @foreach (Product pro in listPro)
+                        {
+                            <div class="panel-tab">
+                                <div class="block_home_right">
+                                    <ul>
+                                        <li class="clearfix">
+                                            <a class="package-name" href="">@pro.TenGoi</a>
+
+                                            <div class="btn-register"><a href="javascript:void(0);" onclick="smsbutton(9, '@pro.DauSo', '@pro.CuPhap 0968348348')">Đăng Ký </a></div>
+                                            <span>@pro.GiaCuoc</span>
+
+                                        </li>
+                                    </ul>
+
+                                </div>
+
+                            </div>
+                        }
+
+                    </div>
+
+
                 </div>
 
-                <div class="col-xs-12" style="margin-bottom: 9px;">
-                    <img src="/@Model.Image" style="width: 100%;max-height: 300px;"
-                         onerror="this.src='/images/noimage.gif';" />
+                <div class="col-md-8">
+                    <div class="col-md-12 box-tienich">                        
+                            <div class=" col-lg-12 product-utility">
+                                <div class="panel-utility">
+                                    <div class="name-utility">
+                                        <span> TIỆN ÍCH VIETTEL</span>
+                                    </div>
+                                </div>
+                                <div class="panel-detail">
+                                    @foreach (Pages pag in listPages)
+                                    {
+                                        
+                                    }
+                                    <div class="col-md-6 detail-utility">
+                                        <div class="col-md-12 noidung-tienich">
+                                            <div class="page-item item1">
+                                                <h1><a class="tieude-tienich" href="">Đăng ký gói cước Mimax4g Viettel trọn gói 90.000đ</a></h1>
+                                                <p>Đăng ký gói cước Mimax Viettel trọn gói 90.000đ</p>
+                                                <a href="" class="btn-detail">Chi tiết</a>
+                                            </div>
+                                        </div>
+                                    </div><div class="col-md-6 detail-utility">
+                                        <div class="col-md-12 noidung-tienich">
+                                            <div class="page-item item1">
+                                                <h1><a href="">Đăng ký gói cước Mimax4g Viettel trọn gói 90.000đ</a></h1>
+                                                <p>Đăng ký gói cước Mimax Viettel trọn gói 90.000đ</p>
+                                                <a href="" class="btn-detail">Chi tiết</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>                       
+
+                    </div>
+                    <div class="col-md-12 tienich-noidung">
+                        <div class="col-lg-12 ti">                           
+                                <div class="panel-tieude">
+                                    <a class="tieude-tienich">
+                                        Chuyện chưa kể về bác bảo vệ mà học sinh
+                                    </a>
+                                </div> 
+                            <div class="panel-noidung">
+                                <p>
+                                    <h2>
+                                        <a class="noidung">
+                                            6h sáng, Sài Gòn bất chợt đổ mưa lớn, tại cổng trường THPT chuyên Lê Hồng Phong, bác bảo vệ già vẫn đứng ở góc quen thuộc mỉm cười với từng cô cậu học trò đang tất tả chạy trốn cơn mưa. Phụ huynh, học sinh ai ai cũng vội vã, thế nhưng chẳng ai quên dừng lại đôi chút để cúi đầu chào bác bảo vệ có nụ cười khiến lòng người ấm áp
+
+                                        </a>
+                                    </h2>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
-                <div class="col-xs-12 titlenew" style="margin-bottom: 10px;">
-                    <h3>@Model.Name</h3>
-
-                </div>
-                @*<div class="Newsauthor">
-                    <div class="date"> <span>1 tháng 08, 2017 </span></div>
-                    <div class="create"> <span>Đăng bởi Admin </span></div>
-                    <div class="comment"> <span>7 bình luận </span></div>
-                </div>*@
-                <div>
-                    <p>
-                        @Html.Raw(Model.PContent)
-                    </p>
-
-                </div>
-
-
-
-
-            </div>
-
-
-
-            <div class="col-md-4 col-ms-4">
-
-                 
-
             </div>
         </div>
 
