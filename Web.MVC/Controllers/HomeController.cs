@@ -55,10 +55,10 @@ namespace baohiem.Controllers
         }
 
         public ActionResult NewsDetail(int? pageId)
-        {            
-          
-         
+        {
+            
             ViewData["ListProduct"] = db.Products.ToList();
+            ViewData["ListPages"] = db.Pages.ToList(); 
            var pge = db.Pages.Where(p => p.PageId == pageId).ToList();
 
            if (pge.Count == 0|| pageId==null)
