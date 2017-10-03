@@ -544,6 +544,10 @@ font-weight: 600;
 .block_home_right ul li .btn-register a{
     color: #db0006cc;
 }
+.product-utility .panel-detail .noidung-tienich .btn-detail {
+background: #008d8a;
+padding: 1px;
+}
 
 
 
@@ -645,9 +649,63 @@ footer {
     float: left;
     color: black;
 }
+#introcontent {
+    background: rgba(76, 76, 76, 0.07);
+padding-top: 6%;
+}
 
+#introcontent  .container {
+    padding: 0;
+}
+#introcontent .tab-mobi {
+    padding: 0;
+    font-family: initial;
+}
+#introcontent  .box-tienich{
+    font-family: initial;
+}
+#introcontent  .box-tienich .detail-utility .page-item {
+    
+    border: 1px solid #008d8a;
+        height: 147px;
 
+}
+#introcontent  .box-tienich .detail-utility .page-item .btn-detail {
+    background: #008d8a;
+    font-size: 20px;
+}
+#introcontent .detail-utility .page-item p {
+    height: 44px;
+}
+.tienich-noidung {
+    font-family: initial;
+    padding-top: 2%;
+}
+.tienich-noidung .ti 
+{
+border: 1px solid #008d8a;
+padding: 0;
+border-radius: 8px 8px 3px 3px;
+background: white;
 
+}
+.panel-tieude {
+    border-radius: 7px 8px 0px 0px;
+height: 40px;
+padding: 7px;
+background-color: #008d8a;
+}
+.tieude-tienich {
+    font-size: 20px;
+}
+.panel-noidung {
+    padding:2%;
+    padding-top: 0;
+}
+.panel-noidung a {
+    color: black;
+font-size: 18px;
+}
 
 
 
