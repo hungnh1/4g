@@ -7,8 +7,8 @@
 
     Sim4GEntities db = new Sim4GEntities();
     var listPro = (List<Product>)ViewData["ListProduct"];
-    var listPage = (List<Page>)ViewData["ListPages"];
-    DataTable listPages = (DataTable)ViewData["ListPages"];
+    var listPage = (List<EnF.Page>)ViewData["ListPages"];
+    
      
 }
 
@@ -54,49 +54,45 @@
                                     </div>
                                 </div>
                                 <div class="panel-detail">
-                                    @foreach (Pages pag in listPages)
+                                    @foreach (EnF.Page pag in listPage)
                                     {
-                                        
-                                    }
-                                    <div class="col-md-6 detail-utility">
+                                         <div class="col-md-6 detail-utility">
                                         <div class="col-md-12 noidung-tienich">
                                             <div class="page-item item1">
-                                                <h1><a class="tieude-tienich" href="">Đăng ký gói cước Mimax4g Viettel trọn gói 90.000đ</a></h1>
-                                                <p>Đăng ký gói cước Mimax Viettel trọn gói 90.000đ</p>
-                                                <a href="" class="btn-detail">Chi tiết</a>
-                                            </div>
-                                        </div>
-                                    </div><div class="col-md-6 detail-utility">
-                                        <div class="col-md-12 noidung-tienich">
-                                            <div class="page-item item1">
-                                                <h1><a href="">Đăng ký gói cước Mimax4g Viettel trọn gói 90.000đ</a></h1>
-                                                <p>Đăng ký gói cước Mimax Viettel trọn gói 90.000đ</p>
-                                                <a href="" class="btn-detail">Chi tiết</a>
+                                                <h1><a class="tieude-tienich" href="/Home/NewsDetail?pageId=@pag.PageId">@pag.Name</a></h1>
+                                                <p>@pag.Recap</p>
+                                                <a href="/Home/NewsDetail?pageId=@pag.PageId" class="btn-detail">Chi tiết</a>
                                             </div>
                                         </div>
                                     </div>
+                                        
+                                    }                                  
+                                   
                                 </div>
 
                             </div>                       
 
                     </div>
                     <div class="col-md-12 tienich-noidung">
-                        <div class="col-lg-12 ti">                           
+                        <div class="col-lg-12 ti">         
+                            @foreach (EnF.Page pag in listPage)    {
                                 <div class="panel-tieude">
                                     <a class="tieude-tienich">
-                                        Chuyện chưa kể về bác bảo vệ mà học sinh
+                                        @pag.Name
                                     </a>
                                 </div> 
                             <div class="panel-noidung">
                                 <p>
                                     <h2>
                                         <a class="noidung">
-                                            6h sáng, Sài Gòn bất chợt đổ mưa lớn, tại cổng trường THPT chuyên Lê Hồng Phong, bác bảo vệ già vẫn đứng ở góc quen thuộc mỉm cười với từng cô cậu học trò đang tất tả chạy trốn cơn mưa. Phụ huynh, học sinh ai ai cũng vội vã, thế nhưng chẳng ai quên dừng lại đôi chút để cúi đầu chào bác bảo vệ có nụ cười khiến lòng người ấm áp
+                                            @pag.PContent
 
                                         </a>
                                     </h2>
                                 </p>
                             </div>
+                            }              
+                                
                         </div>
                     </div>
 
