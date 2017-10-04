@@ -418,7 +418,7 @@ font-weight: 600;
         }
 
 .btn-register {
-    color: #f2eded;
+    color: #ff0505;
 }
 
 .block_home_right ul li {
@@ -505,6 +505,8 @@ font-weight: 600;
 .panel-body ul {
     margin: 0;
     padding: 0;
+        height: 105px;
+        background: #e4dbdb;
 }
 
 .text-center {
@@ -706,6 +708,9 @@ background-color: #008d8a;
     color: black;
 font-size: 18px;
 }
+.promobi .box .product .panel-body .button .btn-register{
+        color: #f5efef
+}
 
 
 
@@ -715,8 +720,14 @@ font-size: 18px;
     .support {
         display: none;
     }
-    .container {
+    .footer-back {
+            background: #eae4e4;
+    }
+    /*.container {
         height: 70px;
+    }*/
+    .footer-left{      
+    float: left;
     }
     .bx-wrapper {
         height: 280px !important;
@@ -760,9 +771,7 @@ margin-top: 2%;
    .footer{
        padding:0;
    }
-   #foot{
-       height: 100% !important;
-   }
+   
    .home-slider {
        padding: 5px;
        height: 440px;
@@ -789,10 +798,7 @@ padding-top: 2%;
     }
     .footer p{
         font-size: 16px;
-    }
-     #foot{
-       height: 100% !important;
-   }
+    }    
      .home-slider {
        padding: 5px;
        height: 300px;
