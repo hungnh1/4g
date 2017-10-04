@@ -5,12 +5,12 @@
     Layout = "~/Views/Shared/_LayoutDefault.cshtml";
 
     //var listProduct = (List<Product>)ViewBag.TopProduct;
-    Sim4GEntities db=new Sim4GEntities();
-    
+    Sim4GEntities db = new Sim4GEntities();
+
     var grouplist = (List<ProductGroup>)ViewBag.GroupList;
     var Architecproductgroup = (List<ProductGroup>)ViewBag.Architecproductgroup;
     DataTable listProduct = (DataTable)ViewData["TopProduct"];
-
+    var listPage = (List<EnF.Page>)ViewData["ListPages"];
 
 }
 
@@ -27,23 +27,23 @@
                     </div>
                     @foreach (Product pro in db.Products.ToList())
                     {
-                         <div class="panel-tab">
-                        <div class="block_home_right">
-                            <ul>
-                                <li class="clearfix">
-                                    <a class="package-name" href="">@pro.TenGoi</a>
+                        <div class="panel-tab">
+                            <div class="block_home_right">
+                                <ul>
+                                    <li class="clearfix">
+                                        <a class="package-name" href="">@pro.TenGoi</a>
 
-                                    <div class="btn-register"><a href="javascript:void(0);" onclick="smsbutton(9, '@pro.DauSo', '@pro.CuPhap 0968348348')">Đăng Ký </a></div>
-                                    <span>@pro.GiaCuoc</span>
+                                        <div class="btn-register"><a href="javascript:void(0);" onclick="smsbutton(9, '@pro.DauSo', '@pro.CuPhap 0968348348')">Đăng Ký </a></div>
+                                        <span>@pro.GiaCuoc</span>
 
-                                </li>
-                            </ul>
-                           
+                                    </li>
+                                </ul>
+
+                            </div>
+
                         </div>
-
-                    </div>
                     }
-                   
+
                 </div>
 
 
@@ -70,23 +70,25 @@
                                         <div class="info-package">
                                             <p><a href="">@pro.TenGoi</a></p>
                                             <ul>
-                                                <li>Lưu lượng: <span>@pro.LuuLuong</span></li>
+                                                <li><span>@pro.LuuLuong</span></li>
 
                                                 <li>Giá cước: <span>@pro.GiaCuoc</span></li>
                                             </ul>
                                             <div class="text-center clearfix">
+                                                
+                                                <div class="button">
+                                                    <a class="btn-register" href="javascript:void(0);" onclick="smsbutton(9, '@pro.DauSo', '@pro.CuPhap 0968348348')">Đăng Ký Ngay</a>
+                                                </div>
+                                                <span style="font-size: 20px;"> Hoặc Soạn Tin:</span>
                                                 <div class="sms_syntax">
                                                     Soạn
                                                     <span> @pro.CuPhap 0968348348 </span> gửi
                                                     <span>@pro.DauSo</span>
                                                 </div>
-                                                <div class="button">
-                                                    <a class="btn-register" href="javascript:void(0);" onclick="smsbutton(9, '@pro.DauSo', '@pro.CuPhap 0968348348')">Đăng Ký Ngay</a>
-                                                </div>
                                             </div>
                                         </div>
 
-                                       
+
 
                                     </div>
                                 }
@@ -117,24 +119,25 @@
                             <span> TIỆN ÍCH VIETTEL</span>
                         </div>
                     </div>
-                    <div class="panel-detail">                        
-                        <div class="col-md-6 detail-utility">
-                            <div class="col-md-12 noidung-tienich">
-                                <div class="page-item item1">
-                                    <h1><a href="">Đăng ký gói cước Mimax4g Viettel trọn gói 90.000đ</a></h1>
-                                    <p>Đăng ký gói cước Mimax Viettel trọn gói 90.000đ</p>
-                                    <a href="" class="btn-detail">Chi tiết</a>
+                    <div class="panel-detail">
+                        @if (listPage != null)
+                        {
+                            foreach (EnF.Page pag in listPage)
+                            {
+                                <div class="col-md-6 detail-utility">
+                                    <div class="col-md-12 noidung-tienich">
+                                        <div class="page-item item1">
+                                            <h1><a class="tieude-tienich" href="/Home/NewsDetail?pageId=@pag.PageId">@pag.Name</a></h1>
+                                            <p>@pag.Recap</p>
+                                            <a href="/Home/NewsDetail?pageId=@pag.PageId" class="btn-detail">Chi tiết</a>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div><div class="col-md-6 detail-utility">
-                            <div class="col-md-12 noidung-tienich">
-                                <div class="page-item item1">
-                                    <h1><a href="">Đăng ký gói cước Mimax4g Viettel trọn gói 90.000đ</a></h1>
-                                    <p>Đăng ký gói cước Mimax Viettel trọn gói 90.000đ</p>
-                                    <a href="" class="btn-detail">Chi tiết</a>
-                                </div>
-                            </div>
-                        </div>
+
+                            }
+                        }
+
+
 
 
                     </div>
@@ -157,14 +160,17 @@
                     </div>
                     <div class="col-md-12 nd-khuyenmai">
                         <ul class="block-khuyenmai ">
-                            <li>
-                                <img src="~/images/khuyenmai1.jpg" alt="" />
-                                <a href="">Khuyến mãi Viettel ngày 8/6 – 12/6/2017 tặng 50% thẻ nạp, tiền nạp </a>
-                            </li>
-                            <li>
-                                <img src="~/images/khuyenmai2.png" alt="" />
-                                <a href="">Chương trình khuyến mãi hòa mạng trả sau Viettel tháng 6/2017 </a>
-                            </li>
+                            @if (listPage != null)
+                            {
+                                foreach (EnF.Page pag in listPage)
+                                {
+                                    <li>
+                                        <img src="@pag.Image" alt="" />
+                                        <a href="">@pag.Name </a>
+                                    </li>
+                                }
+                            }
+
                         </ul>
                     </div>
                 </div>
@@ -172,12 +178,10 @@
         </div>
     </div>
 </div>
-
-
 @section Scripts {
 
-  
-   
+
+
 }
 <style type="text/css">
 
