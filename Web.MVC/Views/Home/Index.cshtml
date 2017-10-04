@@ -12,6 +12,10 @@
     DataTable listProduct = (DataTable)ViewData["TopProduct"];
     var listPage = (List<EnF.Page>)ViewData["ListPages"];
 
+
+    var listNew1 = (List<EnF.Page>)ViewBag.ListNew1;
+    var listNew2 = (List<EnF.Page>)ViewBag.ListNew2;
+
 }
 
 <!-- start slider -->
@@ -108,21 +112,23 @@
 
             </div>
         </div>
+
+
         <div class="col-md-12 box-tienich">
             <div class="col-md-4">
 
             </div>
             <div class="col-md-8 tienich-mobi">
-                <div class=" col-lg-12 product-utility">
+                <div class="col-lg-12 product-utility">
                     <div class="panel-utility">
                         <div class="name-utility">
                             <span> TIỆN ÍCH VIETTEL</span>
                         </div>
                     </div>
                     <div class="panel-detail">
-                        @if (listPage != null)
+                        @if (listNew1 != null)
                         {
-                            foreach (EnF.Page pag in listPage)
+                            foreach (EnF.Page pag in listNew1)
                             {
                                 <div class="col-md-6 detail-utility">
                                     <div class="col-md-12 noidung-tienich">
@@ -160,9 +166,9 @@
                     </div>
                     <div class="col-md-12 nd-khuyenmai">
                         <ul class="block-khuyenmai ">
-                            @if (listPage != null)
+                            @if (listNew2 != null)
                             {
-                                foreach (EnF.Page pag in listPage)
+                                foreach (EnF.Page pag in listNew2)
                                 {
                                     <li>
                                         <img src="@pag.Image" alt="" />
