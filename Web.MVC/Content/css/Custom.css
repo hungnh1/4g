@@ -39,7 +39,7 @@ background: #e4dbdb;
         margin: 3%;
     height: 37px;
 }
-}
+
 
 .detail-utility .page-item .btn-detail {
     background: #008d8a;
@@ -511,7 +511,7 @@ font-weight: 600;
 
 .text-center {
     text-align: center;
-    padding-top: 3%;
+    
 }
 
 .info-package ul li {
