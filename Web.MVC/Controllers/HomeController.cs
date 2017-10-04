@@ -12,8 +12,12 @@ namespace baohiem.Controllers
         private Sim4GEntities db = new Sim4GEntities();
         public ActionResult Index()
         {
+            int lstnewKey1 = Convert.ToInt16(System.Configuration.ConfigurationManager.AppSettings["listNew1"]);
+            int lstnewKey2 = Convert.ToInt16(System.Configuration.ConfigurationManager.AppSettings["listNew2"]);
 
-              ViewBag.GroupList = db.ProductGroups.Take(4).OrderBy(p=>p.Pos).ToList();
+            ViewBag.ListNew1 = db.Pages.Where(p=>p.ParentId== lstnewKey1);
+            ViewBag.ListNew2 = db.Pages.Where(p => p.ParentId == lstnewKey2);
+            ViewBag.GroupList = db.ProductGroups.Take(4).OrderBy(p=>p.Pos).ToList();
 
             return View();
         }
