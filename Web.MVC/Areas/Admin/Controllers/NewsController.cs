@@ -17,10 +17,9 @@ namespace baohiem.Areas.Admin.Controllers
         private Sim4GEntities db = new Sim4GEntities();
 
         // GET: /Admin/News/
-        public ActionResult Index()
+        public ActionResult Index(int newId)
         {
-
-            return View(db.Pages.OrderBy(p => p.PageId).Skip(1).OrderByDescending(p=>p.PageId).ToList());
+            return View(db.Pages.Where(p=>p.ParentId== newId).ToList());
         }
         public ActionResult About()
         {
