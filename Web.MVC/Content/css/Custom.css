@@ -16,6 +16,16 @@ header {
     width: 215px;
     max-width: 60%;
 }
+.ProDetail .product .panel-heading .name-chitiet {
+    padding-top: 1px;
+padding-left: 2%;
+}
+.ProDetail .product .panel-heading .name-chitiet h1 {
+    font-size: 20px;
+color: white;
+}
+
+
 
 
 
@@ -443,10 +453,10 @@ font-weight: 600;
 
     .block_home_right ul li a.package-name {
         float: left;
-        width: 30%;
-        color: #0077dd;
-        font-size: 17px;
-        padding: 5px;
+width: 32%;
+color: #0077dd;
+font-size: 17px;
+padding: 0px;
         
     }
 
@@ -721,12 +731,44 @@ font-size: 18px;
 .promobi .box .product .panel-body .button .btn-register{
         color: #f5efef
 }
+.supportmobi{
+    width: 215px;
+margin: 0 auto;
+position: fixed;
+bottom: 0;
+right: 0;
+display: none;
+background: #009490;
+border-radius: 7px 0px 0px 7px;
+color: #fff;
+}
+
+/*Menu di động*/
+.amenutop {
+    font-size: 18px;
+float: left;
+padding: 1%;
+color: white;
+}
+.mlic2 {
+    height:36px;
+}
+.mdivc2 {
+    position: static;
+}
+#topproduct li {
+    background:#797a7b !important;
+}
 
 
 
 
 /*Giao Diện Di Động*/
 @media (max-width:480px) {
+    .supportmobi {
+        display: block;
+        z-index:1;
+    }
     .support {
         display: none;
     }
