@@ -6,6 +6,16 @@
 header {
     width: 100%;
 }
+.support1 {
+    background: #009490;
+    border-radius: 7px 0px 0px 7px;
+    color: #fff;
+    float: right;
+    height: 50px;
+    margin-top: 4px;
+    width: 215px;
+    max-width: 60%;
+}
 
 
 
@@ -344,8 +354,8 @@ z-index: 9999;
 .sms_syntax {
     background: #F9F400;
 border-radius: 10px;
-width: 88%;
-margin-left: 7%;
+width: 70%;
+    margin-left: 15%;
 font-size: 18px;
 }
 .sms_syntax span {
