@@ -6,13 +6,10 @@
 
     //var listProduct = (List<Product>)ViewBag.TopProduct;
     Sim4GEntities db = new Sim4GEntities();
-
     var grouplist = (List<ProductGroup>)ViewBag.GroupList;
     var Architecproductgroup = (List<ProductGroup>)ViewBag.Architecproductgroup;
     DataTable listProduct = (DataTable)ViewData["TopProduct"];
     var listPage = (List<EnF.Page>)ViewData["ListPages"];
-
-
     var listNew1 = (List<EnF.Page>)ViewBag.ListNew1;
     var listNew2 = (List<EnF.Page>)ViewBag.ListNew2;
 
@@ -84,8 +81,7 @@
                                                     <a class="btn-register" href="javascript:void(0);" onclick="smsbutton(9, '@pro.DauSo', '@pro.CuPhap 0968348348')">Đăng Ký Ngay</a>
                                                 </div>
                                                 <span style="font-size: 20px;"> Hoặc Soạn Tin:</span>
-                                                <div class="sms_syntax">
-                                                    Soạn
+                                                <div class="sms_syntax">                                                   
                                                     <span> @pro.CuPhap 0968348348 </span> gửi
                                                     <span>@pro.DauSo</span>
                                                 </div>
