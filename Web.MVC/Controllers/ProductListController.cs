@@ -34,18 +34,9 @@ namespace baohiem.Controllers
         {
             Product productdt = null;
             productdt = db.Products.Where(p => p.ProductId == productId).First();
-            ViewBag.productItem = db.ProductItems.ToList();
+         
+            ViewBag.GroupList=db.Products.Where(p=>p.ProductGroupID== productdt.ProductGroupID).ToList();
 
-
-            ImalistRoot response = new ImalistRoot();
-            List<Imalist> listimg = new List<Imalist>();
-            if (!string.IsNullOrEmpty(productdt.ImageList))
-            {
-                response = JsonConvert.DeserializeObject<ImalistRoot>(productdt.ImageList);
-                listimg = response.imalist;
-
-            }
-            ViewBag.Imagelist = listimg;
             return View(productdt);
         }
         public ActionResult ArchiProctDetail(int productId)
