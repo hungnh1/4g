@@ -23,7 +23,7 @@
                 </button>
                 @*<a class="navbar-brand" href="#">Thọ Huy Nam</a>*@
                 <div style="height:70px;width: 20%;background: white;text-align: center;">
-                   <a href="/"> <img class="logo" src="/images/logo.png" style="height:70px"> </a> 
+                    <a href="/"> <img class="logo" src="/images/logo.png" style="height:70px"> </a>
                 </div>
 
             </div>
@@ -39,24 +39,26 @@
                             <ul id="topproduct">
                                 @foreach (var proG in productgroupList)
                                 {
+
                                     <li class="Proctmnu">
                                         <a>@proG.Name </a>
 
                                         @{ listprodct = db.Products.Where(p => p.ProductGroupID == proG.ProductGroupId).ToList();
 
-                                            foreach (var pr in listprodct)
-                                            {
-                                                <div class="mdivc3 mdivc3-mb" style="min-width: 225px; position: absolute">
-                                                    <ul class="submobile-3">
+                                            <div class="mdivc3 mdivc3-mb" style="min-width: 225px; position: absolute">
+                                                <ul class="submobile-3">
+                                                    @foreach (var pr in listprodct)
+                                                    {
+
 
                                                         <li class="mlic2" style="padding: 0px">
-                                                            <a class="amenutop" href="/ProductList/ProductDetail?productId=@pr.ProductGroupID" title="">@pr.TenGoi</a>
+                                                            <a class="amenutop" href="/ProductList/ProductDetail?productId=@pr.ProductId" title="">@pr.TenGoi</a>
                                                         </li>
 
-                                                    </ul>
-                                                </div>
 
-                                            }
+                                                    }
+                                                </ul>
+                                            </div>
                                         }
 
                                     </li>
@@ -83,17 +85,17 @@
 
                                     @foreach (Menu sub in listSubmenu)
                                     {
-                                        <li class="mlic2" style="padding: 0px">
-                                            @{
+                                    <li class="mlic2" style="padding: 0px">
+                                        @{
 
                                                 var isnum = MenuRepository.IsNumber(sub.Link);
 
-                                            }
+                                        }
 
 
-                                            <a class="amenutop" target="@(sub.IsNewTab?"_blank":"")" href="@(isnum ? "/Home/NewsDetail?pageId="+sub.Link : sub.Link)" title="">@sub.Name</a>
+                                        <a class="amenutop" target="@(sub.IsNewTab?"_blank":"")" href="@(isnum ? "/Home/NewsDetail?pageId="+sub.Link : sub.Link)" title="">@sub.Name</a>
 
-                                        </li>
+                                    </li>
                                                 }
 
 
@@ -102,7 +104,7 @@
                             </div>
 
                         </li>
-                                                }
+                                            }
 
                 </ul>
 
@@ -114,7 +116,7 @@
         <div class="row">
             <div class="col-lg-3">
                 <a href="/"><img src="~/images/logo.png" alt="" id="logo" /></a>
-                
+
             </div>
             <div class="col-lg-9" style="padding-top: 12px;padding-right: 7%;">
                 <nav id="top-nav">
@@ -134,19 +136,20 @@
                                             <a href="#">@proG.Name </a>
 
                                             @{
-                                                foreach (var pr in listprodct)
-                                                {
-                                                    <div class="mdivc3" style="min-width: 225px; position: absolute">
-                                                        <ul id="topproduct">
+                                                listprodct = db.Products.Where(p => p.ProductGroupID == proG.ProductGroupId).ToList();
 
-                                                            <li class="mlic2" style="padding: 0px">
-                                                                <a class="amenutop" href="/ProductList/ProductDetail?productId=@pr.ProductGroupID" title="">@pr.TenGoi</a>
-                                                            </li>
+                                                <div class="mdivc3" style="min-width: 225px; position: absolute">
+                                                    <ul id="topproduct">
+                                                        @foreach (var pr in listprodct)
+                                                        {
 
-                                                        </ul>
-                                                    </div>
+                                                        <li class="mlic2" style="padding: 0px">
+                                                            <a class="amenutop" href="/ProductList/ProductDetail?productId=@pr.ProductId" title="">@pr.TenGoi</a>
+                                                        </li>
 
-                                                }
+                                                        }
+                                                    </ul>
+                                                </div>
                                             }
 
                                         </li>
@@ -340,10 +343,12 @@
         left: 45% !important;
         top: 99% !important;
     }
-     .mdivc3-mb li {
-        background: #77580c !important;
-    }
-      .mdivc2-mb >ul > li {
+
+        .mdivc3-mb li {
+            background: #77580c !important;
+        }
+
+    .mdivc2-mb > ul > li {
         background: #ad7f0f !important;
     }
 </style>
