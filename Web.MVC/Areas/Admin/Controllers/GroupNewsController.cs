@@ -38,6 +38,7 @@ namespace baohiem.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                db.Pages.Add(page);
                 db.SaveChanges();
 
                 return RedirectToAction("Index");
@@ -60,7 +61,7 @@ namespace baohiem.Areas.Admin.Controllers
                 return HttpNotFound();
             }
 
-            if(page.Pos!=null)
+            if(page.Pos!=null && page.Pos !=0)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }

@@ -19,6 +19,8 @@ namespace baohiem.Areas.Admin.Controllers
         // GET: /Admin/News/
         public ActionResult Index(int newId)
         {
+            ViewBag.parentId = newId;
+            ViewBag.GroupName = db.Pages.Find(newId).Name;
             return View(db.Pages.Where(p=>p.ParentId== newId).ToList());
         }
         public ActionResult About()
@@ -110,8 +112,10 @@ namespace baohiem.Areas.Admin.Controllers
         }
 
         // GET: /Admin/News/Create
-        public ActionResult Create()
+        public ActionResult Create(int newId)
         {
+            ViewBag.parentId = newId;
+            ViewBag.parentName = db.Pages.Find(newId).Name;
             return View();
         }
 
@@ -148,7 +152,7 @@ namespace baohiem.Areas.Admin.Controllers
 
                 db.SaveChanges();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { newId = page .ParentId});
             }
 
             return View(page);
@@ -166,6 +170,7 @@ namespace baohiem.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.parentName = db.Pages.Find(page.ParentId).Name;
             return View(page);
         }
 
