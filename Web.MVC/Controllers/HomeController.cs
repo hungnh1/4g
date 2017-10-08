@@ -62,17 +62,26 @@ namespace baohiem.Controllers
         {
             
             ViewData["ListProduct"] = db.Products.ToList();
-            ViewData["ListPages"] = db.Pages.ToList(); 
-           var pge = db.Pages.Where(p => p.PageId == pageId).ToList();
+
+
+            var pge = db.Pages.Find(pageId);
+
+            ViewData["ListPages"] = db.Pages.Where(p => p.ParentId == pge.ParentId).ToList(); 
 
            //if (pge.Count == 0|| pageId==null)
            // {
            //     return View(db.Pages.ToList().First());
-           // }           
+           // }
 
-            
-            return View(db.Pages.ToList().First());
+
+           return View(pge);
         }
+        public ActionResult ProductDetail(int? detailId)
+        {
+            ViewData["ListDetail"] = db.Products.ToList();
+            return View();
+        }
+             
 
         public ActionResult Contact()
         {
