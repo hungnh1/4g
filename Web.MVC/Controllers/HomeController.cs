@@ -65,13 +65,13 @@ namespace baohiem.Controllers
             ViewData["ListPages"] = db.Pages.ToList(); 
            var pge = db.Pages.Where(p => p.PageId == pageId).ToList();
 
-           if (pge.Count == 0|| pageId==null)
-            {
-                return View(db.Pages.ToList().First());
-            }           
+           //if (pge.Count == 0|| pageId==null)
+           // {
+           //     return View(db.Pages.ToList().First());
+           // }           
 
             
-            return View();
+            return View(db.Pages.ToList().First());
         }
 
         public ActionResult Contact()
