@@ -60,21 +60,18 @@ namespace baohiem.Controllers
 
         public ActionResult NewsDetail(int? pageId)
         {
-            
             ViewData["ListProduct"] = db.Products.ToList();
-
-
+            if (pageId == null)
+            {              
+                var pgeN = db.Pages.ToList().First();
+                ViewData["ListPages"] = db.Pages.Where(p => p.ParentId == pgeN.ParentId).ToList();
+                return View(pgeN);
+            }
+ 
             var pge = db.Pages.Find(pageId);
 
-            ViewData["ListPages"] = db.Pages.Where(p => p.ParentId == pge.ParentId).ToList(); 
-
-           //if (pge.Count == 0|| pageId==null)
-           // {
-           //     return View(db.Pages.ToList().First());
-           // }
-
-
-           return View(pge);
+            ViewData["ListPages"] = db.Pages.Where(p => p.ParentId == pge.ParentId).ToList();
+            return View(pge);
         }
         public ActionResult ProductDetail(int? detailId)
         {
