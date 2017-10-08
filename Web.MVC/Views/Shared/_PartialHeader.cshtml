@@ -8,7 +8,7 @@
     //  var listslidetop = db.ADVs.Where(p => p.Type == 1).ToList();
 
     var productgroupList = db.ProductGroups.ToList();
-
+    List<Product> listprodct = new List<Product>();
 }
 <!-- start header -->
 <header>
@@ -23,12 +23,52 @@
                 </button>
                 @*<a class="navbar-brand" href="#">Thọ Huy Nam</a>*@
                 <div style="height:70px;width: 20%;background: white;text-align: center;">
-                    <img class="logo" src="/images/logo.png" style="height:70px">
+                   <a href="/"> <img class="logo" src="/images/logo.png" style="height:70px"> </a> 
                 </div>
 
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
+                    <li class="Proctmnu" style="position:relative;">
+                        <a href="/">Home</a>
+                    </li>
+                    <li class="Proctmnu" style="position: relative;">
+                        <a>Gói cước</a>
+
+                        <div class="mdivc2 mdivc2-mb" style="min-width: 225px; position: absolute">
+                            <ul id="topproduct">
+                                @foreach (var proG in productgroupList)
+                                {
+                                    <li class="Proctmnu">
+                                        <a>@proG.Name </a>
+
+                                        @{ listprodct = db.Products.Where(p => p.ProductGroupID == proG.ProductGroupId).ToList();
+
+                                            foreach (var pr in listprodct)
+                                            {
+                                                <div class="mdivc3 mdivc3-mb" style="min-width: 225px; position: absolute">
+                                                    <ul class="submobile-3">
+
+                                                        <li class="mlic2" style="padding: 0px">
+                                                            <a class="amenutop" href="/ProductList/ProductDetail?productId=@pr.ProductGroupID" title="">@pr.TenGoi</a>
+                                                        </li>
+
+                                                    </ul>
+                                                </div>
+
+                                            }
+                                        }
+
+                                    </li>
+
+                                            }
+
+                            </ul>
+                        </div>
+
+
+                    </li>
+
                     @foreach (Menu mn in listmenu)
                     {
                         List<Menu> listSubmenu = MenuRepository.GetSubMenu(mn.MenuId);
@@ -42,7 +82,7 @@
                                 <ul id="topproduct">
 
                                     @foreach (Menu sub in listSubmenu)
-                {
+                                    {
                                         <li class="mlic2" style="padding: 0px">
                                             @{
 
@@ -73,7 +113,8 @@
     <div id="menuPC" class="container">
         <div class="row">
             <div class="col-lg-3">
-                <img src="~/images/logo.png" alt="" id="logo" />
+                <a href="/"><img src="~/images/logo.png" alt="" id="logo" /></a>
+                
             </div>
             <div class="col-lg-9" style="padding-top: 12px;padding-right: 7%;">
                 <nav id="top-nav">
@@ -81,39 +122,43 @@
                         <li class="Proctmnu">
                             <a href="/">Home</a>
                         </li>
-                        @foreach (var proG in productgroupList)
-                        {
-                            <li class="Proctmnu" style="position: relative;">
-                                <a href="/ProductList/ProductDetail?productId=@proG.ProductGroupId" target="#" title="">@proG.Name</a>
-                                <div class="mdivc2" style="min-width: 225px; position: absolute">
-                                    <ul id="topproduct">
-                                        @{ 
-                                            var listprodct = db.Products.Where(p => p.ProductGroupID == proG.ProductGroupId).ToList();
-                                        }
-                                        @foreach (var pr in listprodct)
-                                        {
-                                            <li class="mlic2" style="padding: 0px">
-                                                <a class="amenutop" title="">@pr.ProductGroupName</a>
-                                                <div class="mdivc3" style="min-width: 225px; position: absolute">
-                                                    <ul id="topproduct">
 
-                                                        <li class="mlic2" style="padding: 0px">
-                                                            <a class="amenutop" title="">@pr.TenGoi</a>
-                                                        </li>
-                                                         
+                        <li class="Proctmnu" style="position: relative;">
+                            <a href="/">Gói cước</a>
 
-                                                    </ul>
-                                                </div>
-                                            </li>
-                                        }
-                                                                         
+                            <div class="mdivc2" style="min-width: 225px; position: absolute">
+                                <ul id="topproduct">
+                                    @foreach (var proG in productgroupList)
+                                    {
+                                        <li class="Proctmnu">
+                                            <a href="#">@proG.Name </a>
 
-                                    </ul>
-                                </div>
+                                            @{
+                                                foreach (var pr in listprodct)
+                                                {
+                                                    <div class="mdivc3" style="min-width: 225px; position: absolute">
+                                                        <ul id="topproduct">
 
-                            </li>
-                        }
-                    
+                                                            <li class="mlic2" style="padding: 0px">
+                                                                <a class="amenutop" href="/ProductList/ProductDetail?productId=@pr.ProductGroupID" title="">@pr.TenGoi</a>
+                                                            </li>
+
+                                                        </ul>
+                                                    </div>
+
+                                                }
+                                            }
+
+                                        </li>
+
+                                                }
+
+                                </ul>
+                            </div>
+
+
+                        </li>
+
 
                         @foreach (Menu mn in listmenu)
                         {
@@ -281,5 +326,24 @@
         text-align: center;
         background: #e2d5a5;
         width: 100%;
+    }
+
+    .submobile-3 li {
+        width: 179px;
+        text-align: center;
+        background: #5f4d0e;
+        width: 100%;
+    }
+
+    .mdivc3-mb {
+        background: #77580c;
+        left: 45% !important;
+        top: 99% !important;
+    }
+     .mdivc3-mb li {
+        background: #77580c !important;
+    }
+      .mdivc2-mb >ul > li {
+        background: #ad7f0f !important;
     }
 </style>
