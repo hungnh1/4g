@@ -15,7 +15,7 @@ namespace baohiem.Areas.Admin.Controllers
         // GET: Admin/GroupNews
         public ActionResult Index()
         {
-            return View(db.Pages.Where(p=>p.ParentId==null|| p.ParentId == 0).OrderBy(o=>o.Pos).ToList());
+            return View(db.Pages.Where(p=>p.ParentId==null|| p.ParentId == 0).OrderByDescending(o=>o.Pos).ToList());
         }
 
         // GET: Admin/GroupNews/Details/5
