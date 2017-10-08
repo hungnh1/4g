@@ -7,15 +7,14 @@
 
 <div class="panel panel-primary color noneborder">
     <div class="panel-heading colortheme noneborder">
-        <div class="titletable">@ViewBag.Title </div>
+        <div class="titletable"> @ViewBag.GroupName </div>
         <ul class="list-unstyled menu">
 
             <li>
                 <i class="fa fa-plus-square-o"></i>
-                @Html.ActionLink("Thêm mới", "Create")
+                @Html.ActionLink("Thêm mới", "Create",new { newId= ViewBag.parentId })
 
             </li>
-
 
 
             <li>

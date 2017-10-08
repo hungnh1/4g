@@ -4,7 +4,7 @@
     ViewBag.Title = "Sửa";
 }
 
-<h2>@ViewBag.Title</h2>
+<h2>Nhóm: @ViewBag.parentName >> @Model.Name</h2>
 
 @using (Html.BeginForm("Edit", "News", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
@@ -58,7 +58,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index", new { newId = Model.ParentId })
 </div>
 @*@section Scripts {
     <script type="text/javascript">
