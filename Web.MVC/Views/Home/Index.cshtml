@@ -12,6 +12,7 @@
     var listPage = (List<EnF.Page>)ViewData["ListPages"];
     var listNew1 = (List<EnF.Page>)ViewBag.ListNew1;
     var listNew2 = (List<EnF.Page>)ViewBag.ListNew2;
+    
 
 }
 
@@ -34,7 +35,7 @@
                                     <li class="clearfix">
                                         <a class="package-name" href="">@pro.TenGoi</a>
 
-                                        <div class="btn-register"><a href="javascript:void(0);" onclick="smsbutton(9, '@pro.DauSo', '@pro.CuPhap 0968348348')">Đăng Ký </a></div>
+                                        <div class="btn-register"><a href="javascript:void(0);" onclick="smsbutton(9, '@pro.DauSo', '@pro.CuPhap 0968348438')">Đăng Ký </a></div>
                                         <span>@pro.GiaCuoc</span>
 
                                     </li>
@@ -55,10 +56,10 @@
                 {
                     <div class="col-lg-12 box">
                         <div class="col-lg-12 product">
-                            <div class="panel panel-heading">
-                                <div class="nameproduct">
-                                    <span> @prgp.Name</span>
-                                </div>
+                            <div class="panel panel-heading" >
+                                <div  class="nameproduct" >
+                                    <span> @prgp.Name</span> 
+</div>
                             </div>
                             <div class="panel-product">
                                 @{
@@ -69,7 +70,7 @@
                                 {
                                     <div class="col-md-6 panel-body">
                                         <div class="info-package">
-                                            <p><a href="">@pro.TenGoi</a></p>
+                                            <p><a href="/ProductList/ProductDetail?productId=@pro.ProductId">@pro.TenGoi</a></p>
                                             <ul>
                                                 <li><span>@pro.LuuLuong</span></li>
 
@@ -78,11 +79,11 @@
                                             <div class="text-center clearfix">
                                                 
                                                 <div class="button">
-                                                    <a class="btn-register" href="javascript:void(0);" onclick="smsbutton(9, '@pro.DauSo', '@pro.CuPhap 0968348348')">Đăng Ký Ngay</a>
+                                                    <a class="btn-register" href="javascript:void(0);" onclick="smsbutton(9, '@pro.DauSo', '@pro.CuPhap 0968348438')">Đăng Ký Ngay</a>
                                                 </div>
                                                 <span style="font-size: 20px;"> Hoặc Soạn Tin:</span>
                                                 <div class="sms_syntax">                                                   
-                                                    <span> @pro.CuPhap 0968348348 </span> gửi
+                                                    <span> @pro.CuPhap 0968348438 </span> gửi
                                                     <span>@pro.DauSo</span>
                                                 </div>
                                             </div>
