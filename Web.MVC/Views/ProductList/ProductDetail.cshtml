@@ -28,7 +28,7 @@
                                             <li class="clearfix">
                                                 <a class="package-name" href="">@detail.TenGoi</a>
 
-                                                <div class="btn-register"><a href="javascript:void(0);" onclick="smsbutton(9, '@detail.DauSo', '@detail.CuPhap 0968348348')">Đăng Ký </a></div>
+                                                <div class="btn-register"><a href="javascript:void(0);" onclick="smsbutton(9, '@detail.DauSo', '@detail.CuPhap 0968348438')">Đăng Ký </a></div>
                                                 <span>@detail.GiaCuoc</span>
 
                                             </li>
@@ -58,10 +58,10 @@
                                         <div class="col-md-12 noidung-tienich">
                                             <div class="panel-noidung">
                                                 <p>
-                                                    @Model.Des
+                                                    @Html.Raw(Model.Des) 
                                                 </p>
                                                @*//test*@
-                                                 <div class="col-md-12 panel-body">
+                                                 <div class="col-md-12 panel-blody">
                                                     <div class="info-package">
                                                         <p><a href="">@Model.TenGoi</a></p>
                                                         <ul>
@@ -72,11 +72,11 @@
                                                         <div class="text-center clearfix">
 
                                                             <div class="button">
-                                                                <a class="btn-register" href="javascript:void(0);" onclick="smsbutton(9, '@Model.DauSo', '@Model.CuPhap 0968348348')">Đăng Ký Ngay</a>
+                                                                <a class="btn-register" href="javascript:void(0);" onclick="smsbutton(9, '@Model.DauSo', '@Model.CuPhap 0968348438')">Đăng Ký Ngay</a>
                                                             </div>
                                                             <span style="font-size: 20px;"> Hoặc Soạn Tin:</span>
                                                             <div class="sms_syntax">                                                                
-                                                                <span> @Model.CuPhap 0968348348 </span> gửi
+                                                                <span> @Model.CuPhap 0968348438 </span> gửi
                                                                 <span>@Model.DauSo</span>
                                                             </div>
                                                         </div>
@@ -86,9 +86,7 @@
 
                                                 </div>
 
-                                            <p>
-                                                @Model.Des
-                                            </p>
+                                           
                                         </div>
                                         </div>
                                     </div>
