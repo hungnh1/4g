@@ -24,12 +24,12 @@ namespace baohiem
     }
 );
             routes.MapRoute(
-   name: "sanpham",
-   url: "San-pham/{name}-{ProductId}",
+   name: "goicuoc",
+   url: "goi-cuoc/{name}-{ProductId}",
    defaults: new
    {
        controller = "ProductList",
-       action = "PaperProduct",
+       action = "ProductDetail",
        ProductId = UrlParameter.Optional
    }
 );
