@@ -1,5 +1,6 @@
-﻿@using EnF;
+﻿﻿@using EnF;
 @using System.Data;
+@using Web.Repository;
 @{
     ViewBag.Title = "Home Page";
     Layout = "~/Views/Shared/_LayoutDefault.cshtml";
@@ -13,6 +14,7 @@
     var listNew1 = (List<EnF.Page>)ViewBag.ListNew1;
     var listNew2 = (List<EnF.Page>)ViewBag.ListNew2;
     
+
 
 }
 
@@ -48,6 +50,17 @@
 
                 </div>
 
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- dangky-4gviettel.1 -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-5671168710574709"
+                     data-ad-slot="7029329160"
+                     data-ad-format="auto"></ins>
+                <script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+
 
             </div>
 
@@ -63,26 +76,30 @@
                             </div>
                             <div class="panel-product">
                                 @{
-                    List<Product> listProuct = db.Products.Where(p => p.ProductGroupID == prgp.ProductGroupId).ToList();
-                                }
+                                    List<Product> listProuct = db.Products.Where(p => p.ProductGroupID == prgp.ProductGroupId).ToList();
+                                    listProuct = listProuct.Take(4).ToList();
+
+                                      }
 
                                 @foreach (Product pro in listProuct)
                                 {
                                     <div class="col-md-6 panel-body">
                                         <div class="info-package">
-                                            <p><a href="/ProductList/ProductDetail?productId=@pro.ProductId">@pro.TenGoi</a></p>
+                                            <p><a href="/goi-cuoc/@(ClearWordRepository.NoVNeseLower(pro.TenGoi)+"-"+pro.ProductId)">@pro.TenGoi</a></p>
+
                                             <ul>
                                                 <li><span>@pro.LuuLuong</span></li>
 
                                                 <li>Giá cước: <span>@pro.GiaCuoc</span></li>
                                             </ul>
                                             <div class="text-center clearfix">
-                                                
+
                                                 <div class="button">
                                                     <a class="btn-register" href="javascript:void(0);" onclick="smsbutton(9, '@pro.DauSo', '@pro.CuPhap 0968348438')">Đăng Ký Ngay</a>
                                                 </div>
                                                 <span style="font-size: 20px;"> Hoặc Soạn Tin:</span>
-                                                <div class="sms_syntax">                                                   
+
+                                                <div class="sms_syntax">
                                                     <span> @pro.CuPhap 0968348438 </span> gửi
                                                     <span>@pro.DauSo</span>
                                                 </div>
@@ -100,7 +117,7 @@
 
                         </div>
                     </div>
-                }
+                                    }
 
 
 
